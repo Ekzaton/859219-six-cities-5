@@ -1,7 +1,6 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Сергей Зуев](https://up.htmlacademy.ru/react/5/user/859219).
-* Наставник: `Неизвестно`.
 
 ---
 
