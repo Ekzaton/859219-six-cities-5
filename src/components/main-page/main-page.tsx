@@ -5,7 +5,7 @@ interface Props {
   ratingValue: number;
 }
 
-const Main: React.FunctionComponent<Props> = (props: Props) => {
+const MainPage: React.FunctionComponent<Props> = (props: Props) => {
   const {offersCount, ratingValue} = props;
 
   return (
@@ -269,4 +269,4 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default Main;
+export default MainPage;
