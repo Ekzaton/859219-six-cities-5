@@ -1,12 +1,14 @@
 import * as React from "react";
 
+import {offerType} from "../../types";
+import {getRatingValue} from "../../utils";
+
 interface Props {
-  offersCount: number;
-  ratingValue: number;
+  offers: offerType[];
 }
 
 const MainPage: React.FunctionComponent<Props> = (props: Props) => {
-  const {offersCount, ratingValue} = props;
+  const {offers} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -75,7 +77,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -116,7 +118,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={{width: `${ratingValue}%`}}/>
+                        <span style={getRatingValue(offers[0].rating)}/>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -148,7 +150,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={{width: `${ratingValue}%`}}/>
+                        <span style={getRatingValue(offers[1].rating)}/>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -180,7 +182,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={{width: `${ratingValue}%`}}/>
+                        <span style={getRatingValue(offers[2].rating)}/>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -215,7 +217,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={{width: `${ratingValue}%`}}/>
+                        <span style={getRatingValue(offers[3].rating)}/>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -223,38 +225,6 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
                       <a href="#">Nice, cozy, warm big bed apartment</a>
                     </h2>
                     <p className="place-card__type">Apartment</p>
-                  </div>
-                </article>
-
-                <article className="cities__place-card place-card">
-                  <div className="cities__image-wrapper place-card__image-wrapper">
-                    <a href="#">
-                      <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
-                    </a>
-                  </div>
-                  <div className="place-card__info">
-                    <div className="place-card__price-wrapper">
-                      <div className="place-card__price">
-                        <b className="place-card__price-value">&euro;80</b>
-                        <span className="place-card__price-text">&#47;&nbsp;night</span>
-                      </div>
-                      <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                        <svg className="place-card__bookmark-icon" width="18" height="19">
-                          <use xlinkHref="#icon-bookmark-active"></use>
-                        </svg>
-                        <span className="visually-hidden">In bookmarks</span>
-                      </button>
-                    </div>
-                    <div className="place-card__rating rating">
-                      <div className="place-card__stars rating__stars">
-                        <span style={{width: `${ratingValue}%`}}/>
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <h2 className="place-card__name">
-                      <a href="#">Wood and stone place</a>
-                    </h2>
-                    <p className="place-card__type">Private room</p>
                   </div>
                 </article>
               </div>

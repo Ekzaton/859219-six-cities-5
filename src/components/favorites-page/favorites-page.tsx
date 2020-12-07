@@ -1,11 +1,14 @@
 import * as React from "react";
 
+import {offerType} from "../../types";
+import {getRatingValue} from "../../utils";
+
 interface Props {
-  ratingValue: number;
+  offers: offerType[];
 }
 
 const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
-  const {ratingValue} = props;
+  const {offers} = props;
 
   return (
     <div className="page">
@@ -67,7 +70,7 @@ const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: `${ratingValue}%`}}/>
+                          <span style={getRatingValue(offers[0].rating)}/>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -99,7 +102,7 @@ const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: `${ratingValue}%`}}/>
+                          <span style={getRatingValue(offers[1].rating)}/>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -142,7 +145,7 @@ const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: `${ratingValue}%`}}/>
+                          <span style={getRatingValue(offers[2].rating)}/>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
