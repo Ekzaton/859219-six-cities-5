@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {offerType, reviewType} from "../../types";
-import {getRatingValue} from "../../utils";
+import {getRatingStars} from "../../utils";
 
 interface Props {
   offers: offerType[];
@@ -78,7 +78,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={getRatingValue(offers[0].rating)}/>
+                  <span style={getRatingStars(offers[0].rating)}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">4.8</span>
@@ -170,7 +170,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={getRatingValue(reviews[0].rating)}/>
+                          <span style={getRatingStars(reviews[0].rating)}/>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -211,7 +211,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={getRatingValue(offers[1].rating)}/>
+                      <span style={getRatingStars(offers[1].rating)}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={getRatingValue(offers[2].rating)}/>
+                      <span style={getRatingStars(offers[2].rating)}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -275,7 +275,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={getRatingValue(offers[3].rating)}/>
+                      <span style={getRatingStars(offers[3].rating)}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>

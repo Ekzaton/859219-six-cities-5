@@ -30,7 +30,6 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
         <Route exact path={`/favorites`}>
           <FavoritesPage
             offers={offers}
-
           />
         </Route>
         <Route exact path={`/offer/:id`}>
