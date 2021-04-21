@@ -1,4 +1,4 @@
-export interface offerType {
+export type offerType = {
   bedrooms: number;
   city: cityType;
   description: string;
@@ -17,25 +17,25 @@ export interface offerType {
   type: string;
 }
 
-export interface cityType {
+export type cityType = {
   location: locationType;
   name: string;
 }
 
-export interface userType {
+export type userType = {
   avatarUrl: string;
   id: number;
   isPro: true;
   name: string;
 }
 
-export interface locationType {
+export type locationType = {
   latitude: number;
   longitude: number;
   zoom: number;
 }
 
-export interface reviewType {
+export type reviewType = {
   comment: string;
   date: InstanceType<typeof Date>;
   id: number;

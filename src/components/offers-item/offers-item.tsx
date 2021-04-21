@@ -3,7 +3,7 @@ import * as React from "react";
 import {offerType} from "../../types";
 import {getRatingStars} from "../../utils";
 
-interface Props {
+type Props = {
   offer: offerType;
 }
 

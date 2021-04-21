@@ -4,7 +4,7 @@ import {offerType} from "../../types";
 
 import OffersItem from "../offers-item/offers-item";
 
-interface Props {
+type Props = {
   offers: offerType[];
 }
 

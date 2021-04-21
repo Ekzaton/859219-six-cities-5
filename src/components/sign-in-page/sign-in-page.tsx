@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface Props {}
+type Props = {}
 
 const SignInPage: React.FunctionComponent<Props> = () => {
   return (

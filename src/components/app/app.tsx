@@ -8,7 +8,7 @@ import MainPage from "../main-page/main-page";
 import OfferPage from "../offer-page/offer-page";
 import SignInPage from "../sign-in-page/sign-in-page";
 
-interface Props {
+type Props = {
   offers: offerType[];
   reviews: reviewType[];
 }
