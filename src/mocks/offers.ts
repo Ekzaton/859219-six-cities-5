@@ -1,4 +1,6 @@
-export default [
+import {offerType} from "../types";
+
+export const offers: offerType[] = [
   {
     bedrooms: 3,
     city: {

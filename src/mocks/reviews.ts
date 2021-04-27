@@ -1,4 +1,6 @@
-export default [
+import {reviewType} from "../types";
+
+export const reviews: reviewType[] = [
   {
     comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     date: `2020-05-08T14:13:56.569Z`,
