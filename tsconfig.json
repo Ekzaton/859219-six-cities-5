@@ -3,7 +3,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "sourceMap": true,
-    "module": "commonjs",
+    "module": "es2015",
     "target": "es2015",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
