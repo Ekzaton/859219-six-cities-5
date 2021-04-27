@@ -25,7 +25,7 @@ export type cityType = {
 export type userType = {
   avatarUrl: string;
   id: number;
-  isPro: true;
+  isPro: boolean;
   name: string;
 }
 
@@ -37,7 +37,7 @@ export type locationType = {
 
 export type reviewType = {
   comment: string;
-  date: InstanceType<typeof Date>;
+  date: string;
   id: number;
   rating: number;
   user: userType;
