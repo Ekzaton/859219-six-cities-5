@@ -1,3 +1,3 @@
-export const getRatingStars = (rating: number): object => ({width: `${rating * 20}%`});
+export const getRatingStars = (rating: number) => ({width: `${rating * 20}%`});
 
 
