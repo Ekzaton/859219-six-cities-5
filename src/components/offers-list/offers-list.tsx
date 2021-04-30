@@ -10,15 +10,15 @@ type Props = {
 
 const OffersList: React.FunctionComponent<Props> = (props: Props) => {
   const {offers} = props;
+  // eslint-disable-next-line
   const [activeID, setActiveID] = React.useState(null);
-  const initialID = activeID;
 
   const handleMouseEnter = (id: number) => {
     setActiveID(id);
   };
 
   const handleMouseLeave = () => {
-    setActiveID(initialID);
+    setActiveID(null);
   };
 
   return (
