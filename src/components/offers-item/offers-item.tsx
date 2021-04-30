@@ -1,7 +1,7 @@
 import React from "react";
 
 import {offerType} from "../../types";
-import {getRatingStars} from "../../utils";
+import {capitalize, getRatingStars} from "../../utils";
 
 type Props = {
   offer: offerType;
@@ -51,7 +51,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
         <h2 className="place-card__name">
           <a href="#">{offer.title}</a>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{capitalize(offer.type)}</p>
       </div>
     </article>
   );
