@@ -5,14 +5,20 @@ import {getRatingStars} from "../../utils";
 
 type Props = {
   offer: offerType;
+  onMouseEnter(): void;
+  onMouseLeave(): void;
 }
 
 const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
-  const {offer} = props;
+  const {offer, onMouseEnter, onMouseLeave} = props;
   const favoriteClass = offer.isFavorite && `place-card__bookmark-button--active`;
 
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
