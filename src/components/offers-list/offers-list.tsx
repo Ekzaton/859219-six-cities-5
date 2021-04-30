@@ -10,6 +10,16 @@ type Props = {
 
 const OffersList: React.FunctionComponent<Props> = (props: Props) => {
   const {offers} = props;
+  const [activeID, setActiveID] = React.useState(null);
+  const initialID = activeID;
+
+  const handleMouseEnter = (id: number) => {
+    setActiveID(id);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveID(initialID);
+  };
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -17,6 +27,8 @@ const OffersList: React.FunctionComponent<Props> = (props: Props) => {
         <OffersItem
           key={`offer-${i}`}
           offer={offer}
+          onMouseEnter={() => handleMouseEnter(offer.id)}
+          onMouseLeave={() => handleMouseLeave()}
         />
       )}
     </div>
