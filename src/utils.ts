@@ -1,5 +1,5 @@
-export const capitalize = (title: string) => title[0].toUpperCase() + title.slice(1);
+export const capitalize = (title: string): string => title[0].toUpperCase() + title.slice(1);
 
-export const getRatingStars = (rating: number) => ({width: `${rating * 20}%`});
+export const getRatingStars = (rating: number): Record<string, unknown> => ({width: `${rating * 20}%`});
 
 
