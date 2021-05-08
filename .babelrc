@@ -1,7 +1,14 @@
 {
-    "presets": [
+  "presets": [
+    "@babel/preset-react",
+    [
       "@babel/preset-env",
-      "@babel/preset-react",
-      "@babel/preset-typescript"
-    ]
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-typescript"
+  ]
 }
