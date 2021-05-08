@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {}
-
-const PageHeader: React.FunctionComponent<Props> = () => {
+const PageHeader: React.FunctionComponent = () => {
   return (
     <header className="header">
       <div className="container">

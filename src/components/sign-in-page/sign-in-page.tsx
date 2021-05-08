@@ -2,9 +2,7 @@ import React from "react";
 
 import PageHeader from "../page-header/page-header";
 
-type Props = {}
-
-const SignInPage: React.FunctionComponent<Props> = () => {
+const SignInPage: React.FunctionComponent = () => {
   return (
     <div className="page page--gray page--login">
       <PageHeader/>
