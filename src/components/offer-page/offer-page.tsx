@@ -1,7 +1,7 @@
 import React from "react";
 
 import {offerType, reviewType} from "../../types";
-import {getRatingStars} from "../../utils";
+import {capitalize, formatReviewDate, getRatingStars} from "../../utils";
 
 import PageHeader from "../page-header/page-header";
 
@@ -12,6 +12,7 @@ type Props = {
 
 const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
   const {offers, reviews} = props;
+  const offerReviews = reviews.filter((review) => review.id === offers[0].id);
 
   return (
     <div className="page">
@@ -21,34 +22,30 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio"/>
-              </div>
+              {offers[0].image.map((image, i) =>
+                <div
+                  key={`image-${i}`}
+                  className="property__image-wrapper"
+                >
+                  <img
+                    className="property__image"
+                    src={image}
+                    alt="Photo studio"
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {offers[0].isPremium &&
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div>
+              }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {offers[0].title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -66,101 +63,102 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {capitalize(offers[0].type)}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {offers[0].bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {offers[0].maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{offers[0].price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {offers[0].goods.map((good, i) =>
+                    <li
+                      key={`good-${i}`}
+                      className="property__inside-item"
+                    >
+                      {good}
+                    </li>
+                  )}
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                    <img
+                      className="property__avatar user__avatar"
+                      src={offers[0].host.avatarUrl}
+                      width="74"
+                      height="74"
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    {offers[0].host.name}
                   </span>
-                  <span className="property__user-status">
-                    Pro
-                  </span>
+                  {offers[0].host.isPro &&
+                    <span className="property__user-status">
+                      Pro
+                    </span>
+                  }
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    {offers[0].description}
                   </p>
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+                <h2 className="reviews__title">
+                  Reviews &middot;
+                  <span className="reviews__amount">
+                    {offerReviews.length}
+                  </span>
+                </h2>
                 <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={getRatingStars(reviews[0].rating)}/>
-                          <span className="visually-hidden">Rating</span>
+                  {offerReviews.map((review, i) =>
+                    <li
+                      key={`review-${i}`}
+                      className="reviews__item"
+                    >
+                      <div className="reviews__user user">
+                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
+                          <img
+                            className="reviews__avatar user__avatar"
+                            src={review.user.avatarUrl}
+                            width="54"
+                            height="54"
+                            alt="Reviews avatar"
+                          />
                         </div>
+                        <span className="reviews__user-name">
+                          {review.user.name}
+                        </span>
                       </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
+                      <div className="reviews__info">
+                        <div className="reviews__rating rating">
+                          <div className="reviews__stars rating__stars">
+                            <span style={getRatingStars(review.rating)}/>
+                            <span className="visually-hidden">Rating</span>
+                          </div>
+                        </div>
+                        <p className="reviews__text">
+                          {review.comment}
+                        </p>
+                        <time className="reviews__time">
+                          {formatReviewDate(review.date)}
+                        </time>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </section>
             </div>
