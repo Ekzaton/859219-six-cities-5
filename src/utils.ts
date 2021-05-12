@@ -2,6 +2,8 @@ export const capitalize = (title: string): string => title[0].toUpperCase() + ti
 
 export const formatReviewDate = (date: string): string => new Date(date).toLocaleString(`en-US`, {month: `long`, year: `numeric`});
 
+export const getArray = (count: number): Array<number> => new Array(count).fill(``);
+
 export const getRatingStars = (rating: number): string => `${rating * 20}%`;
 
 

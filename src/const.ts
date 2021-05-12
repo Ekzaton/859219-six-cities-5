@@ -21,3 +21,5 @@ export const Page = {
     height: 200
   },
 };
+
+export const RATING_STARS_COUNT = 5;
