@@ -6,32 +6,26 @@ import OffersItem from "../offers-item/offers-item";
 
 type Props = {
   offers: offerType[];
+  page: Record<string, unknown>;
 }
 
 const OffersList: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers} = props;
+  const {offers, page} = props;
   // eslint-disable-next-line
   const [activeID, setActiveID] = React.useState(null);
 
-  const handleMouseEnter = (id: number) => {
-    setActiveID(id);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveID(null);
-  };
-
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <React.Fragment>
       {offers.map((offer, i) =>
         <OffersItem
           key={`offer-${i}`}
           offer={offer}
-          onMouseEnter={() => handleMouseEnter(offer.id)}
-          onMouseLeave={() => handleMouseLeave()}
+          page={page}
+          onMouseEnter={() => setActiveID(offer.id)}
+          onMouseLeave={() => setActiveID(null)}
         />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
