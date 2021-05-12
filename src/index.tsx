@@ -1,16 +1,15 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import App from "./components/app/app";
+import React from "react";
+import ReactDOM from "react-dom";
 
-const Settings = {
-  OFFERS_COUNT: 10,
-  RATING_VALUE: 70,
-};
+import {offers} from "./mocks/offers";
+import {reviews} from "./mocks/reviews";
+
+import App from "./components/app/app";
 
 ReactDOM.render(
     <App
-      offersCount={Settings.OFFERS_COUNT}
-      ratingValue={Settings.RATING_VALUE}
+      offers={offers}
+      reviews={reviews}
     />,
     document.getElementById(`root`)
 );

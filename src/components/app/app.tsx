@@ -1,26 +1,27 @@
-import * as React from "react";
+import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+
+import {offerType, reviewType} from "../../types";
 
 import FavoritesPage from "../favorites-page/favorites-page";
 import MainPage from "../main-page/main-page";
 import OfferPage from "../offer-page/offer-page";
 import SignInPage from "../sign-in-page/sign-in-page";
 
-interface Props {
-  offersCount: number;
-  ratingValue: number;
+type Props = {
+  offers: offerType[];
+  reviews: reviewType[];
 }
 
 const App: React.FunctionComponent<Props> = (props: Props) => {
-  const {offersCount, ratingValue} = props;
+  const {offers, reviews} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={`/`}>
           <MainPage
-            offersCount={offersCount}
-            ratingValue={ratingValue}
+            offers={offers}
           />
         </Route>
         <Route exact path={`/login`}>
@@ -28,12 +29,13 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
         </Route>
         <Route exact path={`/favorites`}>
           <FavoritesPage
-            ratingValue={ratingValue}
+            offers={offers}
           />
         </Route>
         <Route exact path={`/offer/:id`}>
           <OfferPage
-            ratingValue={ratingValue}
+            offers={offers}
+            reviews={reviews}
           />
         </Route>
       </Switch>
