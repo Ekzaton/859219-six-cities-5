@@ -6,6 +6,7 @@ import {capitalize, formatReviewDate, getRatingStars} from "../../utils";
 
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
+import ReviewForm from "../review-form/review-form";
 
 type Props = {
   offers: offerType[];
@@ -162,6 +163,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                     </li>
                   )}
                 </ul>
+                <ReviewForm/>
               </section>
             </div>
           </div>
