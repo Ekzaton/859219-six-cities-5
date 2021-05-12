@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import {offerType} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
@@ -26,7 +27,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
         </div>
       }
       <div className={`${page.wrapper} place-card__image-wrapper`}>
-        <a href="#">
+        <Link to={`/offer/:id`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -34,7 +35,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
             height={`${page.height}`}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className={`${page.info} place-card__info`}>
         <div className="place-card__price-wrapper">
@@ -61,7 +62,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={`/offer/:id`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalize(offer.type)}</p>
       </div>
