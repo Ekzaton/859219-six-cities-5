@@ -3,6 +3,7 @@ export const Page = {
     card: `cities__place-card`,
     wrapper: `cities__image-wrapper`,
     info: ``,
+    map: `cities__map`,
     width: 260,
     height: 200
   },
@@ -10,6 +11,7 @@ export const Page = {
     card: `favorites__card`,
     wrapper: `favorites__image-wrapper`,
     info: `favorites__card-info`,
+    map: ``,
     width: 150,
     height: 110
   },
@@ -17,6 +19,7 @@ export const Page = {
     card: `near-places__card`,
     wrapper: `near-places__image-wrapper`,
     info: ``,
+    map: `property__map`,
     width: 260,
     height: 200
   }

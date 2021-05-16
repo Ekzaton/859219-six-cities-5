@@ -9,10 +9,11 @@ import "leaflet/dist/leaflet.css";
 type Props = {
   offers: offerType[];
   city: cityType;
+  page: Record<string, unknown>;
 }
 
 const Map: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers, city} = props;
+  const {offers, city, page} = props;
   const mapRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -42,7 +43,10 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
   });
 
   return (
-    <section className="cities__map map" ref={mapRef}/>
+    <section
+      className={`${page.map} map`}
+      ref={mapRef}
+    />
   );
 };
 

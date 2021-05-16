@@ -87,6 +87,7 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
               <Map
                 offers={offers}
                 city={offers[0].city}
+                page={Page.MAIN}
               />
             </div>
           </div>

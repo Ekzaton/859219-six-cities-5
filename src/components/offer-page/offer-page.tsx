@@ -4,6 +4,7 @@ import {Page} from "../../const";
 import {offerType, reviewType} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
 
+import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import ReviewForm from "../review-form/review-form";
@@ -134,7 +135,11 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map
+            offers={offers}
+            city={offers[0].city}
+            page={Page.OFFER}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
