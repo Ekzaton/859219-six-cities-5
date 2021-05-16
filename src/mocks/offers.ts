@@ -5,9 +5,9 @@ export const offers: offerType[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10
+        latitude: 52.366667,
+        longitude: 4.9,
+        zoom: 13
       },
       name: `Amsterdam`
     },
@@ -24,9 +24,9 @@ export const offers: offerType[] = [
     isFavorite: false,
     isPremium: false,
     location: {
-      latitude: 52.370216,
-      longitude: 4.895168,
-      zoom: 8
+      latitude: 52.3509553943508,
+      longitude: 4.85309666406198,
+      zoom: 13
     },
     maxAdults: 4,
     previewImage: `img/apartment-01.jpg`,
@@ -38,11 +38,11 @@ export const offers: offerType[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 50.850450,
-        longitude: 4.348780,
-        zoom: 10
+        latitude: 52.366667,
+        longitude: 4.9,
+        zoom: 13
       },
-      name: `Brussels`
+      name: `Amsterdam`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Brussels.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -57,9 +57,9 @@ export const offers: offerType[] = [
     isFavorite: false,
     isPremium: true,
     location: {
-      latitude: 50.850450,
-      longitude: 4.348780,
-      zoom: 8
+      latitude: 52.369553943508,
+      longitude: 4.85309666406198,
+      zoom: 13
     },
     maxAdults: 4,
     previewImage: `img/apartment-02.jpg`,
@@ -71,11 +71,11 @@ export const offers: offerType[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 50.933330,
-        longitude: 6.950000,
-        zoom: 10
+        latitude: 52.366667,
+        longitude: 4.9,
+        zoom: 13
       },
-      name: `Cologne`
+      name: `Amsterdam`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Cologne.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Dishwasher`],
@@ -90,9 +90,9 @@ export const offers: offerType[] = [
     isFavorite: false,
     isPremium: false,
     location: {
-      latitude: 50.933330,
-      longitude: 6.950000,
-      zoom: 8
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 13
     },
     maxAdults: 6,
     previewImage: `img/apartment-03.jpg`,
@@ -104,11 +104,11 @@ export const offers: offerType[] = [
     bedrooms: 1,
     city: {
       location: {
-        latitude: 51.221720,
-        longitude: 6.776160,
-        zoom: 10
+        latitude: 52.366667,
+        longitude: 4.9,
+        zoom: 13
       },
-      name: `Dusseldorf`
+      name: `Amsterdam`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Dusseldorf.`,
     goods: [`Heating`, `Cable TV`],
@@ -123,9 +123,9 @@ export const offers: offerType[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 51.221720,
-      longitude: 6.776160,
-      zoom: 8
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 13
     },
     maxAdults: 2,
     previewImage: `img/room.jpg`,

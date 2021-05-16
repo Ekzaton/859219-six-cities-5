@@ -3,6 +3,7 @@ import React from "react";
 import {Page} from "../../const";
 import {offerType} from "../../types";
 
+import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 
@@ -83,7 +84,10 @@ const MainPage: React.FunctionComponent<Props> = (props: Props) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                offers={offers}
+                city={offers[0].city}
+              />
             </div>
           </div>
         </div>
