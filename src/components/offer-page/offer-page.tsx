@@ -1,12 +1,14 @@
 import React from "react";
 
-import {Page} from "../../const";
+import {CardType, MapType} from "../../const";
 import {offerType, reviewType} from "../../types";
-import {capitalize, formatReviewDate, getRatingStars} from "../../utils";
+import {capitalize, getRatingStars} from "../../utils";
 
+import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import ReviewForm from "../review-form/review-form";
+import ReviewsList from "../reviews-list/reviews-list";
 
 type Props = {
   offers: offerType[];
@@ -126,48 +128,18 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
                     {offerReviews.length}
                   </span>
                 </h2>
-                <ul className="reviews__list">
-                  {offerReviews.map((review, i) =>
-                    <li
-                      key={`review-${i}`}
-                      className="reviews__item"
-                    >
-                      <div className="reviews__user user">
-                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img
-                            className="reviews__avatar user__avatar"
-                            src={review.user.avatarUrl}
-                            width="54"
-                            height="54"
-                            alt="Reviews avatar"
-                          />
-                        </div>
-                        <span className="reviews__user-name">
-                          {review.user.name}
-                        </span>
-                      </div>
-                      <div className="reviews__info">
-                        <div className="reviews__rating rating">
-                          <div className="reviews__stars rating__stars">
-                            <span style={{width: getRatingStars(review.rating)}}/>
-                            <span className="visually-hidden">Rating</span>
-                          </div>
-                        </div>
-                        <p className="reviews__text">
-                          {review.comment}
-                        </p>
-                        <time className="reviews__time">
-                          {formatReviewDate(review.date)}
-                        </time>
-                      </div>
-                    </li>
-                  )}
-                </ul>
+                <ReviewsList
+                  reviews={offerReviews}
+                />
                 <ReviewForm/>
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map
+            offers={offers}
+            city={offers[0].city}
+            type={MapType.PROPERTY}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -175,7 +147,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
             <div className="near-places__list places__list">
               <OffersList
                 offers={offers}
-                page={Page.OFFER}
+                type={CardType.NEAR_PLACES}
               />
             </div>
           </section>

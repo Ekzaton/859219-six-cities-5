@@ -1,7 +1,7 @@
 import Leaflet from "leaflet";
 import React from "react";
 
-import {IconUrl, IconSize, MapLayer} from "../../const";
+import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../../const";
 import {cityType, offerType} from "../../types";
 
 import "leaflet/dist/leaflet.css";
@@ -9,10 +9,11 @@ import "leaflet/dist/leaflet.css";
 type Props = {
   offers: offerType[];
   city: cityType;
+  type: MapType;
 }
 
 const Map: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers, city} = props;
+  const {offers, city, type} = props;
   const mapRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -31,8 +32,8 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
     offers.forEach((offer) => {
       const offerLocation: Leaflet.LatLngTuple = [offer.location.latitude, offer.city.location.longitude];
       const icon = Leaflet.icon({
-        iconUrl: IconUrl.PIN,
-        iconSize: [IconSize.HEIGHT, IconSize.WIDTH]
+        iconUrl: MapIconUrl.PIN,
+        iconSize: [MapIconSize.HEIGHT, MapIconSize.WIDTH]
       });
 
       Leaflet.marker(offerLocation, {icon}).addTo(map).bindTooltip(offer.title);
@@ -42,7 +43,10 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
   });
 
   return (
-    <section className="cities__map map" ref={mapRef}/>
+    <section
+      className={`${type}__map map`}
+      ref={mapRef}
+    />
   );
 };
 
