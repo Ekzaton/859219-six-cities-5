@@ -1,16 +1,17 @@
 import React from "react";
 
+import {CardType} from "../../const";
 import {offerType} from "../../types";
 
 import OffersItem from "../offers-item/offers-item";
 
 type Props = {
   offers: offerType[];
-  page: string;
+  type: CardType;
 }
 
 const OffersList: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers, page} = props;
+  const {offers, type} = props;
   // eslint-disable-next-line
   const [activeID, setActiveID] = React.useState(null);
 
@@ -20,7 +21,7 @@ const OffersList: React.FunctionComponent<Props> = (props: Props) => {
         <OffersItem
           key={`offer-${i}`}
           offer={offer}
-          page={page}
+          type={type}
           onMouseEnter={() => setActiveID(offer.id)}
           onMouseLeave={() => setActiveID(null)}
         />

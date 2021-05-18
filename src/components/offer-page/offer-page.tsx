@@ -1,6 +1,6 @@
 import React from "react";
 
-import {MapType, PageType} from "../../const";
+import {CardType, MapType} from "../../const";
 import {offerType, reviewType} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
 
@@ -147,7 +147,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
             <div className="near-places__list places__list">
               <OffersList
                 offers={offers}
-                page={PageType.NEAR_PLACES}
+                type={CardType.NEAR_PLACES}
               />
             </div>
           </section>

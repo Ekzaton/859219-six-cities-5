@@ -5,6 +5,12 @@ export enum CardImgSize {
   HEIGHT = 200
 }
 
+export enum CardType {
+  CITIES = `cities`,
+  FAVORITES = `favorites`,
+  NEAR_PLACES = `near-places`
+}
+
 export enum FavCardImgSize {
   WIDTH = 150,
   HEIGHT = 110
@@ -28,10 +34,4 @@ export enum MapLayer {
 export enum MapType {
   CITIES = `cities`,
   PROPERTY = `property`
-}
-
-export enum PageType {
-  CITIES = `cities`,
-  FAVORITES = `favorites`,
-  NEAR_PLACES = `near-places`
 }

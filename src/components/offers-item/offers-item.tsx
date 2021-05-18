@@ -1,43 +1,43 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CardImgSize, FavCardImgSize, PageType} from "../../const";
+import {CardImgSize, CardType, FavCardImgSize} from "../../const";
 import {offerType} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
 
 type Props = {
   offer: offerType;
-  page: string;
+  type: CardType;
   onMouseEnter(): void;
   onMouseLeave(): void;
 }
 
 const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
-  const {offer, page, onMouseEnter, onMouseLeave} = props;
+  const {offer, type, onMouseEnter, onMouseLeave} = props;
 
   return (
     <article
-      className={`${page}__${page === PageType.CITIES ? `place-card` : `card`} place-card`}
-      onMouseEnter={page === PageType.CITIES && onMouseEnter}
-      onMouseLeave={page === PageType.CITIES && onMouseLeave}
+      className={`${type}__${type === CardType.CITIES ? `place-card` : `card`} place-card`}
+      onMouseEnter={type === CardType.CITIES ? onMouseEnter : null}
+      onMouseLeave={type === CardType.CITIES ? onMouseLeave : null}
     >
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       }
-      <div className={`${page}__image-wrapper place-card__image-wrapper`}>
+      <div className={`${type}__image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/:id`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
-            width={page === PageType.FAVORITES ? FavCardImgSize.WIDTH : CardImgSize.WIDTH}
-            height={page === PageType.FAVORITES ? FavCardImgSize.HEIGHT : CardImgSize.HEIGHT}
+            width={type === CardType.FAVORITES ? FavCardImgSize.WIDTH : CardImgSize.WIDTH}
+            height={type === CardType.FAVORITES ? FavCardImgSize.HEIGHT : CardImgSize.HEIGHT}
             alt="Place image"
           />
         </Link>
       </div>
-      <div className={`${page}_card-info place-card__info`}>
+      <div className={`${type}_card-info place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
