@@ -6,7 +6,7 @@ import OffersItem from "../offers-item/offers-item";
 
 type Props = {
   offers: offerType[];
-  page: Record<string, unknown>;
+  page: string;
 }
 
 const OffersList: React.FunctionComponent<Props> = (props: Props) => {

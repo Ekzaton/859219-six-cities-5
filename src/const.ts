@@ -1,43 +1,37 @@
-export const Page = {
-  MAIN: {
-    card: `cities__place-card`,
-    wrapper: `cities__image-wrapper`,
-    info: ``,
-    map: `cities__map`,
-    width: 260,
-    height: 200
-  },
-  FAVORITES: {
-    card: `favorites__card`,
-    wrapper: `favorites__image-wrapper`,
-    info: `favorites__card-info`,
-    map: ``,
-    width: 150,
-    height: 110
-  },
-  OFFER: {
-    card: `near-places__card`,
-    wrapper: `near-places__image-wrapper`,
-    info: ``,
-    map: `property__map`,
-    width: 260,
-    height: 200
-  }
-};
-
 export const RATING_STARS_COUNT = 5;
 
-export enum IconUrl {
-  PIN = `img/pin.svg`,
-  PIN_ACTIVE = `img/pin-active.svg`
+export enum CardImgSize {
+  WIDTH = 260,
+  HEIGHT = 200
 }
 
-export enum IconSize {
+export enum FavCardImgSize {
+  WIDTH = 150,
+  HEIGHT = 110
+}
+
+export enum MapIconSize {
   WIDTH = 30,
-  HEIGHT = 30
+  HEIGHT = WIDTH
+}
+
+export enum MapIconUrl {
+  PIN = `img/pin.svg`,
+  PIN_ACTIVE = `img/pin-active.svg`
 }
 
 export enum MapLayer {
   TEMPLATE = `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
   ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+}
+
+export enum MapType {
+  CITIES = `cities`,
+  PROPERTY = `property`
+}
+
+export enum PageType {
+  CITIES = `cities`,
+  FAVORITES = `favorites`,
+  NEAR_PLACES = `near-places`
 }

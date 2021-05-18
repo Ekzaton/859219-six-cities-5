@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {Page} from "../../const";
+import {PageType} from "../../const";
 import {offerType} from "../../types";
 
 import OffersList from "../offers-list/offers-list";
@@ -34,7 +34,7 @@ const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
                 <div className="favorites__places">
                   <OffersList
                     offers={offers}
-                    page={Page.FAVORITES}
+                    page={PageType.FAVORITES}
                   />
                 </div>
               </li>
