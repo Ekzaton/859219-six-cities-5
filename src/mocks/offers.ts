@@ -1,6 +1,6 @@
-import {offerType} from "../types";
+import {Offer} from "../components/types";
 
-export const offers: offerType[] = [
+export const offers: Offer[] = [
   {
     bedrooms: 3,
     city: {

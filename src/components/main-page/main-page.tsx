@@ -1,14 +1,14 @@
 import React from "react";
 
-import {CardType, MapType} from "../../const";
-import {offerType} from "../../types";
+import {CardType, MapType} from "../const";
+import {Offer} from "../types";
 
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 
 type Props = {
-  offers: offerType[];
+  offers: Offer[];
 }
 
 const MainPage: React.FunctionComponent<Props> = (props: Props) => {

@@ -1,14 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CardType} from "../../const";
-import {offerType} from "../../types";
+import {CardType} from "../const";
+import {Offer} from "../types";
 
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 
 type Props = {
-  offers: offerType[];
+  offers: Offer[];
 }
 
 const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
