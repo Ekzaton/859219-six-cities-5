@@ -54,7 +54,6 @@ const MainPage: React.FunctionComponent = () => {
               <div className="cities__right-section">
                 <Map
                   offers={offers}
-                  city={offers[0].city}
                   type={MapType.CITIES}
                 />
               </div>

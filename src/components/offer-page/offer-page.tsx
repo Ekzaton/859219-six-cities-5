@@ -137,7 +137,6 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
           </div>
           <Map
             offers={offers}
-            city={offers[0].city}
             type={MapType.PROPERTY}
           />
         </section>

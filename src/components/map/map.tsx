@@ -1,20 +1,24 @@
 import Leaflet from "leaflet";
 import React from "react";
+import {useSelector} from "react-redux";
+
+import {selectActiveOfferID} from "../../store/selectors";
 
 import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../const";
-import {City, Offer} from "../types";
+import {Offer} from "../types";
 
 import "leaflet/dist/leaflet.css";
 
 type Props = {
   offers: Offer[];
-  city: City;
   type: MapType;
 }
 
 const Map: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers, city, type} = props;
+  const {offers, type} = props;
   const mapRef = React.useRef(null);
+  const city = offers[0].city;
+  const activeOfferID = useSelector(selectActiveOfferID);
 
   React.useEffect(() => {
     const cityLocation: Leaflet.LatLngTuple = [city.location.latitude, city.location.longitude];
@@ -32,7 +36,7 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
     offers.forEach((offer) => {
       const offerLocation: Leaflet.LatLngTuple = [offer.location.latitude, offer.city.location.longitude];
       const icon = Leaflet.icon({
-        iconUrl: MapIconUrl.PIN,
+        iconUrl: (activeOfferID === offer.id) ? MapIconUrl.PIN_ACTIVE : MapIconUrl.PIN,
         iconSize: [MapIconSize.HEIGHT, MapIconSize.WIDTH]
       });
 
@@ -40,12 +44,12 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
     });
 
     return () => map.remove();
-  });
+  }, [activeOfferID, city, offers]);
 
   return (
     <section
-      className={`${type}__map map`}
       ref={mapRef}
+      className={`${type}__map map`}
     />
   );
 };
