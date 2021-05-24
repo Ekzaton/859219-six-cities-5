@@ -18,7 +18,6 @@ const CitiesList: React.FunctionComponent = () => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentFilter && `tabs__item--active`}`}
-            href="#"
             onClick={(evt: React.MouseEvent<HTMLAnchorElement>) => {
               evt.preventDefault();
               dispatch(ActionCreator.getCurrentFilter(city));
