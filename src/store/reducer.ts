@@ -1,11 +1,12 @@
 import {ActionType} from "./const";
 import {Action, State} from "./types";
+import {SortingType} from "../components/const";
 
 import {offers} from "../mocks/offers";
 
 const initialState: State = {
   currentFilter: `Amsterdam`,
-  currentSorting: `Popular`,
+  currentSorting: SortingType.POPULAR,
   offers
 };
 

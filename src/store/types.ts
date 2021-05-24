@@ -12,7 +12,7 @@ type getCurrentFilterAction = {
   payload: string
 }
 
-type getCurrentSorting = {
+type getCurrentSortingAction = {
   type: typeof ActionType.GET_CURRENT_SORTING,
   payload: string
 }
@@ -22,4 +22,4 @@ type getOffersAction = {
   payload: Offer[]
 }
 
-export type Action = getCurrentFilterAction | getCurrentSorting | getOffersAction;
+export type Action = getCurrentFilterAction | getCurrentSortingAction | getOffersAction;
