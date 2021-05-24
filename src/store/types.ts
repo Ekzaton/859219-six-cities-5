@@ -3,11 +3,17 @@ import {Offer} from "../components/types";
 
 export type State = {
   currentFilter: string,
-  offers: Offer[]
+  currentSorting: string,
+  offers: Offer[],
 };
 
 type getCurrentFilterAction = {
   type: typeof ActionType.GET_CURRENT_FILTER,
+  payload: string
+}
+
+type getCurrentSorting = {
+  type: typeof ActionType.GET_CURRENT_SORTING,
   payload: string
 }
 
@@ -16,4 +22,4 @@ type getOffersAction = {
   payload: Offer[]
 }
 
-export type Action = getCurrentFilterAction | getOffersAction;
+export type Action = getCurrentFilterAction | getCurrentSorting | getOffersAction;

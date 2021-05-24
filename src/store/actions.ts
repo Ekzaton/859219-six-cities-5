@@ -7,6 +7,10 @@ export const ActionCreator = {
     type: ActionType.GET_CURRENT_FILTER,
     payload: currentFilter
   }),
+  getCurrentSorting: (currentSorting: string): Action => ({
+    type: ActionType.GET_CURRENT_SORTING,
+    payload: currentSorting
+  }),
   getOffers: (offers: Offer[]): Action => ({
     type: ActionType.GET_OFFERS,
     payload: offers
