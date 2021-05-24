@@ -2,18 +2,18 @@ import {ActionType} from "./const";
 import {Offer} from "../components/types";
 
 export type State = {
-  activeCity: string,
-  offersList: Offer[],
+  currentFilter: string,
+  offers: Offer[]
 };
 
-type getActiveCityAction = {
-  type: typeof ActionType.GET_ACTIVE_CITY,
+type getCurrentFilterAction = {
+  type: typeof ActionType.GET_CURRENT_FILTER,
   payload: string
 }
 
-type getAllOffersAction = {
-  type: typeof ActionType.GET_ALL_OFFERS,
+type getOffersAction = {
+  type: typeof ActionType.GET_OFFERS,
   payload: Offer[]
 }
 
-export type Action = getActiveCityAction | getAllOffersAction;
+export type Action = getCurrentFilterAction | getOffersAction;
