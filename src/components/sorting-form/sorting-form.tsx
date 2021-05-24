@@ -29,7 +29,6 @@ const SortingForm: React.FunctionComponent = () => {
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span
         className="places__sorting-type"
-        tabIndex={0}
         onMouseOver={mouseOverHandler}
         onMouseOut={mouseOutHandler}
       >
@@ -47,7 +46,6 @@ const SortingForm: React.FunctionComponent = () => {
           <li
             key={`sorting-${i}`}
             className={`places__option ${sorting === currentSorting && `places__option--active`}`}
-            tabIndex={0}
             onClick={() => dispatch(ActionCreator.getCurrentSorting(sorting))}
           >
             {sorting}
