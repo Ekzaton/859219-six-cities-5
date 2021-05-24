@@ -20,9 +20,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path={`/`}>
-          <MainPage
-            offers={offers}
-          />
+          <MainPage/>
         </Route>
         <Route exact path={`/login`}>
           <SignInPage/>
