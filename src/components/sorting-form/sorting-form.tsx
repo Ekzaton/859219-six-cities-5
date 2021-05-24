@@ -12,13 +12,13 @@ const SortingForm: React.FunctionComponent = () => {
   const currentSorting = useSelector(selectCurrentSorting);
   const dispatch = useDispatch();
 
-  const mouseOverHandler = React.useCallback(() => {
+  const mouseOverHandler = () => {
     setIsOpened(true);
-  }, []);
+  };
 
-  const mouseOutHandler = React.useCallback(() => {
+  const mouseOutHandler = () => {
     setIsOpened(false);
-  }, []);
+  };
 
   return (
     <form
