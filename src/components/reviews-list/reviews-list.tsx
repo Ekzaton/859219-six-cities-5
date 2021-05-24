@@ -1,11 +1,11 @@
 import React from "react";
 
-import {reviewType} from "../../types";
+import {Review} from "../types";
 
 import ReviewsItem from "../reviews-item/reviews-item";
 
 type Props = {
-  reviews: reviewType[];
+  reviews: Review[];
 }
 
 const ReviewsList: React.FunctionComponent<Props> = (props: Props) => {

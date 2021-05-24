@@ -1,0 +1,4 @@
+export enum ActionType {
+  GET_CURRENT_FILTER = `GET_CURRENT_FILTER`,
+  GET_OFFERS = `GET_OFFERS`
+}

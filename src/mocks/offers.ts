@@ -1,6 +1,6 @@
-import {offerType} from "../types";
+import {Offer} from "../components/types";
 
-export const offers: offerType[] = [
+export const offers: Offer[] = [
   {
     bedrooms: 3,
     city: {
@@ -42,7 +42,7 @@ export const offers: offerType[] = [
         longitude: 4.9,
         zoom: 13
       },
-      name: `Amsterdam`
+      name: `Paris`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Brussels.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -75,7 +75,7 @@ export const offers: offerType[] = [
         longitude: 4.9,
         zoom: 13
       },
-      name: `Amsterdam`
+      name: `London`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Cologne.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Dishwasher`],
@@ -108,7 +108,7 @@ export const offers: offerType[] = [
         longitude: 4.9,
         zoom: 13
       },
-      name: `Amsterdam`
+      name: `Moscow`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Dusseldorf.`,
     goods: [`Heating`, `Cable TV`],

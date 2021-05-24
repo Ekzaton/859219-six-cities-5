@@ -1,7 +1,7 @@
 import React from "react";
 
-import {CardType, MapType} from "../../const";
-import {offerType, reviewType} from "../../types";
+import {CardType, MapType} from "../const";
+import {Offer, Review} from "../types";
 import {capitalize, getRatingStars} from "../../utils";
 
 import Map from "../map/map";
@@ -11,8 +11,8 @@ import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
 type Props = {
-  offers: offerType[];
-  reviews: reviewType[];
+  offers: Offer[];
+  reviews: Review[];
 }
 
 const OfferPage: React.FunctionComponent<Props> = (props: Props) => {

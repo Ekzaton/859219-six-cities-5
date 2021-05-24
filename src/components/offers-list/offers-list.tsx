@@ -1,12 +1,12 @@
 import React from "react";
 
-import {CardType} from "../../const";
-import {offerType} from "../../types";
+import {CardType} from "../const";
+import {Offer} from "../types";
 
 import OffersItem from "../offers-item/offers-item";
 
 type Props = {
-  offers: offerType[];
+  offers: Offer[];
   type: CardType;
 }
 

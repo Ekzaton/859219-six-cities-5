@@ -1,14 +1,14 @@
 import Leaflet from "leaflet";
 import React from "react";
 
-import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../../const";
-import {cityType, offerType} from "../../types";
+import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../const";
+import {City, Offer} from "../types";
 
 import "leaflet/dist/leaflet.css";
 
 type Props = {
-  offers: offerType[];
-  city: cityType;
+  offers: Offer[];
+  city: City;
   type: MapType;
 }
 

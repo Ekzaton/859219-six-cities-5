@@ -1,14 +1,14 @@
-export type offerType = {
+export type Offer = {
   bedrooms: number;
-  city: cityType;
+  city: City;
   description: string;
   goods: string[];
-  host: userType;
+  host: User;
   id: number;
   image: string[];
   isFavorite: boolean;
   isPremium: boolean;
-  location: locationType;
+  location: Location;
   maxAdults: number;
   previewImage: string;
   price: number;
@@ -17,28 +17,29 @@ export type offerType = {
   type: string;
 }
 
-export type cityType = {
-  location: locationType;
+export type City = {
+  location: Location;
   name: string;
 }
 
-export type userType = {
+export type User = {
   avatarUrl: string;
   id: number;
   isPro: boolean;
   name: string;
 }
 
-export type locationType = {
+export type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
 }
 
-export type reviewType = {
+export type Review = {
   comment: string;
   date: string;
   id: number;
   rating: number;
-  user: userType;
+  user: User;
 }
+
