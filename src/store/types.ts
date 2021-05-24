@@ -2,10 +2,16 @@ import {ActionType} from "./const";
 import {Offer} from "../components/types";
 
 export type State = {
+  activeOfferID: number,
   currentFilter: string,
   currentSorting: string,
   offers: Offer[],
 };
+
+type getActiveOfferIDAction = {
+  type: typeof ActionType.GET_ACTIVE_OFFER_ID,
+  payload: number
+}
 
 type getCurrentFilterAction = {
   type: typeof ActionType.GET_CURRENT_FILTER,
@@ -22,4 +28,4 @@ type getOffersAction = {
   payload: Offer[]
 }
 
-export type Action = getCurrentFilterAction | getCurrentSortingAction | getOffersAction;
+export type Action = getActiveOfferIDAction | getCurrentFilterAction | getCurrentSortingAction | getOffersAction;

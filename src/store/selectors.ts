@@ -4,6 +4,7 @@ import {State} from "./types";
 import {Offer} from "../components/types";
 import {getSortedOffers} from "../utils";
 
+export const selectActiveOfferID = (state: State): number => state.activeOfferID;
 export const selectCurrentFilter = (state: State): string => state.currentFilter;
 export const selectCurrentSorting = (state: State): string => state.currentSorting;
 export const selectOffers = (state: State): Offer[] => state.offers;
