@@ -12,11 +12,11 @@ const SortingForm: React.FunctionComponent = () => {
   const currentSorting = useSelector(selectCurrentSorting);
   const dispatch = useDispatch();
 
-  const mouseOverHandler = () => {
+  const handleMouseOver = () => {
     setIsOpened(true);
   };
 
-  const mouseOutHandler = () => {
+  const handleMouseOut = () => {
     setIsOpened(false);
   };
 
@@ -29,8 +29,8 @@ const SortingForm: React.FunctionComponent = () => {
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span
         className="places__sorting-type"
-        onMouseOver={mouseOverHandler}
-        onMouseOut={mouseOutHandler}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         {currentSorting}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -39,8 +39,8 @@ const SortingForm: React.FunctionComponent = () => {
       </span>
       <ul
         className={`places__options places__options--custom ${isOpened && `places__options--opened`}`}
-        onMouseOver={mouseOverHandler}
-        onMouseOut={mouseOutHandler}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
         {sortings.map((sorting, i) =>
           <li
