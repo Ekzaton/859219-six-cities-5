@@ -10,23 +10,18 @@ export const getArray = (count: number): number[] => new Array(count).fill(``);
 export const getRatingStars = (rating: number): string => `${rating * 20}%`;
 
 export const getSortedOffers = (currentSorting: string, offers: Offer[]): Offer[] => {
-  let sortedOffers = offers;
-
   switch (currentSorting) {
     case SortingType.POPULAR:
-      sortedOffers = offers.slice();
-      break;
+      return [...offers];
     case SortingType.PRICE_HIGH_TO_LOW:
-      sortedOffers = offers.slice().sort((a, b) => b.price - a.price);
-      break;
+      return [...offers].sort((a, b) => b.price - a.price);
     case SortingType.PRICE_LOW_TO_HIGH:
-      sortedOffers = offers.slice().sort((a, b) => a.price - b.price);
-      break;
+      return [...offers].sort((a, b) => a.price - b.price);
     case SortingType.TOP_RATED_FIRST:
-      sortedOffers = offers.slice().sort((a, b) => b.rating - a.rating);
-      break;
+      return [...offers].sort((a, b) => b.rating - a.rating);
+    default:
+      return offers;
   }
-  return sortedOffers;
 };
 
 
