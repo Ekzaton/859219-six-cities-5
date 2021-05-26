@@ -16,6 +16,15 @@ export enum FavCardImgSize {
   HEIGHT = 110
 }
 
+export enum FilteringType {
+  PARIS = `Paris`,
+  COLOGNE = `Cologne`,
+  BRUSSELS = `Brussels`,
+  AMSTERDAM = `Amsterdam`,
+  HAMBURG = `Hamburg`,
+  DUSSELDORF = `Dusseldorf`
+}
+
 export enum MapIconSize {
   WIDTH = 30,
   HEIGHT = WIDTH

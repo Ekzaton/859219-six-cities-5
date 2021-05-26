@@ -2,11 +2,13 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import {ActionCreator} from "../../store/actions";
-import {selectCities, selectCurrentFilter} from "../../store/selectors";
+import {selectCurrentFiltering} from "../../store/selectors";
+
+import {FilteringType} from "../const";
 
 const CitiesList: React.FunctionComponent = () => {
-  const cities = useSelector(selectCities);
-  const currentFilter = useSelector(selectCurrentFilter);
+  const cities = Object.values(FilteringType);
+  const currentFiltering = useSelector(selectCurrentFiltering);
   const dispatch = useDispatch();
 
   return (
@@ -17,10 +19,10 @@ const CitiesList: React.FunctionComponent = () => {
           className="locations__item"
         >
           <a
-            className={`locations__item-link tabs__item ${city === currentFilter && `tabs__item--active`}`}
+            className={`locations__item-link tabs__item ${city === currentFiltering && `tabs__item--active`}`}
             onClick={(evt: React.MouseEvent<HTMLAnchorElement>) => {
               evt.preventDefault();
-              dispatch(ActionCreator.getCurrentFilter(city));
+              dispatch(ActionCreator.getCurrentFiltering(city));
             }}
           >
             <span>{city}</span>
@@ -31,4 +33,4 @@ const CitiesList: React.FunctionComponent = () => {
   );
 };
 
-export default CitiesList;
+export default React.memo(CitiesList);
