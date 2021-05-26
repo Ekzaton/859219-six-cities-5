@@ -52,4 +52,4 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default Map;
+export default React.memo(Map);

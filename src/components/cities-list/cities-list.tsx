@@ -31,4 +31,4 @@ const CitiesList: React.FunctionComponent = () => {
   );
 };
 
-export default CitiesList;
+export default React.memo(CitiesList);

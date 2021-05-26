@@ -56,4 +56,4 @@ const SortingForm: React.FunctionComponent = () => {
   );
 };
 
-export default SortingForm;
+export default React.memo(SortingForm);

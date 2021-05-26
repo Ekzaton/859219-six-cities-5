@@ -34,4 +34,4 @@ const PageHeader: React.FunctionComponent = () => {
   );
 };
 
-export default PageHeader;
+export default React.memo(PageHeader);
