@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {CardType} from "../const";
 import {Offer} from "../types";
 
+import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 
@@ -23,15 +24,7 @@ const FavoritesPage: React.FunctionComponent<Props> = (props: Props) => {
         className={`page__main page__main--favorites ${noOffers && `page__main--favorites-empty`}`}>
         <div className="page__favorites-container container">
           {noOffers
-            ? <section className="favorites favorites--empty">
-              <h1 className="visually-hidden">Favorites (empty)</h1>
-              <div className="favorites__status-wrapper">
-                <b className="favorites__status">Nothing yet saved.</b>
-                <p className="favorites__status-description">
-                  Save properties to narrow down search or plan yor future trips.
-                </p>
-              </div>
-            </section>
+            ? <FavoritesPageEmpty/>
             : <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
