@@ -3,7 +3,7 @@ import {Action} from "./types";
 import {Offer} from "../components/types";
 
 export const ActionCreator = {
-  getActiveOfferID: (activeOfferID: number): Action => ({
+  getActiveOfferID: (activeOfferID: number | null): Action => ({
     type: ActionType.GET_ACTIVE_OFFER_ID,
     payload: activeOfferID
   }),

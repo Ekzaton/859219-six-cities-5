@@ -2,7 +2,7 @@ import {ActionType} from "./const";
 import {Offer} from "../components/types";
 
 export type State = {
-  activeOfferID: number,
+  activeOfferID: number | null,
   currentFilter: string,
   currentSorting: string,
   offers: Offer[],
@@ -10,7 +10,7 @@ export type State = {
 
 type getActiveOfferIDAction = {
   type: typeof ActionType.GET_ACTIVE_OFFER_ID,
-  payload: number
+  payload: number | null
 }
 
 type getCurrentFilterAction = {
