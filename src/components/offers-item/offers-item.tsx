@@ -8,8 +8,8 @@ import {capitalize, getRatingStars} from "../../utils";
 type Props = {
   offer: Offer;
   type: CardType;
-  onMouseEnter(): void;
-  onMouseLeave(): void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
@@ -18,8 +18,8 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <article
       className={`${type}__${type === CardType.CITIES ? `place-card` : `card`} place-card`}
-      onMouseEnter={type === CardType.CITIES ? onMouseEnter : null}
-      onMouseLeave={type === CardType.CITIES ? onMouseLeave : null}
+      onMouseEnter={type === CardType.CITIES ? onMouseEnter : undefined}
+      onMouseLeave={type === CardType.CITIES ? onMouseLeave : undefined}
     >
       {offer.isPremium &&
         <div className="place-card__mark">
