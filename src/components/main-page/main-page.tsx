@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {selectSortedOffers} from "../../store/selectors";
+import {selectSortedOffers, selectCurrentFiltering} from "../../store/selectors";
 
 import {CardType, MapType} from "../const";
 
@@ -14,6 +14,7 @@ import SortingForm from "../sorting-form/sorting-form";
 
 const MainPage: React.FunctionComponent = () => {
   const offers = useSelector(selectSortedOffers);
+  const currentCity = useSelector(selectCurrentFiltering);
   const noOffers = offers.length === 0;
 
   return (
@@ -33,7 +34,7 @@ const MainPage: React.FunctionComponent = () => {
             : <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+                <b className="places__found">{offers.length} places to stay in {currentCity}</b>
                 <SortingForm/>
                 <div className="cities__places-list places__list tabs__content">
                   <OffersList

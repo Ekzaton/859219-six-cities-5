@@ -27,7 +27,7 @@ const OfferPage: React.FunctionComponent<Props> = (props: Props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offers[0].image.map((image, i) =>
+              {offers[0].images.map((image, i) =>
                 <div
                   key={`image-${i}`}
                   className="property__image-wrapper"
