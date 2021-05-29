@@ -1,15 +1,14 @@
-import {ActionType} from "./const";
-import {Action, State} from "./types";
-import {FilteringType, SortingType} from "../components/const";
+import {ActionType} from "../const";
+import {AppAction, AppState} from "./types";
+import {FilteringType, SortingType} from "../../components/const";
 
-const initialState: State = {
+const initialState: AppState = {
   activeOfferID: null,
   currentFiltering: FilteringType.PARIS,
-  currentSorting: SortingType.POPULAR,
-  offers: []
+  currentSorting: SortingType.POPULAR
 };
 
-export const reducer = (state = initialState, action: Action): State => {
+export const appReducer = (state = initialState, action: AppAction): AppState => {
   switch (action.type) {
     case ActionType.GET_ACTIVE_OFFER_ID:
       return {...state, activeOfferID: action.payload};
@@ -17,8 +16,6 @@ export const reducer = (state = initialState, action: Action): State => {
       return {...state, currentFiltering: action.payload};
     case ActionType.GET_CURRENT_SORTING:
       return {...state, currentSorting: action.payload};
-    case ActionType.GET_OFFERS:
-      return {...state, offers: action.payload};
     default:
       return state;
   }
