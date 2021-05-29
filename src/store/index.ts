@@ -8,16 +8,9 @@ import {dataReducer} from "./data/reducer";
 import {APIMiddleware} from "./data/types";
 import {createAPI} from "../services/api";
 
-const api = createAPI();
+const thunkAPI = thunk.withExtraArgument(createAPI()) as APIMiddleware;
 const rootReducer = combineReducers({app: appReducer, data: dataReducer});
-const store = createStore(
-    rootReducer,
-    composeWithDevTools(
-        applyMiddleware(
-            thunk.withExtraArgument(api) as APIMiddleware
-        )
-    )
-);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkAPI)));
 
 store.dispatch(fetchOffers());
 
