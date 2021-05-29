@@ -1,8 +1,8 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {ActionCreator} from "../../store/actions";
-import {selectCurrentSorting} from "../../store/selectors";
+import {getCurrentSorting} from "../../store/app/actions";
+import {selectCurrentSorting} from "../../store/app/selectors";
 
 import {SortingType} from "../const";
 
@@ -46,7 +46,7 @@ const SortingForm: React.FunctionComponent = () => {
           <li
             key={`sorting-${i}`}
             className={`places__option ${sorting === currentSorting && `places__option--active`}`}
-            onClick={() => dispatch(ActionCreator.getCurrentSorting(sorting))}
+            onClick={() => dispatch(getCurrentSorting(sorting))}
           >
             {sorting}
           </li>

@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {selectCurrentFiltering} from "../../store/selectors";
+import {selectCurrentFiltering} from "../../store/app/selectors";
 
 const MainPageEmpty: React.FunctionComponent = () => {
   const currentFiltering = useSelector(selectCurrentFiltering);
