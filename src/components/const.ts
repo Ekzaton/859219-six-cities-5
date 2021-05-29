@@ -1,5 +1,10 @@
 export const RATING_STARS_COUNT = 5;
 
+export enum AuthStatus {
+  AUTH = `auth`,
+  NO_AUTH = `no-auth`
+}
+
 export enum CardImgSize {
   WIDTH = 260,
   HEIGHT = 200
