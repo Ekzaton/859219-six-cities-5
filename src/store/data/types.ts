@@ -1,6 +1,3 @@
-import {AxiosInstance} from "axios";
-import {ThunkAction, ThunkMiddleware} from "redux-thunk";
-
 import {ActionType} from "../const";
 import {Offer} from "../../components/types";
 
@@ -14,6 +11,4 @@ type getOffersAction = {
 }
 
 export type DataAction = getOffersAction;
-export type APIAction = ThunkAction<void, DataState, AxiosInstance, DataAction>;
-export type APIMiddleware = ThunkMiddleware<DataState, DataAction, AxiosInstance>;
 

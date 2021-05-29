@@ -1,5 +1,5 @@
 import {getOffers} from "./actions";
-import {APIAction} from "./types";
+import {APIAction} from "../index";
 
 export const fetchOffers = (): APIAction => (dispatch, _getState, api) =>
   api.get(`/hotels`)
