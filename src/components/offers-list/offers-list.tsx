@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {ActionCreator} from "../../store/actions";
+import {getActiveOfferID} from "../../store/app/actions";
 
 import {CardType} from "../const";
 import {Offer} from "../types";
@@ -24,8 +24,8 @@ const OffersList: React.FunctionComponent<Props> = (props: Props) => {
           key={`offer-${i}`}
           offer={offer}
           type={type}
-          onMouseEnter={() => dispatch(ActionCreator.getActiveOfferID(offer.id))}
-          onMouseLeave={() => dispatch(ActionCreator.getActiveOfferID(null))}
+          onMouseEnter={() => dispatch(getActiveOfferID(offer.id))}
+          onMouseLeave={() => dispatch(getActiveOfferID(null))}
         />
       )}
     </React.Fragment>

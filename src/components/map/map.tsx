@@ -2,7 +2,7 @@ import Leaflet from "leaflet";
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {selectActiveOfferID} from "../../store/selectors";
+import {selectActiveOfferID} from "../../store/app/selectors";
 
 import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../const";
 import {Offer} from "../types";
