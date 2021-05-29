@@ -2,13 +2,11 @@ import {ActionType} from "./const";
 import {Action, State} from "./types";
 import {FilteringType, SortingType} from "../components/const";
 
-import {offers} from "../mocks/offers";
-
 const initialState: State = {
   activeOfferID: null,
-  currentFiltering: FilteringType.AMSTERDAM,
+  currentFiltering: FilteringType.PARIS,
   currentSorting: SortingType.POPULAR,
-  offers
+  offers: []
 };
 
 export const reducer = (state = initialState, action: Action): State => {
