@@ -5,7 +5,7 @@ export type DataState = {
   allOffers: Offer[],
   favoriteOffers: Offer[],
   nearbyOffers: Offer[],
-  singleOffer: Offer | null,
+  singleOffer: Offer,
   singleOfferReviews: Review[]
 };
 
@@ -26,7 +26,7 @@ type getNearbyOffersAction = {
 
 type getSingleOfferAction = {
   type: typeof ActionType.GET_SINGLE_OFFER,
-  payload: Offer | null
+  payload: Offer
 }
 
 type getSingleOfferReviewsAction = {

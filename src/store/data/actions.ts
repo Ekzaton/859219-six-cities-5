@@ -17,7 +17,7 @@ export const getNearbyOffers = (nearbyOffers: Offer[]): DataAction => ({
   payload: nearbyOffers
 });
 
-export const getSingleOffer = (singleOffer: Offer | null): DataAction => ({
+export const getSingleOffer = (singleOffer: Offer): DataAction => ({
   type: ActionType.GET_SINGLE_OFFER,
   payload: singleOffer
 });

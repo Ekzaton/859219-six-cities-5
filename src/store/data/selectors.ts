@@ -6,7 +6,7 @@ import {Offer, Review} from "../../components/types";
 export const selectAllOffers = (state: RootState): Offer[] => state.data.allOffers;
 export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.favoriteOffers;
 export const selectNearbyOffers = (state: RootState): Offer[] => state.data.nearbyOffers;
-export const selectSingleOffer = (state: RootState): Offer | null => state.data.singleOffer;
+export const selectSingleOffer = (state: RootState): Offer => state.data.singleOffer;
 export const selectSingleOfferReviews = (state: RootState): Review[] => state.data.singleOfferReviews;
 
 export const selectOffersByCity = createSelector(
