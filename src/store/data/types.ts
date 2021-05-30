@@ -1,9 +1,12 @@
 import {ActionType} from "../const";
-import {Offer} from "../../components/types";
+import {Offer, Review} from "../../components/types";
 
 export type DataState = {
   allOffers: Offer[],
-  favoriteOffers: Offer[]
+  favoriteOffers: Offer[],
+  nearbyOffers: Offer[],
+  singleOffer: Offer | null,
+  singleOfferReviews: Review[]
 };
 
 type getAllOffersAction = {
@@ -16,5 +19,20 @@ type getFavoriteOffersAction = {
   payload: Offer[]
 }
 
-export type DataAction = getAllOffersAction | getFavoriteOffersAction;
+type getNearbyOffersAction = {
+  type: typeof ActionType.GET_NEARBY_OFFERS,
+  payload: Offer[]
+}
+
+type getSingleOfferAction = {
+  type: typeof ActionType.GET_SINGLE_OFFER,
+  payload: Offer | null
+}
+
+type getSingleOfferReviewsAction = {
+  type: typeof ActionType.GET_SINGLE_OFFER_REVIEWS,
+  payload: Review[]
+}
+
+export type DataAction = getAllOffersAction | getFavoriteOffersAction | getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction;
 
