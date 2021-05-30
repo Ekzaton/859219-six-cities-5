@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
 import {RootState} from "../index";
-import {selectOffers} from "../data/selectors";
+import {selectAllOffers} from "../data/selectors";
 import {FilteringType, SortingType} from "../../components/const";
 import {getSortedOffers} from "../../utils";
 
@@ -10,7 +10,7 @@ export const selectCurrentFiltering = (state: RootState): FilteringType => state
 export const selectCurrentSorting = (state: RootState): SortingType => state.app.currentSorting;
 
 export const selectFilteredOffers = createSelector(
-    [selectCurrentFiltering, selectOffers],
+    [selectCurrentFiltering, selectAllOffers],
     (currentFiltering, offers) => offers.filter((offer) => offer.city.name === currentFiltering)
 );
 

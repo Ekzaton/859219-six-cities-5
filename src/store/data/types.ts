@@ -2,13 +2,19 @@ import {ActionType} from "../const";
 import {Offer} from "../../components/types";
 
 export type DataState = {
-  offers: Offer[]
+  allOffers: Offer[],
+  favoriteOffers: Offer[]
 };
 
-type getOffersAction = {
-  type: typeof ActionType.GET_OFFERS,
+type getAllOffersAction = {
+  type: typeof ActionType.GET_ALL_OFFERS,
   payload: Offer[]
 }
 
-export type DataAction = getOffersAction;
+type getFavoriteOffersAction = {
+  type: typeof ActionType.GET_FAVORITE_OFFERS,
+  payload: Offer[]
+}
+
+export type DataAction = getAllOffersAction | getFavoriteOffersAction;
 
