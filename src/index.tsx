@@ -4,17 +4,11 @@ import {Provider} from "react-redux";
 
 import store from "./store/index";
 
-import {offers} from "./mocks/offers";
-import {reviews} from "./mocks/reviews";
-
 import App from "./components/app/app";
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        offers={offers}
-        reviews={reviews}
-      />
+      <App/>
     </Provider>,
     document.getElementById(`root`)
 );
