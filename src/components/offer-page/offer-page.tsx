@@ -12,6 +12,7 @@ import {capitalize, getRatingStars} from "../../utils";
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
+import PageLoading from "../page-loading/page-loading";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
@@ -21,6 +22,7 @@ const OfferPage: React.FunctionComponent = () => {
   const nearbyOffers = useSelector(selectNearbyOffers);
   const authStatus = useSelector(selectAuthStatus);
 
+  const offers = nearbyOffers.concat(offer);
   const noOffer = Object.keys(offer).length === 0;
   const isAuthorized = authStatus === AuthStatus.AUTH;
 
@@ -38,7 +40,7 @@ const OfferPage: React.FunctionComponent = () => {
       <PageHeader/>
 
       {noOffer
-        ? <p>Loading...</p>
+        ? <PageLoading/>
         : <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
@@ -152,7 +154,7 @@ const OfferPage: React.FunctionComponent = () => {
               </div>
             </div>
             <Map
-              offers={nearbyOffers}
+              offers={offers}
               type={MapType.PROPERTY}
             />
           </section>
