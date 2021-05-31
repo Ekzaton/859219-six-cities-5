@@ -1,18 +1,32 @@
+import {AxiosInstance} from "axios";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
-import thunk from "redux-thunk";
+import thunk, {ThunkAction, ThunkMiddleware} from "redux-thunk";
+
+import {fetchAllOffers} from "./data/api-actions";
+import {checkAuthStatus} from "./user/api-actions";
 
 import {appReducer} from "./app/reducer";
-import {fetchOffers} from "./data/api-actions";
 import {dataReducer} from "./data/reducer";
-import {APIMiddleware} from "./data/types";
+import {userReducer} from "./user/reducer";
+
+import {AppAction} from "./app/types";
+import {DataAction} from "./data/types";
+import {UserAction} from "./user/types";
+
 import {createAPI} from "../services/api";
 
-const thunkAPI = thunk.withExtraArgument(createAPI()) as APIMiddleware;
-const rootReducer = combineReducers({app: appReducer, data: dataReducer});
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkAPI)));
+const api = createAPI();
+const thunkWithAPI = thunk.withExtraArgument(api) as Middleware;
+const rootReducer = combineReducers({app: appReducer, data: dataReducer, user: userReducer});
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI)));
 
-store.dispatch(fetchOffers());
+store.dispatch(fetchAllOffers());
+store.dispatch(checkAuthStatus());
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
+type Action = AppAction | DataAction | UserAction;
+type Middleware = ThunkMiddleware<RootState, Action, AxiosInstance>;
+export type APIAction = ThunkAction<void, RootState, AxiosInstance, Action>;
+
 export default store;

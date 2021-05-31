@@ -1,5 +1,5 @@
-import {ActionType} from "../const";
 import {AppAction, AppState} from "./types";
+import {ActionType} from "../const";
 import {FilteringType, SortingType} from "../../components/const";
 
 const initialState: AppState = {

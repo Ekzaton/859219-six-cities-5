@@ -1,4 +1,11 @@
+export const OFFER_IMAGES_COUNT = 6;
+export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
+
+export enum AuthStatus {
+  AUTH = `auth`,
+  NO_AUTH = `no-auth`
+}
 
 export enum CardImgSize {
   WIDTH = 260,

@@ -1,19 +1,38 @@
-import {AxiosInstance} from "axios";
-import {ThunkAction, ThunkMiddleware} from "redux-thunk";
-
 import {ActionType} from "../const";
-import {Offer} from "../../components/types";
+import {Offer, Review} from "../../components/types";
 
 export type DataState = {
-  offers: Offer[]
+  allOffers: Offer[],
+  favoriteOffers: Offer[],
+  nearbyOffers: Offer[],
+  singleOffer: Offer,
+  singleOfferReviews: Review[]
 };
 
-type getOffersAction = {
-  type: typeof ActionType.GET_OFFERS,
+type getAllOffersAction = {
+  type: typeof ActionType.GET_ALL_OFFERS,
   payload: Offer[]
 }
 
-export type DataAction = getOffersAction;
-export type APIAction = ThunkAction<void, DataState, AxiosInstance, DataAction>;
-export type APIMiddleware = ThunkMiddleware<DataState, DataAction, AxiosInstance>;
+type getFavoriteOffersAction = {
+  type: typeof ActionType.GET_FAVORITE_OFFERS,
+  payload: Offer[]
+}
+
+type getNearbyOffersAction = {
+  type: typeof ActionType.GET_NEARBY_OFFERS,
+  payload: Offer[]
+}
+
+type getSingleOfferAction = {
+  type: typeof ActionType.GET_SINGLE_OFFER,
+  payload: Offer
+}
+
+type getSingleOfferReviewsAction = {
+  type: typeof ActionType.GET_SINGLE_OFFER_REVIEWS,
+  payload: Review[]
+}
+
+export type DataAction = getAllOffersAction | getFavoriteOffersAction | getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction;
 

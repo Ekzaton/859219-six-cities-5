@@ -30,7 +30,7 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
 
     offers.forEach((offer) => {
       const icon = Leaflet.icon({
-        iconUrl: (activeOfferID === offer.id) ? MapIconUrl.PIN_ACTIVE : MapIconUrl.PIN,
+        iconUrl: activeOfferID === offer.id ? MapIconUrl.PIN_ACTIVE : MapIconUrl.PIN,
         iconSize: [MapIconSize.HEIGHT, MapIconSize.WIDTH]
       });
 

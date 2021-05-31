@@ -27,7 +27,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
         </div>
       }
       <div className={`${type}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`/offer/:id`}>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -62,7 +62,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:id`}>{offer.title}</Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalize(offer.type)}</p>
       </div>
