@@ -2,8 +2,9 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {Route, Redirect} from "react-router-dom";
 
-import {AuthStatus} from "../const";
 import {selectAuthStatus} from "../../store/user/selectors";
+
+import {AuthStatus} from "../const";
 
 type Props = {
   exact: boolean,
@@ -13,8 +14,8 @@ type Props = {
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
   const {exact, path, render} = props;
-  const status = useSelector(selectAuthStatus);
-  const isAuthorized = status === AuthStatus.AUTH;
+  const authStatus = useSelector(selectAuthStatus);
+  const isAuthorized = authStatus === AuthStatus.AUTH;
 
   return (
     <Route

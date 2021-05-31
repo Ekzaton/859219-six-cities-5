@@ -1,3 +1,5 @@
+export const OFFER_IMAGES_COUNT = 6;
+export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
 
 export enum AuthStatus {
