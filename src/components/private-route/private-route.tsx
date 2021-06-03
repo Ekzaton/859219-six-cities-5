@@ -1,15 +1,15 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {Route, Redirect} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 
 import {selectAuthStatus} from "../../store/user/selectors";
 
 import {AuthStatus} from "../const";
 
 type Props = {
-  exact: boolean,
-  path: string,
-  render: () => React.ReactElement;
+  exact: boolean;
+  path: string;
+  render: () => JSX.Element;
 }
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {

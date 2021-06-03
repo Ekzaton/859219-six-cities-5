@@ -1,10 +1,13 @@
 import React from "react";
-import {useSelector} from "react-redux";
 
-import {selectCurrentFiltering} from "../../store/app/selectors";
+import {FilteringType} from "../const";
 
-const MainPageEmpty: React.FunctionComponent = () => {
-  const currentFiltering = useSelector(selectCurrentFiltering);
+type Props = {
+  currentCity: FilteringType;
+}
+
+const MainPageEmpty: React.FunctionComponent<Props> = (props: Props) => {
+  const {currentCity} = props;
 
   return (
     <div className="cities__places-container cities__places-container--empty container">
@@ -12,7 +15,7 @@ const MainPageEmpty: React.FunctionComponent = () => {
         <div className="cities__status-wrapper tabs__content">
           <b className="cities__status">No places to stay available</b>
           <p className="cities__status-description">
-            We could not find any property available at the moment in {currentFiltering}
+            We could not find any property available at the moment in {currentCity}
           </p>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const PageLoading: React.FunctionComponent = () => {
+const OffersPageLoading: React.FunctionComponent = () => {
   return (
     <div className="property__container container">
       <div className="property__wrapper">
@@ -12,4 +12,4 @@ const PageLoading: React.FunctionComponent = () => {
   );
 };
 
-export default PageLoading;
+export default OffersPageLoading;

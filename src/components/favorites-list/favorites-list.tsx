@@ -1,14 +1,16 @@
 import React from "react";
-import {useSelector} from "react-redux";
-
-import {selectOffersByCity} from "../../store/data/selectors";
 
 import {CardType} from "../const";
+import {Offer} from "../types";
 
 import OffersList from "../offers-list/offers-list";
 
-const FavoritesList: React.FunctionComponent = () => {
-  const offersByCity = useSelector(selectOffersByCity);
+type Props = {
+  offersByCity: Record<string, Offer[]>;
+}
+
+const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
+  const {offersByCity} = props;
 
   return (
     <ul className="favorites__list">
@@ -32,7 +34,6 @@ const FavoritesList: React.FunctionComponent = () => {
           </div>
         </li>
       )}
-
     </ul>
   );
 };

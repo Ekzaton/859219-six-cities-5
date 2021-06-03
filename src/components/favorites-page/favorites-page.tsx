@@ -1,7 +1,8 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-import {selectFavoriteOffers} from "../../store/data/selectors";
+import {fetchFavoriteOffers} from "../../store/data/api-actions";
+import {selectOffersByCity} from "../../store/data/selectors";
 
 import FavoritesList from "../favorites-list/favorites-list";
 import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
@@ -9,8 +10,13 @@ import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
 
 const FavoritesPage: React.FunctionComponent = () => {
-  const offers = useSelector(selectFavoriteOffers);
-  const noOffers = offers.length === 0;
+  const offersByCity = useSelector(selectOffersByCity);
+  const noOffers = Object.entries(offersByCity).length === 0;
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchFavoriteOffers());
+  }, [dispatch]);
 
   return (
     <div className="page">
@@ -23,7 +29,9 @@ const FavoritesPage: React.FunctionComponent = () => {
             ? <FavoritesPageEmpty/>
             : <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
-              <FavoritesList/>
+              <FavoritesList
+                offersByCity={offersByCity}
+              />
             </section>
           }
         </div>
