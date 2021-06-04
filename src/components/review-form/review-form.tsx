@@ -1,6 +1,6 @@
 import React from "react";
 
-import {RATING_STARS_COUNT} from "../const";
+import {RATING_STARS_COUNT} from "../../const";
 import {getArray} from "../../utils";
 
 const ReviewForm: React.FunctionComponent = () => {

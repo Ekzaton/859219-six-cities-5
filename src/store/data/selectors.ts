@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
 import {RootState} from "../index";
-import {Offer, Review} from "../../components/types";
+import {Offer, Review} from "../../types";
 
 export const selectAllOffers = (state: RootState): Offer[] => state.data.allOffers;
 export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.favoriteOffers;

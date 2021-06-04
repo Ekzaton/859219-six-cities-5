@@ -1,4 +1,4 @@
-import {Offer} from "../components/types";
+import {Offer} from "../types";
 
 export const offers: Offer[] = [
   {
@@ -15,6 +15,7 @@ export const offers: Offer[] = [
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`],
     host: {
       avatarUrl: `img/avatar-angelina.jpg`,
+      email: `user-1@mail.ru`,
       id: 1,
       isPro: true,
       name: `Angelina`
@@ -48,6 +49,7 @@ export const offers: Offer[] = [
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
       avatarUrl: `img/avatar-angelina.jpg`,
+      email: `user-1@mail.ru`,
       id: 2,
       isPro: true,
       name: `Mary`
@@ -81,6 +83,7 @@ export const offers: Offer[] = [
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Dishwasher`],
     host: {
       avatarUrl: `img/avatar-angelina.jpg`,
+      email: `user-1@mail.ru`,
       id: 3,
       isPro: false,
       name: `Elizabeth`
@@ -114,6 +117,7 @@ export const offers: Offer[] = [
     goods: [`Heating`, `Cable TV`],
     host: {
       avatarUrl: `img/avatar-angelina.jpg`,
+      email: `user-1@mail.ru`,
       id: 4,
       isPro: false,
       name: `Jenifer`

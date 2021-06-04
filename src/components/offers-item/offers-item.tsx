@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CardImgSize, CardType, FavCardImgSize} from "../const";
-import {Offer} from "../types";
+import {CardImgSize, CardType, FavCardImgSize} from "../../const";
+import {Offer} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
 
 type Props = {

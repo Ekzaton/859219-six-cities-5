@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {getCurrentSorting} from "../../store/app/actions";
 
-import {SortingType} from "../const";
+import {SortingType} from "../../const";
 
 type Props = {
   currentSorting: SortingType;

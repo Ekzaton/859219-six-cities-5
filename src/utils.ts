@@ -1,5 +1,5 @@
-import {SortingType} from "./components/const";
-import {Offer} from "./components/types";
+import {SortingType} from "./const";
+import {Offer} from "./types";
 
 export const capitalize = (title: string): string => title[0].toUpperCase() + title.slice(1);
 

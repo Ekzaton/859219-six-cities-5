@@ -7,7 +7,7 @@ import {selectActiveOfferID} from "../../store/app/selectors";
 import {selectNearbyOffers, selectSingleOffer, selectSingleOfferReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {OFFER_IMAGES_COUNT, AuthStatus, CardType, MapType} from "../const";
+import {OFFER_IMAGES_COUNT, AuthStatus, CardType, MapType} from "../../const";
 import {capitalize, getRatingStars} from "../../utils";
 
 import Map from "../map/map";

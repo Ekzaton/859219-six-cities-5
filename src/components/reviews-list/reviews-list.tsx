@@ -1,7 +1,7 @@
 import React from "react";
 
-import {OFFER_REVIEWS_COUNT} from "../const";
-import {Review} from "../types";
+import {OFFER_REVIEWS_COUNT} from "../../const";
+import {Review} from "../../types";
 
 import ReviewsItem from "../reviews-item/reviews-item";
 

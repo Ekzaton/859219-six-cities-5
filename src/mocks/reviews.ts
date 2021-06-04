@@ -1,4 +1,4 @@
-import {Review} from "../components/types";
+import {Review} from "../types";
 
 export const reviews: Review[] = [
   {
@@ -8,6 +8,7 @@ export const reviews: Review[] = [
     rating: 4.0,
     user: {
       avatarUrl: `img/avatar-max.jpg`,
+      email: `user-1@mail.ru`,
       id: 1,
       isPro: false,
       name: `Max`
@@ -19,6 +20,7 @@ export const reviews: Review[] = [
     rating: 5.0,
     user: {
       avatarUrl: `img/avatar-max.jpg`,
+      email: `user-1@mail.ru`,
       id: 2,
       isPro: true,
       name: `Ivan`
@@ -30,6 +32,7 @@ export const reviews: Review[] = [
     rating: 3.5,
     user: {
       avatarUrl: `img/avatar-max.jpg`,
+      email: `user-1@mail.ru`,
       id: 3,
       isPro: false,
       name: `James`
@@ -41,6 +44,7 @@ export const reviews: Review[] = [
     rating: 4,
     user: {
       avatarUrl: `img/avatar-max.jpg`,
+      email: `user-1@mail.ru`,
       id: 4.2,
       isPro: true,
       name: `Nick`

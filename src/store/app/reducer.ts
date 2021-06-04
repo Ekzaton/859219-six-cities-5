@@ -1,6 +1,6 @@
 import {AppAction, AppState} from "./types";
 import {ActionType} from "../const";
-import {FilteringType, SortingType} from "../../components/const";
+import {FilteringType, SortingType} from "../../const";
 
 const initialState: AppState = {
   activeOfferID: null,

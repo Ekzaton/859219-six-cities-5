@@ -1,6 +1,6 @@
 import React from "react";
 
-import {FilteringType} from "../const";
+import {FilteringType} from "../../const";
 
 type Props = {
   currentCity: FilteringType;

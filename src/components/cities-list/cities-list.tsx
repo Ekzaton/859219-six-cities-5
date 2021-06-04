@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {getCurrentFiltering} from "../../store/app/actions";
 
-import {FilteringType} from "../const";
+import {FilteringType} from "../../const";
 
 type Props = {
   currentCity: FilteringType;
@@ -23,9 +23,7 @@ const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentCity && `tabs__item--active`}`}
-            onClick={() => {
-              dispatch(getCurrentFiltering(city));
-            }}
+            onClick={() => dispatch(getCurrentFiltering(city))}
           >
             <span>{city}</span>
           </a>

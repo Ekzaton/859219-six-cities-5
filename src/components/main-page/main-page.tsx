@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting, selectSortedOffers} from "../../store/app/selectors";
 
-import {CardType, MapType} from "../const";
+import {CardType, MapType} from "../../const";
 
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";

@@ -1,3 +1,14 @@
+type City = {
+  location: Location;
+  name: string;
+}
+
+type Location = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
+
 export type Offer = {
   bedrooms: number;
   city: City;
@@ -17,29 +28,19 @@ export type Offer = {
   type: string;
 }
 
-export type City = {
-  location: Location;
-  name: string;
-}
-
-export type User = {
-  avatarUrl: string;
-  id: number;
-  isPro: boolean;
-  name: string;
-}
-
-export type Location = {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-}
-
 export type Review = {
   comment: string;
   date: string;
   id: number;
   rating: number;
   user: User;
+}
+
+export type User = {
+  avatarUrl: string;
+  email: string;
+  id: number;
+  isPro: boolean;
+  name: string;
 }
 

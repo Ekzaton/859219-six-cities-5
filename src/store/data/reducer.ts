@@ -1,6 +1,6 @@
 import {DataAction, DataState} from "./types";
 import {ActionType} from "../const";
-import {Offer} from "../../components/types";
+import {Offer} from "../../types";
 
 const initialState: DataState = {
   allOffers: [],

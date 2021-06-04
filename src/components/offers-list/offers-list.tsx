@@ -3,8 +3,8 @@ import {useDispatch} from "react-redux";
 
 import {getActiveOfferID} from "../../store/app/actions";
 
-import {CardType} from "../const";
-import {Offer} from "../types";
+import {CardType} from "../../const";
+import {Offer} from "../../types";
 
 import OffersItem from "../offers-item/offers-item";
 
