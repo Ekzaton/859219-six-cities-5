@@ -10,7 +10,7 @@ export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
   .catch(() => dispatch(getAuthStatus(AuthStatus.NO_AUTH)))
 );
 
-export const logIn = ({email, password}: Record<string, string>): APIAction => (dispatch, _getState, api) => (
+export const logIn = ({email, password}: Record<string, string | undefined>): APIAction => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
   .then(({data}) => dispatch(getUserData(data)))
   .then(() => dispatch(getAuthStatus(AuthStatus.AUTH)))

@@ -44,7 +44,7 @@ const UserNav: React.FunctionComponent = () => {
             <Link
               className="header__nav-link header__nav-link--profile"
               to={`/`}
-              style={{marginLeft: `20px`}}
+              style={{marginLeft: `5px`}}
               onClick={() => dispatch(logOut())}
             >
               <span className="header__user-name user__name">[Exit]</span>
