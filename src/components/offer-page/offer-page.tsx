@@ -11,8 +11,8 @@ import {OFFER_IMAGES_COUNT, AuthStatus, CardType, MapType} from "../../const";
 import {capitalize, getRatingStars} from "../../utils";
 
 import Map from "../map/map";
+import OfferPageLoading from "../offer-page-loading/offer-page-loading";
 import OffersList from "../offers-list/offers-list";
-import OffersPageLoading from "../offers-page-loading/offers-page-loading";
 import PageHeader from "../page-header/page-header";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
@@ -41,7 +41,7 @@ const OfferPage: React.FunctionComponent = () => {
       <PageHeader/>
 
       {noOffer
-        ? <OffersPageLoading/>
+        ? <OfferPageLoading/>
         : <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">

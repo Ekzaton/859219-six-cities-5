@@ -7,7 +7,7 @@ import {logOut} from "../../store/user/api-actions";
 
 import {AuthStatus} from "../../const";
 
-const PageHeaderUser: React.FunctionComponent = () => {
+const UserNav: React.FunctionComponent = () => {
   const authStatus = useSelector(selectAuthStatus);
   const userData = useSelector(selectUserData);
   const isAuthorized = authStatus === AuthStatus.AUTH;
@@ -56,4 +56,4 @@ const PageHeaderUser: React.FunctionComponent = () => {
   );
 };
 
-export default PageHeaderUser;
+export default UserNav;
