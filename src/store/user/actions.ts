@@ -12,3 +12,8 @@ export const getUserData = (userData: User): UserAction => ({
   type: ActionType.GET_USER_DATA,
   payload: userData
 });
+
+export const redirectToRoute = (route: string): UserAction => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: route,
+});

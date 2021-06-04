@@ -17,4 +17,9 @@ type getUserDataAction = {
   payload: User
 }
 
-export type UserAction = getAuthStatusAction | getUserDataAction;
+type redirectToRouteAction = {
+  type: typeof ActionType.REDIRECT_TO_ROUTE,
+  payload: string
+}
+
+export type UserAction = getAuthStatusAction | getUserDataAction | redirectToRouteAction;
