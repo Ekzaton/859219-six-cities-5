@@ -1,4 +1,4 @@
-import {getAuthStatus, getUserData} from "./actions";
+import {getAuthStatus, getUserData, redirectToRoute} from "./actions";
 import {APIAction} from "../index";
 import {AuthStatus} from "../../const";
 import {User} from "../../types";
@@ -14,6 +14,7 @@ export const logIn = ({email, password}: Record<string, string | undefined>): AP
   api.post(`/login`, {email, password})
   .then(({data}) => dispatch(getUserData(data)))
   .then(() => dispatch(getAuthStatus(AuthStatus.AUTH)))
+  .then(() => dispatch(redirectToRoute(`/`)))
   .catch(() => {
     throw Error(`Ошибка авторизации`);
   })

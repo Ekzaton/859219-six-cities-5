@@ -14,19 +14,21 @@ import {AppAction} from "./app/types";
 import {DataAction} from "./data/types";
 import {UserAction} from "./user/types";
 
+import {redirect} from "../middlewares/redirect";
+
 import {createAPI} from "../services/api";
 
 const api = createAPI();
-const thunkWithAPI = thunk.withExtraArgument(api) as Middleware;
+const thunkWithAPI = thunk.withExtraArgument(api);
 const rootReducer = combineReducers({app: appReducer, data: dataReducer, user: userReducer});
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI as APIMiddleware, redirect)));
 
 store.dispatch(fetchAllOffers());
 store.dispatch(checkAuthStatus());
 
 export type RootState = ReturnType<typeof rootReducer>;
 type Action = AppAction | DataAction | UserAction;
-type Middleware = ThunkMiddleware<RootState, Action, AxiosInstance>;
+type APIMiddleware = ThunkMiddleware<RootState, Action, AxiosInstance>;
 export type APIAction = ThunkAction<void, RootState, AxiosInstance, Action>;
 
 export default store;
