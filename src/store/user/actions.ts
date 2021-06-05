@@ -15,5 +15,15 @@ export const getUserData = (userData: User): UserAction => ({
 
 export const redirectToRoute = (route: string): UserAction => ({
   type: ActionType.REDIRECT_TO_ROUTE,
-  payload: route,
+  payload: route
+});
+
+export const setDataSending = (isDataSending: boolean): UserAction => ({
+  type: ActionType.SET_IS_DATA_SENDING,
+  payload: isDataSending
+});
+
+export const setSendingError = (isSendingError: boolean): UserAction => ({
+  type: ActionType.SET_IS_SENDING_ERROR,
+  payload: isSendingError
 });

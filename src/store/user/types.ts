@@ -4,6 +4,8 @@ import {User} from "../../types";
 
 export type UserState = {
   authStatus: AuthStatus,
+  isDataSending: boolean,
+  isSendingError: boolean,
   userData: User
 };
 
@@ -22,4 +24,14 @@ type redirectToRouteAction = {
   payload: string
 }
 
-export type UserAction = getAuthStatusAction | getUserDataAction | redirectToRouteAction;
+type setDataSendingAction = {
+  type: ActionType.SET_IS_DATA_SENDING,
+  payload: boolean
+}
+
+type setSendingErrorAction = {
+  type: ActionType.SET_IS_SENDING_ERROR,
+  payload: boolean
+}
+
+export type UserAction = getAuthStatusAction | getUserDataAction | redirectToRouteAction | setDataSendingAction | setSendingErrorAction;

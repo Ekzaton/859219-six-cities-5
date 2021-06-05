@@ -36,11 +36,21 @@ export type Review = {
   user: User;
 }
 
+export type ReviewPost = {
+  comment: string;
+  rating: number;
+}
+
 export type User = {
   avatarUrl: string;
   email: string;
   id: number;
   isPro: boolean;
   name: string;
+}
+
+export type UserPost = {
+  email: string | undefined;
+  password: string | undefined;
 }
 
