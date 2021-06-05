@@ -150,7 +150,11 @@ const OfferPage: React.FunctionComponent = () => {
                   <ReviewsList
                     reviews={reviews}
                   />
-                  {isAuthorized && <ReviewForm/>}
+                  {isAuthorized &&
+                    <ReviewForm
+                      id={offer.id}
+                    />
+                  }
                 </section>
               </div>
             </div>

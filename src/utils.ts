@@ -1,4 +1,4 @@
-import {SortingType} from "./const";
+import {SortingType, ReviewLehgth} from "./const";
 import {Offer} from "./types";
 
 export const capitalize = (title: string): string => title[0].toUpperCase() + title.slice(1);
@@ -23,5 +23,7 @@ export const getSortedOffers = (currentSorting: string, offers: Offer[]): Offer[
       return offers;
   }
 };
+
+export const validateComment = (comment: string): boolean => comment.length >= ReviewLehgth.MIN && comment.length <= ReviewLehgth.MAX;
 
 

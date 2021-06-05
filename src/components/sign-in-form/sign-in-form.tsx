@@ -15,10 +15,7 @@ const SignInForm: React.FunctionComponent = () => {
       method="post"
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
-        dispatch(logIn({
-          email: emailRef.current?.value,
-          password: passwordRef.current?.value
-        }));
+        dispatch(logIn({email: emailRef.current?.value, password: passwordRef.current?.value}));
       }}
     >
       <div className="login__input-wrapper form__input-wrapper">

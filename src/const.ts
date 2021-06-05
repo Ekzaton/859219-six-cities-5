@@ -52,6 +52,11 @@ export enum MapType {
   PROPERTY = `property`
 }
 
+export enum ReviewLehgth {
+  MIN = 50,
+  MAX = 300
+}
+
 export enum SortingType {
   POPULAR = `Popular`,
   PRICE_LOW_TO_HIGH = `Price: low to high`,
