@@ -1,11 +1,11 @@
 
 import {getAuthStatus, getUserData, redirectToRoute} from "./actions";
 import {APIAction} from "../index";
-import {ApiEndpoint, AppRoute, AuthStatus} from "../../const";
+import {APIEndpoint, AppRoute, AuthStatus} from "../../const";
 import {UserPost} from "../../types";
 
 export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
-  api.get(ApiEndpoint.LOGIN)
+  api.get(APIEndpoint.LOGIN)
   .then(({data}) => {
     dispatch(getUserData(data));
     dispatch(getAuthStatus(AuthStatus.AUTH));
@@ -14,7 +14,7 @@ export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
 );
 
 export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _getState, api) => (
-  api.post(ApiEndpoint.LOGIN, {email, password})
+  api.post(APIEndpoint.LOGIN, {email, password})
   .then(({data}) => {
     dispatch(getUserData(data));
     dispatch(getAuthStatus(AuthStatus.AUTH));
@@ -26,7 +26,7 @@ export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _get
 );
 
 export const logOut = (): APIAction => (dispatch, _getState, api) => (
-  api.get(ApiEndpoint.LOGOUT)
+  api.get(APIEndpoint.LOGOUT)
   .then(() => {
     dispatch(getAuthStatus(AuthStatus.NO_AUTH));
   })

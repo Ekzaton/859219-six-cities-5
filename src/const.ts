@@ -10,7 +10,7 @@ export enum AppRoute {
   OFFER = `/offer/`,
 }
 
-export enum ApiEndpoint {
+export enum APIEndpoint {
   HOTELS = `/hotels/`,
   NEARBY = `/nearby/`,
   FAVORITE = `/favorite/`,
