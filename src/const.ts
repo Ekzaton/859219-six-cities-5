@@ -2,14 +2,6 @@ export const OFFER_IMAGES_COUNT = 6;
 export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
 
-export enum AppRoute {
-  MAIN = `/`,
-  LOGIN = `/login/`,
-  FAVORITES = `/favorites/`,
-  OFFER_ID = `/offer/:id/`,
-  OFFER = `/offer/`,
-}
-
 export enum APIEndpoint {
   HOTELS = `/hotels/`,
   NEARBY = `/nearby/`,
@@ -17,6 +9,14 @@ export enum APIEndpoint {
   COMMENTS = `/comments/`,
   LOGIN = `/login/`,
   LOGOUT = `/logout/`
+}
+
+export enum AppRoute {
+  MAIN = `/`,
+  LOGIN = `/login/`,
+  FAVORITES = `/favorites/`,
+  OFFER_ID = `/offer/:id/`,
+  OFFER = `/offer/`
 }
 
 export enum AuthStatus {
