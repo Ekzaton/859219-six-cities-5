@@ -3,9 +3,6 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk, {ThunkAction, ThunkMiddleware} from "redux-thunk";
 
-import {fetchAllOffers} from "./data/api-actions";
-import {checkAuthStatus} from "./user/api-actions";
-
 import {appReducer} from "./app/reducer";
 import {dataReducer} from "./data/reducer";
 import {userReducer} from "./user/reducer";
@@ -22,9 +19,6 @@ const api = createAPI();
 const thunkWithAPI = thunk.withExtraArgument(api);
 const rootReducer = combineReducers({app: appReducer, data: dataReducer, user: userReducer});
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI as APIMiddleware, redirect)));
-
-store.dispatch(fetchAllOffers());
-store.dispatch(checkAuthStatus());
 
 export type RootState = ReturnType<typeof rootReducer>;
 type Action = AppAction | DataAction | UserAction;
