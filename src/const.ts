@@ -10,6 +10,15 @@ export enum AppRoute {
   OFFER = `/offer/`,
 }
 
+export enum ApiEndpoint {
+  HOTELS = `/hotels/`,
+  NEARBY = `/nearby/`,
+  FAVORITE = `/favorite/`,
+  COMMENTS = `/comments/`,
+  LOGIN = `/login/`,
+  LOGOUT = `/logout/`
+}
+
 export enum AuthStatus {
   AUTH = `auth`,
   NO_AUTH = `no-auth`

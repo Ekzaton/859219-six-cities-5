@@ -1,4 +1,4 @@
-import {SortingType, ReviewLehgth} from "./const";
+import {FavStatus, SortingType, ReviewLehgth} from "./const";
 import {Offer} from "./types";
 
 export const capitalize = (title: string): string => title[0].toUpperCase() + title.slice(1);
@@ -7,9 +7,11 @@ export const formatReviewDate = (date: string): string => new Date(date).toLocal
 
 export const getArray = (count: number): number[] => new Array(count).fill(``);
 
+export const getFavStatus = (isFavorite: boolean): string => `/${isFavorite ? FavStatus.NOT_FAV : FavStatus.FAV}`;
+
 export const getRatingStars = (rating: number): string => `${rating * 20}%`;
 
-export const getSortedOffers = (currentSorting: string, offers: Offer[]): Offer[] => {
+export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): Offer[] => {
   switch (currentSorting) {
     case SortingType.POPULAR:
       return [...offers];
