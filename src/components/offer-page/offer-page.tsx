@@ -7,9 +7,10 @@ import {selectActiveOfferID} from "../../store/app/selectors";
 import {selectNearbyOffers, selectSingleOffer, selectSingleOfferReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {OFFER_IMAGES_COUNT, AuthStatus, CardType, MapType} from "../../const";
+import {OFFER_IMAGES_COUNT, AuthStatus, CardType, BtnType, MapType} from "../../const";
 import {capitalize, getRatingStars} from "../../utils";
 
+import BookmarkButton from "../bookmark-button/bookmark-button";
 import Map from "../map/map";
 import OfferPageLoading from "../offer-page-loading/offer-page-loading";
 import OffersList from "../offers-list/offers-list";
@@ -71,12 +72,10 @@ const OfferPage: React.FunctionComponent = () => {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  <button className="property__bookmark-button button" type="button">
-                    <svg className="property__bookmark-icon" width="31" height="33">
-                      <use xlinkHref="#icon-bookmark"/>
-                    </svg>
-                    <span className="visually-hidden">To bookmarks</span>
-                  </button>
+                  <BookmarkButton
+                    offer={offer}
+                    type={BtnType.PROPERTY}
+                  />
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
