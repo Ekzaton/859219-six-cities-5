@@ -1,5 +1,5 @@
 import {ActionType} from "../const";
-import {AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../const";
 import {User} from "../../types";
 
 export type UserState = {
@@ -19,7 +19,7 @@ type getUserDataAction = {
 
 type redirectToRouteAction = {
   type: typeof ActionType.REDIRECT_TO_ROUTE,
-  payload: string
+  payload: AppRoute
 }
 
 export type UserAction = getAuthStatusAction | getUserDataAction | redirectToRouteAction;
