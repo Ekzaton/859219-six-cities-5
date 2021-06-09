@@ -1,6 +1,6 @@
 import {DataAction} from "./types";
 import {ActionType} from "../const";
-import {Offer, Review} from "../../components/types";
+import {Offer, Review} from "../../types";
 
 export const getAllOffers = (allOffers: Offer[]): DataAction => ({
   type: ActionType.GET_ALL_OFFERS,
@@ -26,3 +26,19 @@ export const getSingleOfferReviews = (singleOfferReviews: Review[]): DataAction 
   type: ActionType.GET_SINGLE_OFFER_REVIEWS,
   payload: singleOfferReviews
 });
+
+export const setDataSending = (isDataSending: boolean): DataAction => ({
+  type: ActionType.SET_IS_DATA_SENDING,
+  payload: isDataSending
+});
+
+export const setSendingError = (isSendingError: boolean): DataAction => ({
+  type: ActionType.SET_IS_SENDING_ERROR,
+  payload: isSendingError
+});
+
+export const updateOffers = (offersItem: Offer): DataAction => ({
+  type: ActionType.UPDATE_OFFERS,
+  payload: offersItem
+});
+

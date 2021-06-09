@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Review} from "../types";
+import {Review} from "../../types";
 import {formatReviewDate, getRatingStars} from "../../utils";
 
 type Props = {

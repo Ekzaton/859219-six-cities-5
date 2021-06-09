@@ -1,5 +1,5 @@
 import {ActionType} from "../const";
-import {FilteringType, SortingType} from "../../components/const";
+import {FilteringType, SortingType} from "../../const";
 
 export type AppState = {
   activeOfferID: number | null,

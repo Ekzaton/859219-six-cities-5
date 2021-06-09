@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 
 import {RootState} from "../index";
 import {selectAllOffers} from "../data/selectors";
-import {FilteringType, SortingType} from "../../components/const";
+import {FilteringType, SortingType} from "../../const";
 import {getSortedOffers} from "../../utils";
 
 export const selectActiveOfferID = (state: RootState): number | null => state.app.activeOfferID;

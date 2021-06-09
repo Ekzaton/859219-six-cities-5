@@ -7,6 +7,21 @@ export enum AuthStatus {
   NO_AUTH = `no-auth`
 }
 
+export enum BtnBigSize {
+  WIDTH = 31,
+  HEIGHT = 33
+}
+
+export enum BtnSize {
+  WIDTH = 18,
+  HEIGHT = 19
+}
+
+export enum BtnType {
+  PLACE_CARD = `place-card`,
+  PROPERTY = `property`
+}
+
 export enum CardImgSize {
   WIDTH = 260,
   HEIGHT = 200
@@ -21,6 +36,11 @@ export enum CardType {
 export enum FavCardImgSize {
   WIDTH = 150,
   HEIGHT = 110
+}
+
+export enum FavStatus {
+  FAV = 1,
+  NOT_FAV = 0,
 }
 
 export enum FilteringType {
@@ -50,6 +70,11 @@ export enum MapLayer {
 export enum MapType {
   CITIES = `cities`,
   PROPERTY = `property`
+}
+
+export enum ReviewLehgth {
+  MIN = 50,
+  MAX = 300
 }
 
 export enum SortingType {

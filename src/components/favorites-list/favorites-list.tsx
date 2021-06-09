@@ -1,14 +1,21 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 
-import {selectOffersByCity} from "../../store/data/selectors";
+import {getCurrentFiltering} from "../../store/app/actions";
 
-import {CardType} from "../const";
+import {CardType, FilteringType} from "../../const";
+import {Offer} from "../../types";
 
 import OffersList from "../offers-list/offers-list";
 
-const FavoritesList: React.FunctionComponent = () => {
-  const offersByCity = useSelector(selectOffersByCity);
+type Props = {
+  offersByCity: Record<string, Offer[]>;
+}
+
+const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
+  const {offersByCity} = props;
+  const dispatch = useDispatch();
 
   return (
     <ul className="favorites__list">
@@ -19,9 +26,13 @@ const FavoritesList: React.FunctionComponent = () => {
         >
           <div className="favorites__locations locations locations--current">
             <div className="locations__item">
-              <a className="locations__item-link">
+              <Link
+                to={`/`}
+                className="locations__item-link"
+                onClick={() => dispatch(getCurrentFiltering(city as FilteringType))}
+              >
                 <span>{city}</span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="favorites__places">
@@ -32,7 +43,6 @@ const FavoritesList: React.FunctionComponent = () => {
           </div>
         </li>
       )}
-
     </ul>
   );
 };

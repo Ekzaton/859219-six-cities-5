@@ -1,15 +1,18 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 
 import {getCurrentSorting} from "../../store/app/actions";
-import {selectCurrentSorting} from "../../store/app/selectors";
 
-import {SortingType} from "../const";
+import {SortingType} from "../../const";
 
-const SortingForm: React.FunctionComponent = () => {
+type Props = {
+  currentSorting: SortingType;
+}
+
+const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
+  const {currentSorting} = props;
   const [isOpened, setIsOpened] = React.useState(false);
   const sortings = Object.values(SortingType);
-  const currentSorting = useSelector(selectCurrentSorting);
   const dispatch = useDispatch();
 
   const handleMouseOver = () => {

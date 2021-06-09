@@ -3,20 +3,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
 import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
+import {selectActiveOfferID} from "../../store/app/selectors";
 import {selectNearbyOffers, selectSingleOffer, selectSingleOfferReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {OFFER_IMAGES_COUNT, AuthStatus, CardType, MapType} from "../const";
+import {OFFER_IMAGES_COUNT, AuthStatus, CardType, BtnType, MapType} from "../../const";
 import {capitalize, getRatingStars} from "../../utils";
 
+import BookmarkButton from "../bookmark-button/bookmark-button";
 import Map from "../map/map";
+import OfferPageLoading from "../offer-page-loading/offer-page-loading";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
-import PageLoading from "../page-loading/page-loading";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
 const OfferPage: React.FunctionComponent = () => {
+  const activeOfferID = useSelector(selectActiveOfferID);
   const offer = useSelector(selectSingleOffer);
   const reviews = useSelector(selectSingleOfferReviews);
   const nearbyOffers = useSelector(selectNearbyOffers);
@@ -25,7 +28,6 @@ const OfferPage: React.FunctionComponent = () => {
   const offers = nearbyOffers.concat(offer);
   const noOffer = Object.keys(offer).length === 0;
   const isAuthorized = authStatus === AuthStatus.AUTH;
-
   const {id} = useParams<{id: string}>();
   const dispatch = useDispatch();
 
@@ -40,7 +42,7 @@ const OfferPage: React.FunctionComponent = () => {
       <PageHeader/>
 
       {noOffer
-        ? <PageLoading/>
+        ? <OfferPageLoading/>
         : <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
@@ -70,12 +72,10 @@ const OfferPage: React.FunctionComponent = () => {
                   <h1 className="property__name">
                     {offer.title}
                   </h1>
-                  <button className="property__bookmark-button button" type="button">
-                    <svg className="property__bookmark-icon" width="31" height="33">
-                      <use xlinkHref="#icon-bookmark"/>
-                    </svg>
-                    <span className="visually-hidden">To bookmarks</span>
-                  </button>
+                  <BookmarkButton
+                    offer={offer}
+                    type={BtnType.PROPERTY}
+                  />
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
@@ -149,11 +149,16 @@ const OfferPage: React.FunctionComponent = () => {
                   <ReviewsList
                     reviews={reviews}
                   />
-                  {isAuthorized && <ReviewForm/>}
+                  {isAuthorized &&
+                    <ReviewForm
+                      id={offer.id}
+                    />
+                  }
                 </section>
               </div>
             </div>
             <Map
+              activeOfferID={activeOfferID}
               offers={offers}
               type={MapType.PROPERTY}
             />
