@@ -8,6 +8,8 @@ export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.fa
 export const selectNearbyOffers = (state: RootState): Offer[] => state.data.nearbyOffers;
 export const selectSingleOffer = (state: RootState): Offer => state.data.singleOffer;
 export const selectSingleOfferReviews = (state: RootState): Review[] => state.data.singleOfferReviews;
+export const selectIsDataSending = (state: RootState): boolean => state.data.isDataSending;
+export const selectIsSendingError = (state: RootState): boolean => state.data.isSendingError;
 
 export const selectOffersByCity = createSelector(
     [selectFavoriteOffers],

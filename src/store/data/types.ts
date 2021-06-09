@@ -6,7 +6,9 @@ export type DataState = {
   favoriteOffers: Offer[],
   nearbyOffers: Offer[],
   singleOffer: Offer,
-  singleOfferReviews: Review[]
+  singleOfferReviews: Review[],
+  isDataSending: boolean,
+  isSendingError: boolean
 };
 
 type getAllOffersAction = {
@@ -34,5 +36,20 @@ type getSingleOfferReviewsAction = {
   payload: Review[]
 }
 
-export type DataAction = getAllOffersAction | getFavoriteOffersAction | getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction;
+type setDataSendingAction = {
+  type: ActionType.SET_IS_DATA_SENDING,
+  payload: boolean
+}
+
+type setSendingErrorAction = {
+  type: ActionType.SET_IS_SENDING_ERROR,
+  payload: boolean
+}
+
+type updateOffersAction = {
+  type: typeof ActionType.UPDATE_OFFERS,
+  payload: Offer
+}
+
+export type DataAction = getAllOffersAction | getFavoriteOffersAction | getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction | setDataSendingAction | setSendingErrorAction | updateOffersAction;
 

@@ -1,5 +1,7 @@
-import {getAllOffers, getFavoriteOffers, getNearbyOffers, getSingleOffer, getSingleOfferReviews} from "./actions";
+import {getAllOffers, getFavoriteOffers, getNearbyOffers, getSingleOffer, getSingleOfferReviews, setDataSending, setSendingError, updateOffers} from "./actions";
 import {APIAction} from "../index";
+import {FavStatus} from "../../const";
+import {ReviewPost} from "../../types";
 
 export const fetchAllOffers = (): APIAction => (dispatch, _getState, api) =>
   api.get(`/hotels`)
@@ -35,5 +37,26 @@ export const fetchSingleOfferReviews = (id: string): APIAction => (dispatch, _ge
   .catch(() => {
     throw Error(`Ошибка загрузки комментариев одного предложения`);
   });
+
+export const sendReview = (id: number, {rating, comment}: ReviewPost): APIAction => (dispatch, _getState, api) => (
+  api.post(`/comments/${id}`, {rating, comment})
+  .then(({data}) => {
+    dispatch(setSendingError(false));
+    dispatch(getSingleOfferReviews(data));
+    dispatch(setDataSending(false));
+  })
+  .catch(() => {
+    dispatch(setDataSending(false));
+    dispatch(setSendingError(true));
+  })
+);
+
+export const toggleFavoriteStatus = (id: number, isFavorite: boolean): APIAction => (dispatch, _getState, api) => (
+  api.post(`/favorite/${id}/${isFavorite ? FavStatus.NOT_FAV : FavStatus.FAV}`)
+  .then(({data}) => {
+    dispatch(updateOffers(data));
+    dispatch(setDataSending(false));
+  })
+);
 
 
