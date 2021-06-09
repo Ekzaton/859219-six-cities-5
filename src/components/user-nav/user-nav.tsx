@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {selectAuthStatus, selectUserData} from "../../store/user/selectors";
 import {logOut} from "../../store/user/api-actions";
 
-import {AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../const";
 
 const UserNav: React.FunctionComponent = () => {
   const authStatus = useSelector(selectAuthStatus);
@@ -20,7 +20,7 @@ const UserNav: React.FunctionComponent = () => {
           <li className="header__nav-item user">
             <Link
               className="header__nav-link header__nav-link--profile"
-              to={`/login`}
+              to={AppRoute.LOGIN}
             >
               <div className="header__avatar-wrapper user__avatar-wrapper"/>
               <span className="header__user-name user__name">Sign in</span>
@@ -31,7 +31,7 @@ const UserNav: React.FunctionComponent = () => {
           <li className="header__nav-item user">
             <Link
               className="header__nav-link header__nav-link--profile"
-              to={`/favorites`}
+              to={AppRoute.FAVORITES}
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
@@ -41,14 +41,13 @@ const UserNav: React.FunctionComponent = () => {
             </Link>
           </li>
           <li className="header__nav-item user">
-            <Link
+            <a
               className="header__nav-link header__nav-link--profile"
-              to={`/`}
-              style={{marginLeft: `5px`}}
+              style={{marginLeft: `10px`}}
               onClick={() => dispatch(logOut())}
             >
               <span className="header__user-name user__name">[Exit]</span>
-            </Link>
+            </a>
           </li>
         </ul>
       }

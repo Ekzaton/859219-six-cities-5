@@ -4,7 +4,7 @@ import {Redirect, Route} from "react-router-dom";
 
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../const";
 
 type Props = {
   exact: boolean;
@@ -21,7 +21,7 @@ const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
     <Route
       exact={exact}
       path={path}
-      render={() => isAuthorized ? render() : <Redirect to={`/login`}/>}
+      render={() => isAuthorized ? render() : <Redirect to={AppRoute.MAIN}/>}
     />
   );
 };

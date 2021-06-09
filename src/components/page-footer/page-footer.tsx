@@ -1,13 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {AppRoute} from "../../const";
+
 const PageFooter: React.FunctionComponent = () => {
 
   return (
     <footer className="footer container">
       <Link
         className="footer__logo-link"
-        to={`/`}
+        to={AppRoute.MAIN}
       >
         <img
           className="footer__logo"

@@ -1,7 +1,7 @@
 
 import {getAuthStatus, getUserData, redirectToRoute} from "./actions";
 import {APIAction} from "../index";
-import {AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../const";
 import {UserPost} from "../../types";
 
 export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
@@ -19,7 +19,7 @@ export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _get
     dispatch(getUserData(data));
     dispatch(getAuthStatus(AuthStatus.AUTH));
   })
-  .then(() => dispatch(redirectToRoute(`/`)))
+  .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
   .catch(() => {
     throw Error(`Ошибка авторизации`);
   })
@@ -30,7 +30,7 @@ export const logOut = (): APIAction => (dispatch, _getState, api) => (
   .then(() => {
     dispatch(getAuthStatus(AuthStatus.NO_AUTH));
   })
-  .then(() => dispatch(redirectToRoute(`/`)))
+  .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
   .catch(() => {
     throw Error(`Ошибка деавторизации`);
   })

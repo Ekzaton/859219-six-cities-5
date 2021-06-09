@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 import {getCurrentFiltering} from "../../store/app/actions";
 
-import {CardType, FilteringType} from "../../const";
+import {AppRoute, CardType, FilteringType} from "../../const";
 import {Offer} from "../../types";
 
 import OffersList from "../offers-list/offers-list";
@@ -27,7 +27,7 @@ const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
           <div className="favorites__locations locations locations--current">
             <div className="locations__item">
               <Link
-                to={`/`}
+                to={AppRoute.MAIN}
                 className="locations__item-link"
                 onClick={() => dispatch(getCurrentFiltering(city as FilteringType))}
               >

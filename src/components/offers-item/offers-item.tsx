@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../const";
+import {AppRoute, CardImgSize, CardType, BtnType, FavCardImgSize} from "../../const";
 import {Offer} from "../../types";
 import {capitalize, getRatingStars} from "../../utils";
 
@@ -29,7 +29,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
         </div>
       }
       <div className={`${type}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`/offer/${offer.id}`}>
+        <Link to={`${AppRoute.OFFER}${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -57,7 +57,9 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link to={`${AppRoute.OFFER}${offer.id}`}>
+            {offer.title}
+          </Link>
         </h2>
         <p className="place-card__type">{capitalize(offer.type)}</p>
       </div>

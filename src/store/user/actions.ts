@@ -1,6 +1,6 @@
 import {UserAction} from "./types";
 import {ActionType} from "../const";
-import {AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../const";
 import {User} from "../../types";
 
 export const getAuthStatus = (authStatus: AuthStatus): UserAction => ({
@@ -13,7 +13,7 @@ export const getUserData = (userData: User): UserAction => ({
   payload: userData
 });
 
-export const redirectToRoute = (route: string): UserAction => ({
+export const redirectToRoute = (route: AppRoute): UserAction => ({
   type: ActionType.REDIRECT_TO_ROUTE,
   payload: route
 });
