@@ -12,7 +12,6 @@ import {DataAction} from "./data/types";
 import {UserAction} from "./user/types";
 
 import {redirect} from "../middlewares/redirect";
-
 import {createAPI} from "../services/api";
 
 const api = createAPI();
