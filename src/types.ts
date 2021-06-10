@@ -50,7 +50,7 @@ export type User = {
 }
 
 export type UserPost = {
-  email: string | undefined;
-  password: string | undefined;
+  email: string;
+  password: string;
 }
 

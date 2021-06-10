@@ -15,9 +15,10 @@ type Props = {
 const Map: React.FunctionComponent<Props> = (props: Props) => {
   const {activeOfferID, offers, type} = props;
   const city = offers[0].city;
+  const mapRef = React.useRef() as React.MutableRefObject<HTMLElement>;
 
   React.useEffect(() => {
-    const map = Leaflet.map(`map`, {
+    const map = Leaflet.map(mapRef.current, {
       center: [city.location.latitude, city.location.longitude],
       zoom: city.location.zoom,
       scrollWheelZoom: false
@@ -43,7 +44,7 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <section
-      id="map"
+      ref={mapRef}
       className={`${type}__map map`}
     />
   );

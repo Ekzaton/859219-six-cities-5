@@ -4,8 +4,8 @@ import {useDispatch} from "react-redux";
 import {logIn} from "../../store/user/api-actions";
 
 const SignInForm: React.FunctionComponent = () => {
-  const emailRef = React.useRef<HTMLInputElement>(null);
-  const passwordRef = React.useRef<HTMLInputElement>(null);
+  const emailRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const passwordRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const dispatch = useDispatch();
 
   return (
@@ -15,7 +15,7 @@ const SignInForm: React.FunctionComponent = () => {
       method="post"
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
-        dispatch(logIn({email: emailRef.current?.value, password: passwordRef.current?.value}));
+        dispatch(logIn({email: emailRef.current.value, password: passwordRef.current.value}));
       }}
     >
       <div className="login__input-wrapper form__input-wrapper">
