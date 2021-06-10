@@ -12,17 +12,17 @@ export type DataState = {
 };
 
 type getAllOffersAction = {
-  type: typeof ActionType.GET_ALL_OFFERS,
+  type: ActionType.GET_ALL_OFFERS,
   payload: Offer[]
 }
 
 type getFavoriteOffersAction = {
-  type: typeof ActionType.GET_FAVORITE_OFFERS,
+  type: ActionType.GET_FAVORITE_OFFERS,
   payload: Offer[]
 }
 
 type getNearbyOffersAction = {
-  type: typeof ActionType.GET_NEARBY_OFFERS,
+  type: ActionType.GET_NEARBY_OFFERS,
   payload: Offer[]
 }
 

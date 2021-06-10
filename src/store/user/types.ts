@@ -8,17 +8,17 @@ export type UserState = {
 };
 
 type getAuthStatusAction = {
-  type: typeof ActionType.GET_AUTH_STATUS,
+  type: ActionType.GET_AUTH_STATUS,
   payload: AuthStatus
 }
 
 type getUserDataAction = {
-  type: typeof ActionType.GET_USER_DATA,
+  type: ActionType.GET_USER_DATA,
   payload: User
 }
 
 type redirectToRouteAction = {
-  type: typeof ActionType.REDIRECT_TO_ROUTE,
+  type: ActionType.REDIRECT_TO_ROUTE,
   payload: AppRoute
 }
 

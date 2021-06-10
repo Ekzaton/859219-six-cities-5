@@ -8,17 +8,17 @@ export type AppState = {
 };
 
 type getActiveOfferIDAction = {
-  type: typeof ActionType.GET_ACTIVE_OFFER_ID,
+  type: ActionType.GET_ACTIVE_OFFER_ID,
   payload: number | null
 }
 
 type getCurrentFilteringAction = {
-  type: typeof ActionType.GET_CURRENT_FILTERING,
+  type: ActionType.GET_CURRENT_FILTERING,
   payload: FilteringType
 }
 
 type getCurrentSortingAction = {
-  type: typeof ActionType.GET_CURRENT_SORTING,
+  type: ActionType.GET_CURRENT_SORTING,
   payload: SortingType
 }
 
