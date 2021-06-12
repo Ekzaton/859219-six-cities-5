@@ -29,7 +29,7 @@ export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): O
 export const updateFavoriteOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
   const index = offers.findIndex((offer) => offer.id === updatedOffer.id);
   return index < 0
-    ? [...offers.slice(), updatedOffer]
+    ? [...offers, updatedOffer]
     : [...offers.slice(0, index), ...offers.slice(index + 1)];
 };
 
