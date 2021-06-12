@@ -21,7 +21,7 @@ const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
     <Route
       exact={exact}
       path={path}
-      render={() => isAuthorized ? render() : <Redirect to={AppRoute.MAIN}/>}
+      render={() => isAuthorized ? render() : <Redirect to={AppRoute.LOGIN}/>}
     />
   );
 };

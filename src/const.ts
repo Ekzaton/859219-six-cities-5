@@ -69,6 +69,11 @@ export enum FilteringType {
   DUSSELDORF = `Dusseldorf`
 }
 
+export enum HeaderType {
+  MAIN = `main`,
+  LOGIN = `login`
+}
+
 export enum MapIconSize {
   WIDTH = 30,
   HEIGHT = WIDTH

@@ -23,7 +23,9 @@ const UserNav: React.FunctionComponent = () => {
               to={AppRoute.LOGIN}
             >
               <div className="header__avatar-wrapper user__avatar-wrapper"/>
-              <span className="header__user-name user__name">Sign in</span>
+              <span className="header__user-name user__name">
+                Sign in
+              </span>
             </Link>
           </li>
         </ul>
@@ -35,9 +37,14 @@ const UserNav: React.FunctionComponent = () => {
             >
               <div
                 className="header__avatar-wrapper user__avatar-wrapper"
-                style={{backgroundImage: `url(${userData.avatarUrl})`, borderRadius: `50%`}}
+                style={{
+                  backgroundImage: `url(${userData.avatarUrl})`,
+                  borderRadius: `50%`
+                }}
               />
-              <span className="header__user-name user__name">{userData.email}</span>
+              <span className="header__user-name user__name">
+                {userData.email}
+              </span>
             </Link>
           </li>
           <li className="header__nav-item user">
