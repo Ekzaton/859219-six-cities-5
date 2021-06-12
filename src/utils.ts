@@ -35,9 +35,7 @@ export const updateFavoriteOffers = (offers: Offer[], updatedOffer: Offer): Offe
 
 export const updateOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
   const index = offers.findIndex((offer) => offer.id === updatedOffer.id);
-  return index < 0
-    ? offers
-    : [...offers.slice(0, index), updatedOffer, ...offers.slice(index + 1)];
+  return [...offers.slice(0, index), updatedOffer, ...offers.slice(index + 1)];
 };
 
 export const validateComment = (comment: string): boolean => comment.length >= ReviewLehgth.MIN && comment.length <= ReviewLehgth.MAX;
