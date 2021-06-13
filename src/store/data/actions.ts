@@ -27,12 +27,12 @@ export const getSingleOfferReviews = (singleOfferReviews: Review[]): DataAction 
   payload: singleOfferReviews
 });
 
-export const setDataSending = (isDataSending: boolean): DataAction => ({
+export const setIsDataSending = (isDataSending: boolean): DataAction => ({
   type: ActionType.SET_IS_DATA_SENDING,
   payload: isDataSending
 });
 
-export const setSendingError = (isSendingError: boolean): DataAction => ({
+export const setIsSendingError = (isSendingError: boolean): DataAction => ({
   type: ActionType.SET_IS_SENDING_ERROR,
   payload: isSendingError
 });

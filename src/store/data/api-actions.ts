@@ -1,4 +1,13 @@
-import {getAllOffers, getFavoriteOffers, getNearbyOffers, getSingleOffer, getSingleOfferReviews, setDataSending, setSendingError, updateOffers} from "./actions";
+import {
+  getAllOffers,
+  getFavoriteOffers,
+  getNearbyOffers,
+  getSingleOffer,
+  getSingleOfferReviews,
+  setIsDataSending,
+  setIsSendingError,
+  updateOffers
+} from "./actions";
 import {APIAction} from "../index";
 import {APIEndpoint} from "../../const";
 import {ReviewPost} from "../../types";
@@ -42,13 +51,13 @@ export const fetchSingleOfferReviews = (id: string): APIAction => (dispatch, _ge
 export const sendReview = (id: number, {rating, comment}: ReviewPost): APIAction => (dispatch, _getState, api) => (
   api.post(APIEndpoint.COMMENTS + id, {rating, comment})
   .then(({data}) => {
-    dispatch(setSendingError(false));
+    dispatch(setIsSendingError(false));
     dispatch(getSingleOfferReviews(data));
-    dispatch(setDataSending(false));
+    dispatch(setIsDataSending(false));
   })
   .catch(() => {
-    dispatch(setDataSending(false));
-    dispatch(setSendingError(true));
+    dispatch(setIsDataSending(false));
+    dispatch(setIsSendingError(true));
   })
 );
 
@@ -56,7 +65,7 @@ export const toggleFavoriteStatus = (id: number, isFavorite: boolean): APIAction
   api.post(APIEndpoint.FAVORITE + id + getFavStatus(isFavorite))
   .then(({data}) => {
     dispatch(updateOffers(data));
-    dispatch(setDataSending(false));
+    dispatch(setIsDataSending(false));
   })
 );
 

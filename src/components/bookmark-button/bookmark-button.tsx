@@ -1,8 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {setDataSending} from "../../store/data/actions";
+import {setIsDataSending} from "../../store/data/actions";
+
 import {toggleFavoriteStatus} from "../../store/data/api-actions";
+
 import {selectIsDataSending} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
@@ -30,7 +32,7 @@ const BookmarkButton: React.FunctionComponent<Props> = (props: Props) => {
         type="button"
         onClick={(evt: React.FormEvent) => {
           evt.preventDefault();
-          dispatch(setDataSending(true));
+          dispatch(setIsDataSending(true));
           dispatch(toggleFavoriteStatus(offer.id, offer.isFavorite));
         }}
         disabled={isDataSending}

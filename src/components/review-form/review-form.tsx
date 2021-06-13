@@ -1,8 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {setDataSending} from "../../store/data/actions";
+import {setIsDataSending} from "../../store/data/actions";
+
 import {sendReview} from "../../store/data/api-actions";
+
 import {selectIsDataSending, selectIsSendingError} from "../../store/data/selectors";
 
 import {RATING_STARS_COUNT} from "../../const";
@@ -26,7 +28,7 @@ const ReviewForm: React.FunctionComponent<Props> = (props: Props) => {
       className="reviews__form form"
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
-        dispatch(setDataSending(true));
+        dispatch(setIsDataSending(true));
         dispatch(sendReview(id, {rating, comment}));
       }}
     >

@@ -36,12 +36,12 @@ type getSingleOfferReviewsAction = {
   payload: Review[]
 }
 
-type setDataSendingAction = {
+type setIsDataSendingAction = {
   type: ActionType.SET_IS_DATA_SENDING,
   payload: boolean
 }
 
-type setSendingErrorAction = {
+type setIsSendingErrorAction = {
   type: ActionType.SET_IS_SENDING_ERROR,
   payload: boolean
 }
@@ -51,5 +51,7 @@ type updateOffersAction = {
   payload: Offer
 }
 
-export type DataAction = getAllOffersAction | getFavoriteOffersAction | getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction | setDataSendingAction | setSendingErrorAction | updateOffersAction;
+export type DataAction = getAllOffersAction | getFavoriteOffersAction
+| getNearbyOffersAction | getSingleOfferAction | getSingleOfferReviewsAction
+| setIsDataSendingAction | setIsSendingErrorAction | updateOffersAction;
 
