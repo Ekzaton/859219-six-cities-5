@@ -19,7 +19,7 @@ const thunkWithAPI = thunk.withExtraArgument(api);
 const rootReducer = combineReducers({app: appReducer, data: dataReducer, user: userReducer});
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI as APIMiddleware, redirect)));
 
-export type RootState = ReturnType<typeof combineReducers>;
+export type RootState = ReturnType<typeof rootReducer>;
 type RootAction = AppAction | DataAction | UserAction;
 type APIMiddleware = ThunkMiddleware<RootState, RootAction, AxiosInstance>;
 export type APIAction = ThunkAction<void, RootState, AxiosInstance, RootAction>;
