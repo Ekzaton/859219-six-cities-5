@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
 import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
-import {selectActiveOfferID} from "../../store/app/selectors";
+
 import {selectNearbyOffers, selectSingleOffer, selectSingleOfferReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
@@ -19,7 +19,6 @@ import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
 const OfferPage: React.FunctionComponent = () => {
-  const activeOfferID = useSelector(selectActiveOfferID);
   const offer = useSelector(selectSingleOffer);
   const reviews = useSelector(selectSingleOfferReviews);
   const nearbyOffers = useSelector(selectNearbyOffers);
@@ -158,7 +157,7 @@ const OfferPage: React.FunctionComponent = () => {
               </div>
             </div>
             <Map
-              activeOfferID={activeOfferID}
+              activeOfferID={offer.id}
               offers={offers}
               type={MapType.PROPERTY}
             />
