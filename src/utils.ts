@@ -1,5 +1,5 @@
 import {FavStatus, SortingType, ReviewLehgth} from "./const";
-import {Offer} from "./types";
+import {Offer, Review} from "./types";
 
 export const capitalize = (title: string): string => title[0].toUpperCase() + title.slice(1);
 
@@ -16,15 +16,18 @@ export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): O
     case SortingType.POPULAR:
       return [...offers];
     case SortingType.PRICE_HIGH_TO_LOW:
-      return [...offers].sort((a, b) => b.price - a.price);
+      return [...offers].sort((offer1, offer2) => offer2.price - offer1.price);
     case SortingType.PRICE_LOW_TO_HIGH:
-      return [...offers].sort((a, b) => a.price - b.price);
+      return [...offers].sort((offer1, offer2) => offer1.price - offer2.price);
     case SortingType.TOP_RATED_FIRST:
-      return [...offers].sort((a, b) => b.rating - a.rating);
+      return [...offers].sort((offer1, offer2) => offer2.rating - offer1.rating);
     default:
       return offers;
   }
 };
+
+export const getSortedReviews = (reviews: Review[]): Review[] =>
+  [...reviews].sort((review1, review2) => new Date(review2.date).getTime() - new Date(review1.date).getTime());
 
 export const updateFavoriteOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
   const index = offers.findIndex((offer) => offer.id === updatedOffer.id);
@@ -38,6 +41,7 @@ export const updateOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
   return [...offers.slice(0, index), updatedOffer, ...offers.slice(index + 1)];
 };
 
-export const validateComment = (comment: string): boolean => comment.length >= ReviewLehgth.MIN && comment.length <= ReviewLehgth.MAX;
+export const validateComment = (comment: string): boolean =>
+  comment.length >= ReviewLehgth.MIN && comment.length <= ReviewLehgth.MAX;
 
 
