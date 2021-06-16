@@ -12,6 +12,13 @@ export const getFavStatus = (isFavorite: boolean): string => `/${isFavorite ? Fa
 export const getFilteredOffers = (currentFiltering: FilteringType, offers: Offer[]): Offer[] =>
   offers.filter((offer) => offer.city.name === currentFiltering);
 
+export const getOffersByCity = (offers: Offer[]): Record<string, Offer[]> =>
+  offers.reduce<Record<string, Offer[]>>((acc, offer) => {
+    const city = offer.city.name;
+    acc[city] = acc[city] ? [...(acc[city]), offer] : [offer];
+    return acc;
+  }, {});
+
 export const getRatingStars = (rating: number): string => `${rating * 20}%`;
 
 export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): Offer[] => {
