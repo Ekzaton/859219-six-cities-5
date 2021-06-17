@@ -2,7 +2,7 @@ import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
 import {fetchFavoriteOffers} from "../../store/data/api-actions";
-import {selectOffersByCity} from "../../store/data/selectors";
+import {selectFavoriteOffersByCity} from "../../store/data/selectors";
 
 import FavoritesList from "../favorites-list/favorites-list";
 import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
@@ -10,8 +10,8 @@ import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
 
 const FavoritesPage: React.FunctionComponent = () => {
-  const offersByCity = useSelector(selectOffersByCity);
-  const noOffers = Object.entries(offersByCity).length === 0;
+  const favoriteOffersByCity = useSelector(selectFavoriteOffersByCity);
+  const noOffers = Object.keys(favoriteOffersByCity).length === 0;
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -30,7 +30,7 @@ const FavoritesPage: React.FunctionComponent = () => {
             : <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <FavoritesList
-                offersByCity={offersByCity}
+                favoriteOffersByCity={favoriteOffersByCity}
               />
             </section>
           }

@@ -10,16 +10,16 @@ import {Offer} from "../../types";
 import OffersList from "../offers-list/offers-list";
 
 type Props = {
-  offersByCity: Record<string, Offer[]>;
+  favoriteOffersByCity: Record<string, Offer[]>;
 }
 
 const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
-  const {offersByCity} = props;
+  const {favoriteOffersByCity} = props;
   const dispatch = useDispatch();
 
   return (
     <ul className="favorites__list">
-      {Object.entries(offersByCity).map(([city, offers], i) =>
+      {Object.entries(favoriteOffersByCity).map(([city, offers], i) =>
         <li
           key={`city-${i}`}
           className="favorites__locations-items"

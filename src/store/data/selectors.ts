@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 
 import {RootState} from "../index";
 import {Offer, Review} from "../../types";
-import {getOffersByCity} from "../../utils";
+import {getFavoriteOffersByCity} from "../../utils";
 
 export const selectAllOffers = (state: RootState): Offer[] => state.data.allOffers;
 export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.favoriteOffers;
@@ -12,7 +12,7 @@ export const selectSingleOfferReviews = (state: RootState): Review[] => state.da
 export const selectIsDataSending = (state: RootState): boolean => state.data.isDataSending;
 export const selectIsSendingError = (state: RootState): boolean => state.data.isSendingError;
 
-export const selectOffersByCity = createSelector(
+export const selectFavoriteOffersByCity = createSelector(
     [selectFavoriteOffers],
-    (offers) => getOffersByCity(offers)
+    (offers) => getFavoriteOffersByCity(offers)
 );
