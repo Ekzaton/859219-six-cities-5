@@ -10,6 +10,7 @@ import {selectAuthStatus} from "../../store/user/selectors";
 
 import {AuthStatus} from "../../consts/common";
 import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
+
 import {Offer} from "../../types";
 
 type Props = {

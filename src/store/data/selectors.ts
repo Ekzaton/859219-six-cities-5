@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
 import {selectCurrentFiltering, selectCurrentSorting} from "../app/selectors";
-import {RootState} from "../index";
+import {RootState} from "../store";
 import {Offer, Review} from "../../types";
 import {getFavoriteOffersByCity, getFilteredOffers, getSortedOffers, getSortedReviews} from "../../utils/store";
 

@@ -8,7 +8,7 @@ import {
   setIsSendingError,
   updateOffers
 } from "./actions";
-import {APIAction} from "../index";
+import {APIAction} from "../store";
 import {APIEndpoint} from "../../consts/store";
 import {ReviewPost} from "../../types";
 import {getFavStatus} from "../../utils/store";

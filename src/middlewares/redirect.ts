@@ -1,6 +1,6 @@
 import {Middleware} from "redux";
 
-import history from "../history";
+import history from "../history/history";
 import {ActionType} from "../consts/store";
 
 export const redirect: Middleware = () => (next) => (action) => {

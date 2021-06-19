@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {Router} from "react-router-dom";
 
-import history from "./history/index";
-import store from "./store/index";
+import history from "./history/history";
+import store from "./store/store";
 
 import {fetchAllOffers} from "./store/data/api-actions";
 import {checkAuthStatus} from "./store/user/api-actions";

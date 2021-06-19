@@ -1,4 +1,4 @@
-import {RootState} from "../index";
+import {RootState} from "../store";
 import {FilteringType, SortingType} from "../../consts/common";
 
 export const selectActiveOfferID = (state: RootState): number | null => state.app.activeOfferID;

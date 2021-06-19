@@ -1,6 +1,6 @@
 
 import {getAuthStatus, getUserData, redirectToRoute} from "./actions";
-import {APIAction} from "../index";
+import {APIAction} from "../store";
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {APIEndpoint} from "../../consts/store";
 import {UserPost} from "../../types";
