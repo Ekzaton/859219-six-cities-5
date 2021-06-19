@@ -2,15 +2,6 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
-import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
-
-import {selectNearbyOffers, selectSingleOffer, selectSortedReviews} from "../../store/data/selectors";
-import {selectAuthStatus} from "../../store/user/selectors";
-
-import {AuthStatus} from "../../consts/common";
-import {OFFER_IMAGES_COUNT, CardType, BtnType, MapType} from "../../consts/components";
-import {getOfferType, getRatingStars} from "../../utils/components";
-
 import BookmarkButton from "../bookmark-button/bookmark-button";
 import Map from "../map/map";
 import OfferPageLoading from "../offer-page-loading/offer-page-loading";
@@ -18,6 +9,16 @@ import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
+
+import {AuthStatus} from "../../consts/common";
+import {OFFER_IMAGES_COUNT, CardType, BtnType, MapType} from "../../consts/components";
+
+import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
+
+import {selectNearbyOffers, selectSingleOffer, selectSortedReviews} from "../../store/data/selectors";
+import {selectAuthStatus} from "../../store/user/selectors";
+
+import {getOfferType, getRatingStars} from "../../utils/components";
 
 const OfferPage: React.FunctionComponent = () => {
   const offer = useSelector(selectSingleOffer);

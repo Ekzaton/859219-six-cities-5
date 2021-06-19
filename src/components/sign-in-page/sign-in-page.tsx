@@ -2,16 +2,16 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {redirectToRoute} from "../../store/user/actions";
-
-import {selectCurrentFiltering} from "../../store/app/selectors";
-import {selectAuthStatus} from "../../store/user/selectors";
+import PageHeader from "../page-header/page-header";
+import SignInForm from "../sign-in-form/sign-in-form";
 
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {HeaderType} from "../../consts/components";
 
-import PageHeader from "../page-header/page-header";
-import SignInForm from "../sign-in-form/sign-in-form";
+import {redirectToRoute} from "../../store/user/actions";
+
+import {selectCurrentFiltering} from "../../store/app/selectors";
+import {selectAuthStatus} from "../../store/user/selectors";
 
 const SignInPage: React.FunctionComponent = () => {
   const currentCity = useSelector(selectCurrentFiltering);

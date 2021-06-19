@@ -1,9 +1,9 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {getCurrentSorting} from "../../store/app/actions";
-
 import {SortingType} from "../../consts/common";
+
+import {getCurrentSorting} from "../../store/app/actions";
 
 type Props = {
   currentSorting: SortingType;

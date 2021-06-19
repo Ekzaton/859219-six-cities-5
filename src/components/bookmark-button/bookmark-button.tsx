@@ -1,15 +1,15 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
+import {AuthStatus} from "../../consts/common";
+import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
+
 import {setIsDataSending} from "../../store/data/actions";
 
 import {toggleFavoriteStatus} from "../../store/data/api-actions";
 
 import {selectIsDataSending} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
-
-import {AuthStatus} from "../../consts/common";
-import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
 
 import {Offer} from "../../types";
 

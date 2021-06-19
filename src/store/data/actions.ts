@@ -1,5 +1,7 @@
 import {DataAction} from "./types";
+
 import {ActionType} from "../../consts/store";
+
 import {Offer, Review} from "../../types";
 
 export const getAllOffers = (allOffers: Offer[]): DataAction => ({

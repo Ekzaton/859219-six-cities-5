@@ -1,13 +1,14 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
+import {RATING_STARS_COUNT} from "../../consts/components";
+
 import {setIsDataSending} from "../../store/data/actions";
 
 import {sendReview} from "../../store/data/api-actions";
 
 import {selectIsDataSending, selectIsSendingError} from "../../store/data/selectors";
 
-import {RATING_STARS_COUNT} from "../../consts/components";
 import {getRatingArray, validateComment} from "../../utils/components";
 
 type Props = {

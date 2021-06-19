@@ -2,9 +2,9 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {Redirect, Route} from "react-router-dom";
 
-import {selectAuthStatus} from "../../store/user/selectors";
-
 import {AppRoute, AuthStatus} from "../../consts/common";
+
+import {selectAuthStatus} from "../../store/user/selectors";
 
 type Props = {
   exact: boolean;

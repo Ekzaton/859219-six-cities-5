@@ -1,13 +1,13 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 
-import {AppRoute} from "../../consts/common";
-
 import FavoritesPage from "../favorites-page/favorites-page";
 import MainPage from "../main-page/main-page";
 import OfferPage from "../offer-page/offer-page";
 import PrivateRoute from "../private-route/private-route";
 import SignInPage from "../sign-in-page/sign-in-page";
+
+import {AppRoute} from "../../consts/common";
 
 const App: React.FunctionComponent = () => {
   return (

@@ -1,5 +1,6 @@
 import {FilteringType, SortingType} from "../consts/common";
 import {FavStatus} from "../consts/store";
+
 import {Offer, Review} from "../types";
 
 export const getFavStatus = (isFavorite: boolean): string => `/${isFavorite ? FavStatus.NOT_FAV : FavStatus.FAV}`;

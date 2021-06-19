@@ -1,13 +1,14 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {fetchFavoriteOffers} from "../../store/data/api-actions";
-import {selectFavoriteOffersByCity} from "../../store/data/selectors";
-
 import FavoritesList from "../favorites-list/favorites-list";
 import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
 import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
+
+import {fetchFavoriteOffers} from "../../store/data/api-actions";
+
+import {selectFavoriteOffersByCity} from "../../store/data/selectors";
 
 const FavoritesPage: React.FunctionComponent = () => {
   const favoriteOffersByCity = useSelector(selectFavoriteOffersByCity);

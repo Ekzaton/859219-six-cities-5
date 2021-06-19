@@ -1,4 +1,5 @@
 import {ActionType} from "../../consts/store";
+
 import {Offer, Review} from "../../types";
 
 export type DataState = {

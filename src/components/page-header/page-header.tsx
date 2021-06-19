@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import UserNav from "../user-nav/user-nav";
+
 import {AppRoute} from "../../consts/common";
 import {HeaderType} from "../../consts/components";
-
-import UserNav from "../user-nav/user-nav";
 
 type Props = {
   type?: HeaderType;

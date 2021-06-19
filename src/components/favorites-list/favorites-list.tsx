@@ -2,13 +2,14 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {getCurrentFiltering} from "../../store/app/actions";
+import OffersList from "../offers-list/offers-list";
 
 import {AppRoute, FilteringType} from "../../consts/common";
 import {CardType} from "../../consts/components";
-import {Offer} from "../../types";
 
-import OffersList from "../offers-list/offers-list";
+import {getCurrentFiltering} from "../../store/app/actions";
+
+import {Offer} from "../../types";
 
 type Props = {
   favoriteOffersByCity: Record<string, Offer[]>;

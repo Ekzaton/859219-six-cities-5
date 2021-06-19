@@ -1,7 +1,8 @@
 import React from "react";
 
-import {Review} from "../../types";
 import {getRatingStars, getReviewDate} from "../../utils/components";
+
+import {Review} from "../../types";
 
 type Props = {
   review: Review;

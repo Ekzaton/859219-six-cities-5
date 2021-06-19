@@ -1,10 +1,11 @@
 import Leaflet from "leaflet";
 import React from "react";
 
-import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../../consts/components";
-import {Offer} from "../../types";
-
 import "leaflet/dist/leaflet.css";
+
+import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../../consts/components";
+
+import {Offer} from "../../types";
 
 type Props = {
   activeOfferID: number | null;

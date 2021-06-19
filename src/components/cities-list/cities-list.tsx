@@ -1,9 +1,9 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {getCurrentFiltering} from "../../store/app/actions";
-
 import {FilteringType} from "../../consts/common";
+
+import {getCurrentFiltering} from "../../store/app/actions";
 
 type Props = {
   currentCity: FilteringType;

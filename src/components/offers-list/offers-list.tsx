@@ -1,12 +1,13 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {getActiveOfferID} from "../../store/app/actions";
+import OffersItem from "../offers-item/offers-item";
 
 import {CardType} from "../../consts/components";
-import {Offer} from "../../types";
 
-import OffersItem from "../offers-item/offers-item";
+import {getActiveOfferID} from "../../store/app/actions";
+
+import {Offer} from "../../types";
 
 type Props = {
   offers: Offer[];

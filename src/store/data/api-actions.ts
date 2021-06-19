@@ -8,10 +8,14 @@ import {
   setIsSendingError,
   updateOffers
 } from "./actions";
+
 import {APIAction} from "../store";
+
 import {APIEndpoint} from "../../consts/store";
-import {ReviewPost} from "../../types";
+
 import {getFavStatus} from "../../utils/store";
+
+import {ReviewPost} from "../../types";
 
 export const fetchAllOffers = (): APIAction => (dispatch, _getState, api) =>
   api.get(APIEndpoint.HOTELS)

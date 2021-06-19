@@ -1,17 +1,17 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting} from "../../store/app/selectors";
-import {selectSortedOffers} from "../../store/data/selectors";
-
-import {CardType, HeaderType, MapType} from "../../consts/components";
-
 import CitiesList from "../cities-list/cities-list";
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import SortingForm from "../sorting-form/sorting-form";
+
+import {CardType, HeaderType, MapType} from "../../consts/components";
+
+import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting} from "../../store/app/selectors";
+import {selectSortedOffers} from "../../store/data/selectors";
 
 const MainPage: React.FunctionComponent = () => {
   const activeOfferID = useSelector(selectActiveOfferID);

@@ -1,6 +1,8 @@
 import {UserAction} from "./types";
+
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
+
 import {User} from "../../types";
 
 export const getAuthStatus = (authStatus: AuthStatus): UserAction => ({

@@ -1,12 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import BookmarkButton from "../bookmark-button/bookmark-button";
+
 import {AppRoute} from "../../consts/common";
 import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../consts/components";
-import {Offer} from "../../types";
+
 import {getOfferType, getRatingStars} from "../../utils/components";
 
-import BookmarkButton from "../bookmark-button/bookmark-button";
+import {Offer} from "../../types";
 
 type Props = {
   offer: Offer;
