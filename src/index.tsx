@@ -8,6 +8,7 @@ import App from "./components/app/app";
 import history from "./history/history";
 
 import store from "./store/store";
+
 import {fetchAllOffers} from "./store/data/api-actions";
 import {checkAuthStatus} from "./store/user/api-actions";
 
