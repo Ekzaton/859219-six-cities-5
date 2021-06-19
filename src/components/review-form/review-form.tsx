@@ -80,14 +80,18 @@ const ReviewForm: React.FunctionComponent<Props> = (props: Props) => {
           Submit
         </button>
         {
-          (!isValid && <p className="reviews__help">
+          !isValid && <p className="reviews__help">
            To submit review please make sure to set <span className="reviews__star">rating</span>&nbsp;
             and describe your stay with at least <b className="reviews__text-amount">50 characters</b>
-          </p>)
+          </p>
             ||
-          (isDataSending && <p className="reviews__help" style={{color: `red`}}>Sending data. Please wait...</p>)
+          isDataSending && <p className="reviews__help" style={{color: `red`}}>
+            Sending data. Please wait...
+          </p>
             ||
-          (isSendingError && <p className="reviews__help" style={{color: `red`}}>Sending error! Please try again later...</p>)
+          isSendingError && <p className="reviews__help" style={{color: `red`}}>
+            Sending error! Please try again later...
+          </p>
         }
       </div>
     </form>
