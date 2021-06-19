@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting} from "../../store/app/selectors";
 import {selectSortedOffers} from "../../store/data/selectors";
 
-import {CardType, HeaderType, MapType} from "../../const";
+import {CardType, HeaderType, MapType} from "../../consts/components";
 
 import CitiesList from "../cities-list/cities-list";
 import MainPageEmpty from "../main-page-empty/main-page-empty";

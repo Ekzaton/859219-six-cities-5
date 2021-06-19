@@ -1,6 +1,6 @@
 import React from "react";
 
-import {OFFER_REVIEWS_COUNT} from "../../const";
+import {OFFER_REVIEWS_COUNT} from "../../consts/components";
 import {Review} from "../../types";
 
 import ReviewsItem from "../reviews-item/reviews-item";

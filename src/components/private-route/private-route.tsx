@@ -4,7 +4,7 @@ import {Redirect, Route} from "react-router-dom";
 
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {AppRoute, AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../consts/common";
 
 type Props = {
   exact: boolean;

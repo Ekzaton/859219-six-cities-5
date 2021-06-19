@@ -2,28 +2,6 @@ export const OFFER_IMAGES_COUNT = 6;
 export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
 
-export enum APIEndpoint {
-  HOTELS = `/hotels/`,
-  NEARBY = `/nearby/`,
-  FAVORITE = `/favorite/`,
-  COMMENTS = `/comments/`,
-  LOGIN = `/login/`,
-  LOGOUT = `/logout/`
-}
-
-export enum AppRoute {
-  MAIN = `/`,
-  LOGIN = `/login/`,
-  FAVORITES = `/favorites/`,
-  OFFER_ID = `/offer/:id/`,
-  OFFER = `/offer/`
-}
-
-export enum AuthStatus {
-  AUTH = `auth`,
-  NO_AUTH = `no-auth`
-}
-
 export enum BtnBigSize {
   WIDTH = 31,
   HEIGHT = 33
@@ -53,20 +31,6 @@ export enum CardType {
 export enum FavCardImgSize {
   WIDTH = 150,
   HEIGHT = 110
-}
-
-export enum FavStatus {
-  FAV = 1,
-  NOT_FAV = 0,
-}
-
-export enum FilteringType {
-  PARIS = `Paris`,
-  COLOGNE = `Cologne`,
-  BRUSSELS = `Brussels`,
-  AMSTERDAM = `Amsterdam`,
-  HAMBURG = `Hamburg`,
-  DUSSELDORF = `Dusseldorf`
 }
 
 export enum HeaderType {
@@ -103,11 +67,4 @@ export enum ReviewDate {
 export enum ReviewLehgth {
   MIN = 50,
   MAX = 300
-}
-
-export enum SortingType {
-  POPULAR = `Popular`,
-  PRICE_LOW_TO_HIGH = `Price: low to high`,
-  PRICE_HIGH_TO_LOW = `Price: high to low`,
-  TOP_RATED_FIRST = `Top rated first`
 }

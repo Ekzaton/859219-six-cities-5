@@ -1,4 +1,4 @@
-import {ReviewDate, ReviewLehgth} from "../const";
+import {ReviewDate, ReviewLehgth} from "../consts/components";
 
 export const getOfferType = (type: string): string => type[0].toUpperCase() + type.slice(1);
 

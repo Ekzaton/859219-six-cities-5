@@ -8,7 +8,8 @@ import {toggleFavoriteStatus} from "../../store/data/api-actions";
 import {selectIsDataSending} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {AuthStatus, BtnBigSize, BtnSize, BtnType} from "../../const";
+import {AuthStatus} from "../../consts/common";
+import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
 import {Offer} from "../../types";
 
 type Props = {

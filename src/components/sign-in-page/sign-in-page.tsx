@@ -7,7 +7,8 @@ import {redirectToRoute} from "../../store/user/actions";
 import {selectCurrentFiltering} from "../../store/app/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {AppRoute, AuthStatus, HeaderType} from "../../const";
+import {AppRoute, AuthStatus} from "../../consts/common";
+import {HeaderType} from "../../consts/components";
 
 import PageHeader from "../page-header/page-header";
 import SignInForm from "../sign-in-form/sign-in-form";

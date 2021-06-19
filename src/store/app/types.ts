@@ -1,5 +1,5 @@
-import {ActionType} from "../const";
-import {FilteringType, SortingType} from "../../const";
+import {FilteringType, SortingType} from "../../consts/common";
+import {ActionType} from "../../consts/store";
 
 export type AppState = {
   activeOfferID: number | null,

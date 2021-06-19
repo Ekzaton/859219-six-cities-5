@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../consts/common";
 
 import FavoritesPage from "../favorites-page/favorites-page";
 import MainPage from "../main-page/main-page";

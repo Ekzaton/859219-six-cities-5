@@ -1,7 +1,7 @@
 import axios, {AxiosError, AxiosInstance, AxiosResponse} from "axios";
 import camelcaseKeys from "camelcase-keys";
 
-import {BASE_URL, REQUEST_TIMEOUT, HTTPCode} from "./const";
+import {BASE_URL, REQUEST_TIMEOUT, HTTPCode} from "../consts/api";
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({

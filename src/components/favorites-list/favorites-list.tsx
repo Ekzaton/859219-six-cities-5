@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 
 import {getCurrentFiltering} from "../../store/app/actions";
 
-import {AppRoute, CardType, FilteringType} from "../../const";
+import {AppRoute, FilteringType} from "../../consts/common";
+import {CardType} from "../../consts/components";
 import {Offer} from "../../types";
 
 import OffersList from "../offers-list/offers-list";

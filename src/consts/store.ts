@@ -14,3 +14,17 @@ export enum ActionType {
   SET_IS_SENDING_ERROR = `SET_IS_SENDING_ERROR`,
   UPDATE_OFFERS = `UPDATE_OFFERS`
 }
+
+export enum APIEndpoint {
+  HOTELS = `/hotels/`,
+  NEARBY = `/nearby/`,
+  FAVORITE = `/favorite/`,
+  COMMENTS = `/comments/`,
+  LOGIN = `/login/`,
+  LOGOUT = `/logout/`
+}
+
+export enum FavStatus {
+  FAV = 1,
+  NOT_FAV = 0,
+}

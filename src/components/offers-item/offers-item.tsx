@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {AppRoute, CardImgSize, CardType, BtnType, FavCardImgSize} from "../../const";
+import {AppRoute} from "../../consts/common";
+import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../consts/components";
 import {Offer} from "../../types";
 import {getOfferType, getRatingStars} from "../../utils/components";
 

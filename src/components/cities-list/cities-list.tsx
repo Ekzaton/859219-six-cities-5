@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {getCurrentFiltering} from "../../store/app/actions";
 
-import {FilteringType} from "../../const";
+import {FilteringType} from "../../consts/common";
 
 type Props = {
   currentCity: FilteringType;

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {selectAuthStatus, selectUserData} from "../../store/user/selectors";
 import {logOut} from "../../store/user/api-actions";
 
-import {AppRoute, AuthStatus} from "../../const";
+import {AppRoute, AuthStatus} from "../../consts/common";
 
 const UserNav: React.FunctionComponent = () => {
   const authStatus = useSelector(selectAuthStatus);

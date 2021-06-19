@@ -1,6 +1,6 @@
 import {UserAction, UserState} from "./types";
-import {ActionType} from "../const";
-import {AuthStatus} from "../../const";
+import {AuthStatus} from "../../consts/common";
+import {ActionType} from "../../consts/store";
 import {User} from "../../types";
 
 const initialState: UserState = {

@@ -9,7 +9,7 @@ import {
   updateOffers
 } from "./actions";
 import {APIAction} from "../index";
-import {APIEndpoint} from "../../const";
+import {APIEndpoint} from "../../consts/store";
 import {ReviewPost} from "../../types";
 import {getFavStatus} from "../../utils/store";
 

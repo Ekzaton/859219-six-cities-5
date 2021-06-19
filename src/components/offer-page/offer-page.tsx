@@ -7,7 +7,8 @@ import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../.
 import {selectNearbyOffers, selectSingleOffer, selectSortedReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {OFFER_IMAGES_COUNT, AuthStatus, CardType, BtnType, MapType} from "../../const";
+import {AuthStatus} from "../../consts/common";
+import {OFFER_IMAGES_COUNT, CardType, BtnType, MapType} from "../../consts/components";
 import {getOfferType, getRatingStars} from "../../utils/components";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";

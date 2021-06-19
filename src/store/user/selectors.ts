@@ -1,5 +1,5 @@
 import {RootState} from "../index";
-import {AuthStatus} from "../../const";
+import {AuthStatus} from "../../consts/common";
 import {User} from "../../types";
 
 export const selectAuthStatus = (state: RootState): AuthStatus => state.user.authStatus;

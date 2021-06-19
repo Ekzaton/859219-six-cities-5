@@ -1,5 +1,5 @@
 import {RootState} from "../index";
-import {FilteringType, SortingType} from "../../const";
+import {FilteringType, SortingType} from "../../consts/common";
 
 export const selectActiveOfferID = (state: RootState): number | null => state.app.activeOfferID;
 export const selectCurrentFiltering = (state: RootState): FilteringType => state.app.currentFiltering;
