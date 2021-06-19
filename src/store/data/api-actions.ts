@@ -11,7 +11,7 @@ import {
 import {APIAction} from "../index";
 import {APIEndpoint} from "../../const";
 import {ReviewPost} from "../../types";
-import {getFavStatus} from "../../utils";
+import {getFavStatus} from "../../utils/store";
 
 export const fetchAllOffers = (): APIAction => (dispatch, _getState, api) =>
   api.get(APIEndpoint.HOTELS)

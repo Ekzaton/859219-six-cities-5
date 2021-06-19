@@ -1,8 +1,9 @@
 import {createSelector} from 'reselect';
 
+import {selectCurrentFiltering, selectCurrentSorting} from "../app/selectors";
 import {RootState} from "../index";
 import {Offer, Review} from "../../types";
-import {getFavoriteOffersByCity} from "../../utils";
+import {getFavoriteOffersByCity, getFilteredOffers, getSortedOffers, getSortedReviews} from "../../utils/store";
 
 export const selectAllOffers = (state: RootState): Offer[] => state.data.allOffers;
 export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.favoriteOffers;
@@ -15,4 +16,19 @@ export const selectIsSendingError = (state: RootState): boolean => state.data.is
 export const selectFavoriteOffersByCity = createSelector(
     [selectFavoriteOffers],
     (offers) => getFavoriteOffersByCity(offers)
+);
+
+export const selectFilteredOffers = createSelector(
+    [selectCurrentFiltering, selectAllOffers],
+    (currentFiltering, offers) => getFilteredOffers(currentFiltering, offers)
+);
+
+export const selectSortedOffers = createSelector(
+    [selectCurrentSorting, selectFilteredOffers],
+    (currentSorting, offers) => getSortedOffers(currentSorting, offers)
+);
+
+export const selectSortedReviews = createSelector(
+    [selectSingleOfferReviews],
+    (reviews) => getSortedReviews(reviews)
 );

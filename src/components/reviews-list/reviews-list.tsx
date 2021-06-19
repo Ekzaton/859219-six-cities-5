@@ -2,7 +2,6 @@ import React from "react";
 
 import {OFFER_REVIEWS_COUNT} from "../../const";
 import {Review} from "../../types";
-import {getSortedReviews} from "../../utils";
 
 import ReviewsItem from "../reviews-item/reviews-item";
 
@@ -15,7 +14,7 @@ const ReviewsList: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <ul className="reviews__list">
-      {getSortedReviews(reviews).slice(0, OFFER_REVIEWS_COUNT).map((review, i) =>
+      {reviews.slice(0, OFFER_REVIEWS_COUNT).map((review, i) =>
         <ReviewsItem
           key={`review-${i}`}
           review={review}

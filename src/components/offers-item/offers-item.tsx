@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {AppRoute, CardImgSize, CardType, BtnType, FavCardImgSize} from "../../const";
 import {Offer} from "../../types";
-import {capitalize, getRatingStars} from "../../utils";
+import {getOfferType, getRatingStars} from "../../utils/components";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 
@@ -61,7 +61,9 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
             {offer.title}
           </Link>
         </h2>
-        <p className="place-card__type">{capitalize(offer.type)}</p>
+        <p className="place-card__type">
+          {getOfferType(offer.type)}
+        </p>
       </div>
     </article>
   );

@@ -1,7 +1,7 @@
 import {DataAction, DataState} from "./types";
 import {ActionType} from "../const";
 import {Offer} from "../../types";
-import {updateFavoriteOffers, updateOffers} from "../../utils";
+import {getUpdatedFavoriteOffers, getUpdatedOffers} from "../../utils/store";
 
 const initialState: DataState = {
   allOffers: [],
@@ -31,9 +31,9 @@ export const dataReducer = (state = initialState, action: DataAction): DataState
       return {...state, isSendingError: action.payload};
     case ActionType.UPDATE_OFFERS:
       return {...state,
-        allOffers: updateOffers(state.allOffers, action.payload),
-        favoriteOffers: updateFavoriteOffers(state.favoriteOffers, action.payload),
-        nearbyOffers: updateOffers(state.nearbyOffers, action.payload),
+        allOffers: getUpdatedOffers(state.allOffers, action.payload),
+        favoriteOffers: getUpdatedFavoriteOffers(state.favoriteOffers, action.payload),
+        nearbyOffers: getUpdatedOffers(state.nearbyOffers, action.payload),
         singleOffer: action.payload
       };
     default:

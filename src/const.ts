@@ -94,6 +94,12 @@ export enum MapType {
   PROPERTY = `property`
 }
 
+export enum ReviewDate {
+  LOCALE = `en-US`,
+  MONTH = `long`,
+  YEAR = `numeric`
+}
+
 export enum ReviewLehgth {
   MIN = 50,
   MAX = 300

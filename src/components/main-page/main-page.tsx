@@ -1,7 +1,8 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting, selectSortedOffers} from "../../store/app/selectors";
+import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting} from "../../store/app/selectors";
+import {selectSortedOffers} from "../../store/data/selectors";
 
 import {CardType, HeaderType, MapType} from "../../const";
 

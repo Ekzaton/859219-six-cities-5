@@ -8,7 +8,7 @@ import {sendReview} from "../../store/data/api-actions";
 import {selectIsDataSending, selectIsSendingError} from "../../store/data/selectors";
 
 import {RATING_STARS_COUNT} from "../../const";
-import {getArray, validateComment} from "../../utils";
+import {getRatingArray, validateComment} from "../../utils/components";
 
 type Props = {
   id: number;
@@ -34,7 +34,7 @@ const ReviewForm: React.FunctionComponent<Props> = (props: Props) => {
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {getArray(RATING_STARS_COUNT).map((input, i) =>
+        {getRatingArray(RATING_STARS_COUNT).map((input, i) =>
           <React.Fragment key={`input-${i}`}>
             <input
               className="form__rating-input visually-hidden"

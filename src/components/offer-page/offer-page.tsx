@@ -4,11 +4,11 @@ import {useParams} from "react-router-dom";
 
 import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
 
-import {selectNearbyOffers, selectSingleOffer, selectSingleOfferReviews} from "../../store/data/selectors";
+import {selectNearbyOffers, selectSingleOffer, selectSortedReviews} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
 import {OFFER_IMAGES_COUNT, AuthStatus, CardType, BtnType, MapType} from "../../const";
-import {capitalize, getRatingStars} from "../../utils";
+import {getOfferType, getRatingStars} from "../../utils/components";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 import Map from "../map/map";
@@ -20,7 +20,7 @@ import ReviewsList from "../reviews-list/reviews-list";
 
 const OfferPage: React.FunctionComponent = () => {
   const offer = useSelector(selectSingleOffer);
-  const reviews = useSelector(selectSingleOfferReviews);
+  const reviews = useSelector(selectSortedReviews);
   const nearbyOffers = useSelector(selectNearbyOffers);
   const authStatus = useSelector(selectAuthStatus);
 
@@ -85,7 +85,7 @@ const OfferPage: React.FunctionComponent = () => {
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {capitalize(offer.type)}
+                    {getOfferType(offer.type)}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
                     {offer.bedrooms} Bedrooms
