@@ -28,12 +28,12 @@ type getNearbyOffersAction = {
 }
 
 type getSingleOfferAction = {
-  type: typeof ActionType.GET_SINGLE_OFFER,
+  type: ActionType.GET_SINGLE_OFFER,
   payload: Offer
 }
 
 type getSingleOfferReviewsAction = {
-  type: typeof ActionType.GET_SINGLE_OFFER_REVIEWS,
+  type: ActionType.GET_SINGLE_OFFER_REVIEWS,
   payload: Review[]
 }
 
@@ -48,7 +48,7 @@ type setIsSendingErrorAction = {
 }
 
 type updateOffersAction = {
-  type: typeof ActionType.UPDATE_OFFERS,
+  type: ActionType.UPDATE_OFFERS,
   payload: Offer
 }
 
