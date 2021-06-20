@@ -25,6 +25,6 @@ export enum APIEndpoint {
 }
 
 export enum FavStatus {
-  FAV = 1,
   NOT_FAV = 0,
+  FAV = 1
 }
