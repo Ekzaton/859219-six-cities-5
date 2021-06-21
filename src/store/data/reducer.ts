@@ -1,10 +1,9 @@
-import {DataAction, DataState} from "./types";
-
 import {ActionType} from "../../consts/store";
 
-import {getUpdatedFavoriteOffers, getUpdatedOffers} from "../../utils/store";
+import {Offer} from "../../types/common";
+import {DataAction, DataState} from "../../types/store/data";
 
-import {Offer} from "../../types";
+import {getUpdatedFavoriteOffers, getUpdatedOffers} from "../../utils/store";
 
 const initialState: DataState = {
   allOffers: [],

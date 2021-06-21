@@ -1,8 +1,7 @@
-import {DataAction} from "./types";
-
 import {ActionType} from "../../consts/store";
 
-import {Offer, Review} from "../../types";
+import {Offer, Review} from "../../types/common";
+import {DataAction} from "../../types/store/data";
 
 export const getAllOffers = (allOffers: Offer[]): DataAction => ({
   type: ActionType.GET_ALL_OFFERS,

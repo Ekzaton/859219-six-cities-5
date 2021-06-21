@@ -7,9 +7,9 @@ import {appReducer} from "./app/reducer";
 import {dataReducer} from "./data/reducer";
 import {userReducer} from "./user/reducer";
 
-import {AppAction} from "./app/types";
-import {DataAction} from "./data/types";
-import {UserAction} from "./user/types";
+import {AppAction} from "../types/store/app";
+import {DataAction} from "../types/store/data";
+import {UserAction} from "../types/store/user";
 
 import {redirect} from "../middlewares/redirect";
 import {createAPI} from "../services/api";

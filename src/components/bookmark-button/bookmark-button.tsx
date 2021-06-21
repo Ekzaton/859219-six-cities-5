@@ -11,7 +11,7 @@ import {toggleFavoriteStatus} from "../../store/data/api-actions";
 import {selectIsDataSending} from "../../store/data/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-import {Offer} from "../../types";
+import {Offer} from "../../types/common";
 
 type Props = {
   offer: Offer;

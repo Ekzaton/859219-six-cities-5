@@ -1,7 +1,7 @@
-import {AppAction} from "./types";
-
 import {FilteringType, SortingType} from "../../consts/common";
 import {ActionType} from "../../consts/store";
+
+import {AppAction} from "../../types/store/app";
 
 export const getActiveOfferID = (activeOfferID: number | null): AppAction => ({
   type: ActionType.GET_ACTIVE_OFFER_ID,

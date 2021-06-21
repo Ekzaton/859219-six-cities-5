@@ -4,9 +4,9 @@ import {selectCurrentFiltering, selectCurrentSorting} from "../app/selectors";
 
 import {RootState} from "../store";
 
-import {getFavoriteOffersByCity, getFilteredOffers, getSortedOffers, getSortedReviews} from "../../utils/store";
+import {Offer, Review} from "../../types/common";
 
-import {Offer, Review} from "../../types";
+import {getFavoriteOffersByCity, getFilteredOffers, getSortedOffers, getSortedReviews} from "../../utils/store";
 
 export const selectAllOffers = (state: RootState): Offer[] => state.data.allOffers;
 export const selectFavoriteOffers = (state: RootState): Offer[] => state.data.favoriteOffers;

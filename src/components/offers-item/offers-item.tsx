@@ -6,9 +6,9 @@ import BookmarkButton from "../bookmark-button/bookmark-button";
 import {AppRoute} from "../../consts/common";
 import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../consts/components";
 
-import {getOfferType, getRatingStars} from "../../utils/components";
+import {Offer} from "../../types/common";
 
-import {Offer} from "../../types";
+import {getOfferType, getRatingStars} from "../../utils/components";
 
 type Props = {
   offer: Offer;

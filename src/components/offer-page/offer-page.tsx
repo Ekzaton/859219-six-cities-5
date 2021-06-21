@@ -11,7 +11,7 @@ import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
 import {AuthStatus} from "../../consts/common";
-import {OFFER_IMAGES_COUNT, CardType, BtnType, MapType} from "../../consts/components";
+import {OFFER_IMAGES_COUNT, BtnType, CardType, MapType} from "../../consts/components";
 
 import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
 

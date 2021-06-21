@@ -6,7 +6,7 @@ import {APIAction} from "../store";
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {APIEndpoint} from "../../consts/store";
 
-import {UserPost} from "../../types";
+import {UserPost} from "../../types/common";
 
 export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
   api.get(APIEndpoint.LOGIN)

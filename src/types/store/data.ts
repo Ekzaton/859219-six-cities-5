@@ -1,6 +1,6 @@
-import {ActionType} from "../../consts/store";
+import {Offer, Review} from "../common";
 
-import {Offer, Review} from "../../types";
+import {ActionType} from "../../consts/store";
 
 export type DataState = {
   allOffers: Offer[],

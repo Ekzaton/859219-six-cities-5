@@ -7,7 +7,7 @@ import {CardType} from "../../consts/components";
 
 import {getActiveOfferID} from "../../store/app/actions";
 
-import {Offer} from "../../types";
+import {Offer} from "../../types/common";
 
 type Props = {
   offers: Offer[];

@@ -1,9 +1,8 @@
-import {UserAction, UserState} from "./types";
-
 import {AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
 
-import {User} from "../../types";
+import {User} from "../../types/common";
+import {UserAction, UserState} from "../../types/store/user";
 
 const initialState: UserState = {
   authStatus: AuthStatus.NO_AUTH,

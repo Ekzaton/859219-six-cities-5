@@ -1,7 +1,7 @@
+import {User} from "../common";
+
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-
-import {User} from "../../types";
 
 export type UserState = {
   authStatus: AuthStatus,

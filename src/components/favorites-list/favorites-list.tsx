@@ -9,7 +9,7 @@ import {CardType} from "../../consts/components";
 
 import {getCurrentFiltering} from "../../store/app/actions";
 
-import {Offer} from "../../types";
+import {Offer} from "../../types/common";
 
 type Props = {
   favoriteOffersByCity: Record<string, Offer[]>;
