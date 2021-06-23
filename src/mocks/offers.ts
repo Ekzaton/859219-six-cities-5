@@ -1,3 +1,5 @@
+import {CityName} from "../consts/common";
+
 import {Offer} from "../types/common";
 
 export const offers: Offer[] = [
@@ -9,7 +11,7 @@ export const offers: Offer[] = [
         longitude: 4.9,
         zoom: 12
       },
-      name: `Amsterdam`
+      name: CityName.AMSTERDAM
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`],
@@ -43,7 +45,7 @@ export const offers: Offer[] = [
         longitude: 4.9,
         zoom: 12
       },
-      name: `Amsterdam`
+      name: CityName.AMSTERDAM
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Brussels.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -77,7 +79,7 @@ export const offers: Offer[] = [
         longitude: 4.9,
         zoom: 12
       },
-      name: `Amsterdam`
+      name: CityName.AMSTERDAM
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Cologne.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Dishwasher`],
@@ -111,7 +113,7 @@ export const offers: Offer[] = [
         longitude: 4.9,
         zoom: 12
       },
-      name: `Amsterdam`
+      name: CityName.AMSTERDAM
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Dusseldorf.`,
     goods: [`Heating`, `Cable TV`],
