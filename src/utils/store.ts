@@ -1,19 +1,19 @@
-import {FilteringType, SortingType} from "../consts/common";
+import {CityName, SortingType} from "../consts/common";
 import {FavStatus} from "../consts/store";
 
 import {Offer, Review} from "../types/common";
 
 export const getFavStatus = (isFavorite: boolean): string => `/${isFavorite ? FavStatus.NOT_FAV : FavStatus.FAV}`;
 
-export const getFavoriteOffersByCity = (offers: Offer[]): Record<string, Offer[]> =>
+export const getFavoriteOffersByCity = (offers: Offer[]): Record<CityName, Offer[]> =>
   offers.reduce((acc, offer) => {
     const city = offer.city.name;
     acc[city] = acc[city] ? [...acc[city], offer] : [offer];
     return acc;
-  }, {} as Record<string, Offer[]>);
+  }, {} as Record<CityName, Offer[]>);
 
-export const getFilteredOffers = (currentFiltering: FilteringType, offers: Offer[]): Offer[] =>
-  offers.filter((offer) => offer.city.name === currentFiltering);
+export const getFilteredOffers = (currentCity: CityName, offers: Offer[]): Offer[] =>
+  offers.filter((offer) => offer.city.name === currentCity);
 
 export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): Offer[] => {
   switch (currentSorting) {

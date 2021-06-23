@@ -1,7 +1,7 @@
 import {RootState} from "../store";
 
-import {FilteringType, SortingType} from "../../consts/common";
+import {CityName, SortingType} from "../../consts/common";
 
 export const selectActiveOfferID = (state: RootState): number | null => state.app.activeOfferID;
-export const selectCurrentFiltering = (state: RootState): FilteringType => state.app.currentFiltering;
+export const selectCurrentCity = (state: RootState): CityName => state.app.currentCity;
 export const selectCurrentSorting = (state: RootState): SortingType => state.app.currentSorting;

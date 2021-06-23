@@ -1,6 +1,8 @@
+import {CityName} from "../consts/common";
+
 type City = {
   location: Location;
-  name: string;
+  name: CityName;
 }
 
 type Location = {

@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {selectCurrentFiltering, selectCurrentSorting} from "../app/selectors";
+import {selectCurrentCity, selectCurrentSorting} from "../app/selectors";
 
 import {RootState} from "../store";
 
@@ -22,8 +22,8 @@ export const selectFavoriteOffersByCity = createSelector(
 );
 
 export const selectFilteredOffers = createSelector(
-    [selectCurrentFiltering, selectAllOffers],
-    (currentFiltering, offers) => getFilteredOffers(currentFiltering, offers)
+    [selectCurrentCity, selectAllOffers],
+    (currentCity, offers) => getFilteredOffers(currentCity, offers)
 );
 
 export const selectSortedOffers = createSelector(

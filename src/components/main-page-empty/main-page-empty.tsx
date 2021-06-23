@@ -1,9 +1,9 @@
 import React from "react";
 
-import {FilteringType} from "../../consts/common";
+import {CityName} from "../../consts/common";
 
 type Props = {
-  currentCity: FilteringType;
+  currentCity: CityName;
 }
 
 const MainPageEmpty: React.FunctionComponent<Props> = (props: Props) => {

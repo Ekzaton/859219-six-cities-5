@@ -10,11 +10,11 @@ import {HeaderType} from "../../consts/components";
 
 import {redirectToRoute} from "../../store/user/actions";
 
-import {selectCurrentFiltering} from "../../store/app/selectors";
+import {selectCurrentCity} from "../../store/app/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
 const SignInPage: React.FunctionComponent = () => {
-  const currentCity = useSelector(selectCurrentFiltering);
+  const currentCity = useSelector(selectCurrentCity);
   const authStatus = useSelector(selectAuthStatus);
   const isAuthorized = authStatus === AuthStatus.AUTH;
   const dispatch = useDispatch();

@@ -1,17 +1,17 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {FilteringType} from "../../consts/common";
+import {CityName} from "../../consts/common";
 
-import {getCurrentFiltering} from "../../store/app/actions";
+import {getCurrentCity} from "../../store/app/actions";
 
 type Props = {
-  currentCity: FilteringType;
+  currentCity: CityName;
 }
 
 const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
   const {currentCity} = props;
-  const cities = Object.values(FilteringType);
+  const cities = Object.values(CityName);
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +23,7 @@ const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentCity && `tabs__item--active`}`}
-            onClick={() => dispatch(getCurrentFiltering(city))}
+            onClick={() => dispatch(getCurrentCity(city))}
           >
             <span>{city}</span>
           </a>

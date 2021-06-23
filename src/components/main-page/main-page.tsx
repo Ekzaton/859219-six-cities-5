@@ -10,12 +10,12 @@ import SortingForm from "../sorting-form/sorting-form";
 
 import {CardType, HeaderType, MapType} from "../../consts/components";
 
-import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting} from "../../store/app/selectors";
+import {selectActiveOfferID, selectCurrentCity, selectCurrentSorting} from "../../store/app/selectors";
 import {selectSortedOffers} from "../../store/data/selectors";
 
 const MainPage: React.FunctionComponent = () => {
   const activeOfferID = useSelector(selectActiveOfferID);
-  const currentCity = useSelector(selectCurrentFiltering);
+  const currentCity = useSelector(selectCurrentCity);
   const currentSorting = useSelector(selectCurrentSorting);
   const offers = useSelector(selectSortedOffers);
   const noOffers = offers.length === 0;

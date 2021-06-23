@@ -1,9 +1,9 @@
-import {FilteringType, SortingType} from "../../consts/common";
+import {CityName, SortingType} from "../../consts/common";
 import {ActionType} from "../../consts/store";
 
 export type AppState = {
   activeOfferID: number | null,
-  currentFiltering: FilteringType,
+  currentCity: CityName,
   currentSorting: SortingType
 };
 
@@ -12,9 +12,9 @@ type getActiveOfferIDAction = {
   payload: number | null
 }
 
-type getCurrentFilteringAction = {
+type getCurrentCityAction = {
   type: ActionType.GET_CURRENT_FILTERING,
-  payload: FilteringType
+  payload: CityName
 }
 
 type getCurrentSortingAction = {
@@ -22,4 +22,4 @@ type getCurrentSortingAction = {
   payload: SortingType
 }
 
-export type AppAction = getActiveOfferIDAction | getCurrentFilteringAction | getCurrentSortingAction;
+export type AppAction = getActiveOfferIDAction | getCurrentCityAction | getCurrentSortingAction;

@@ -11,7 +11,7 @@ export enum AuthStatus {
   NO_AUTH = `no-auth`
 }
 
-export enum FilteringType {
+export enum CityName {
   PARIS = `Paris`,
   COLOGNE = `Cologne`,
   BRUSSELS = `Brussels`,

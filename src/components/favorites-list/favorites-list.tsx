@@ -4,15 +4,15 @@ import {Link} from "react-router-dom";
 
 import OffersList from "../offers-list/offers-list";
 
-import {AppRoute, FilteringType} from "../../consts/common";
+import {AppRoute, CityName} from "../../consts/common";
 import {CardType} from "../../consts/components";
 
-import {getCurrentFiltering} from "../../store/app/actions";
+import {getCurrentCity} from "../../store/app/actions";
 
 import {Offer} from "../../types/common";
 
 type Props = {
-  favoriteOffersByCity: Record<string, Offer[]>;
+  favoriteOffersByCity: Record<CityName, Offer[]>;
 }
 
 const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
@@ -31,7 +31,7 @@ const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
               <Link
                 to={AppRoute.MAIN}
                 className="locations__item-link"
-                onClick={() => dispatch(getCurrentFiltering(city as FilteringType))}
+                onClick={() => dispatch(getCurrentCity(city as CityName))}
               >
                 <span>{city}</span>
               </Link>
