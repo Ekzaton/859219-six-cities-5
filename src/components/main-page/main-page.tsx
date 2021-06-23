@@ -13,11 +13,12 @@ import {CardType, HeaderType, MapType} from "../../consts/components";
 import {selectActiveOfferID, selectCurrentCity, selectCurrentSorting} from "../../store/app/selectors";
 import {selectSortedOffers} from "../../store/data/selectors";
 
-const MainPage: React.FunctionComponent = () => {
+const MainPage = (): JSX.Element => {
   const activeOfferID = useSelector(selectActiveOfferID);
   const currentCity = useSelector(selectCurrentCity);
   const currentSorting = useSelector(selectCurrentSorting);
   const offers = useSelector(selectSortedOffers);
+
   const noOffers = offers.length === 0;
 
   return (

@@ -11,18 +11,21 @@ import {selectIsDataSending, selectIsSendingError} from "../../store/data/select
 
 import {getRatingArray, validateComment} from "../../utils/components";
 
-type Props = {
-  id: number;
+import {Offer} from "../../types/common";
+
+type ReviewFormProps = {
+  offer: Offer;
 }
 
-const ReviewForm: React.FunctionComponent<Props> = (props: Props) => {
-  const {id} = props;
+const ReviewForm = (props: ReviewFormProps): JSX.Element => {
+  const {offer} = props;
+  const dispatch = useDispatch();
+  const isDataSending = useSelector(selectIsDataSending);
+  const isSendingError = useSelector(selectIsSendingError);
+
   const [rating, setRating] = React.useState(1);
   const [comment, setReview] = React.useState(``);
   const [isValid, setIsValid] = React.useState(false);
-  const isDataSending = useSelector(selectIsDataSending);
-  const isSendingError = useSelector(selectIsSendingError);
-  const dispatch = useDispatch();
 
   return (
     <form
@@ -30,10 +33,15 @@ const ReviewForm: React.FunctionComponent<Props> = (props: Props) => {
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
         dispatch(setIsDataSending(true));
-        dispatch(sendReview(id, {rating, comment}));
+        dispatch(sendReview(offer.id, {rating, comment}));
       }}
     >
-      <label className="reviews__label form__label" htmlFor="review">Your review</label>
+      <label
+        className="reviews__label form__label"
+        htmlFor="review"
+      >
+        Your review
+      </label>
       <div className="reviews__rating-form form__rating">
         {getRatingArray(RATING_STARS_COUNT).map((input, i) =>
           <React.Fragment key={`input-${i}`}>

@@ -5,15 +5,16 @@ import {SortingType} from "../../consts/common";
 
 import {getCurrentSorting} from "../../store/app/actions";
 
-type Props = {
+type SortingFormProps = {
   currentSorting: SortingType;
 }
 
-const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
+const SortingForm = (props: SortingFormProps): JSX.Element => {
   const {currentSorting} = props;
+  const dispatch = useDispatch();
+
   const [isOpened, setIsOpened] = React.useState(false);
   const sortings = Object.values(SortingType);
-  const dispatch = useDispatch();
 
   const handleMouseOver = () => {
     setIsOpened(true);
@@ -26,8 +27,6 @@ const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <form
       className="places__sorting"
-      action="#"
-      method="get"
     >
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span

@@ -6,11 +6,11 @@ import UserNav from "../user-nav/user-nav";
 import {AppRoute} from "../../consts/common";
 import {HeaderType} from "../../consts/components";
 
-type Props = {
+type PageHeaderProps = {
   type?: HeaderType;
 }
 
-const PageHeader: React.FunctionComponent<Props> = (props: Props) => {
+const PageHeader = (props: PageHeaderProps): JSX.Element => {
   const {type} = props;
 
   return (

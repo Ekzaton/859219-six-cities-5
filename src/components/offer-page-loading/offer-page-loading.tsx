@@ -1,6 +1,6 @@
 import React from "react";
 
-const OfferPageLoading: React.FunctionComponent = () => {
+const OfferPageLoading = (): JSX.Element => {
   return (
     <div className="property__container container">
       <div className="property__wrapper">

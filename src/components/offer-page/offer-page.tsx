@@ -20,17 +20,17 @@ import {selectAuthStatus} from "../../store/user/selectors";
 
 import {getOfferType, getRatingStars} from "../../utils/components";
 
-const OfferPage: React.FunctionComponent = () => {
+const OfferPage = (): JSX.Element => {
+  const dispatch = useDispatch();
   const offer = useSelector(selectSingleOffer);
   const reviews = useSelector(selectSortedReviews);
   const nearbyOffers = useSelector(selectNearbyOffers);
   const authStatus = useSelector(selectAuthStatus);
+  const {id} = useParams<{id: string}>();
 
   const offers = nearbyOffers.concat(offer);
   const noOffer = Object.keys(offer).length === 0;
   const isAuthorized = authStatus === AuthStatus.AUTH;
-  const {id} = useParams<{id: string}>();
-  const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(fetchSingleOffer(id));
@@ -152,7 +152,7 @@ const OfferPage: React.FunctionComponent = () => {
                   />
                   {isAuthorized &&
                     <ReviewForm
-                      id={offer.id}
+                      offer={offer}
                     />
                   }
                 </section>

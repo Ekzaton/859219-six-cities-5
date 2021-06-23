@@ -3,16 +3,15 @@ import {useDispatch} from "react-redux";
 
 import {logIn} from "../../store/user/api-actions";
 
-const SignInForm: React.FunctionComponent = () => {
+const SignInForm = (): JSX.Element => {
+  const dispatch = useDispatch();
+
   const emailRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const passwordRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
-  const dispatch = useDispatch();
 
   return (
     <form
       className="login__form form"
-      action="#"
-      method="post"
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
         dispatch(logIn({email: emailRef.current.value, password: passwordRef.current.value}));

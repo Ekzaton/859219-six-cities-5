@@ -13,11 +13,12 @@ import {redirectToRoute} from "../../store/user/actions";
 import {selectCurrentCity} from "../../store/app/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
-const SignInPage: React.FunctionComponent = () => {
+const SignInPage = (): JSX.Element => {
+  const dispatch = useDispatch();
   const currentCity = useSelector(selectCurrentCity);
   const authStatus = useSelector(selectAuthStatus);
+
   const isAuthorized = authStatus === AuthStatus.AUTH;
-  const dispatch = useDispatch();
 
   React.useEffect(() => {
     if (isAuthorized) {

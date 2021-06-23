@@ -6,15 +6,16 @@ import {AppRoute, AuthStatus} from "../../consts/common";
 
 import {selectAuthStatus} from "../../store/user/selectors";
 
-type Props = {
+type PrivateRouteProps = {
   exact: boolean;
   path: string;
   render: () => JSX.Element;
 }
 
-const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
+const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
   const {exact, path, render} = props;
   const authStatus = useSelector(selectAuthStatus);
+
   const isAuthorized = authStatus === AuthStatus.AUTH;
 
   return (

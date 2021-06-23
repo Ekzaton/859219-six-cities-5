@@ -13,17 +13,18 @@ import {selectAuthStatus} from "../../store/user/selectors";
 
 import {Offer} from "../../types/common";
 
-type Props = {
+type BookmarkButtonProps = {
   offer: Offer;
   type: BtnType;
 }
 
-const BookmarkButton: React.FunctionComponent<Props> = (props: Props) => {
+const BookmarkButton = (props: BookmarkButtonProps): JSX.Element => {
   const {offer, type} = props;
+  const dispatch = useDispatch();
   const authStatus = useSelector(selectAuthStatus);
   const isDataSending = useSelector(selectIsDataSending);
+
   const isAuthorized = authStatus === AuthStatus.AUTH;
-  const dispatch = useDispatch();
 
   return (
     <React.Fragment>

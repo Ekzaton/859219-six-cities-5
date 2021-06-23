@@ -9,12 +9,12 @@ import {getActiveOfferID} from "../../store/app/actions";
 
 import {Offer} from "../../types/common";
 
-type Props = {
+type OffersListProps = {
   offers: Offer[];
   type: CardType;
 }
 
-const OffersList: React.FunctionComponent<Props> = (props: Props) => {
+const OffersList = (props: OffersListProps): JSX.Element => {
   const {offers, type} = props;
   const dispatch = useDispatch();
 

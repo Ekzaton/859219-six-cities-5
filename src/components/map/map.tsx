@@ -7,14 +7,15 @@ import {MapIconSize, MapIconUrl, MapLayer, MapType} from "../../consts/component
 
 import {Offer} from "../../types/common";
 
-type Props = {
+type MapProps = {
   activeOfferID: number | null;
   offers: Offer[];
   type: MapType;
 }
 
-const Map: React.FunctionComponent<Props> = (props: Props) => {
+const Map = (props: MapProps): JSX.Element => {
   const {activeOfferID, offers, type} = props;
+
   const city = offers[0].city;
   const mapRef = React.useRef() as React.MutableRefObject<HTMLElement>;
 

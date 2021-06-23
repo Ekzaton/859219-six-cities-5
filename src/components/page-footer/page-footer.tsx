@@ -3,8 +3,7 @@ import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../consts/common";
 
-const PageFooter: React.FunctionComponent = () => {
-
+const PageFooter = (): JSX.Element => {
   return (
     <footer className="footer container">
       <Link

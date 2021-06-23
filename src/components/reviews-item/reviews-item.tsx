@@ -4,11 +4,11 @@ import {Review} from "../../types/common";
 
 import {getRatingStars, getReviewDate} from "../../utils/components";
 
-type Props = {
+type ReviewsItemProps = {
   review: Review;
 }
 
-const ReviewsItem: React.FunctionComponent<Props> = (props: Props) => {
+const ReviewsItem = (props: ReviewsItemProps): JSX.Element => {
   const {review} = props;
 
   return (

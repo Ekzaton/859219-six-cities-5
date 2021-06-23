@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {AppRoute, AuthStatus} from "../../consts/common";
@@ -8,11 +8,12 @@ import {logOut} from "../../store/user/api-actions";
 
 import {selectAuthStatus, selectUserData} from "../../store/user/selectors";
 
-const UserNav: React.FunctionComponent = () => {
+const UserNav = (): JSX.Element => {
+  const dispatch = useDispatch();
   const authStatus = useSelector(selectAuthStatus);
   const userData = useSelector(selectUserData);
+
   const isAuthorized = authStatus === AuthStatus.AUTH;
-  const dispatch = useDispatch();
 
   return (
     <nav className="header__nav">

@@ -9,7 +9,7 @@ import SignInPage from "../sign-in-page/sign-in-page";
 
 import {AppRoute} from "../../consts/common";
 
-const App: React.FunctionComponent = () => {
+const App = (): JSX.Element => {
   return (
     <Switch>
       <Route exact path={AppRoute.MAIN} component={MainPage}/>

@@ -2,11 +2,11 @@ import React from "react";
 
 import {CityName} from "../../consts/common";
 
-type Props = {
+type MainPageEmptyProps = {
   currentCity: CityName;
 }
 
-const MainPageEmpty: React.FunctionComponent<Props> = (props: Props) => {
+const MainPageEmpty = (props: MainPageEmptyProps): JSX.Element => {
   const {currentCity} = props;
 
   return (

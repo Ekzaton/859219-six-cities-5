@@ -5,14 +5,15 @@ import {CityName} from "../../consts/common";
 
 import {getCurrentCity} from "../../store/app/actions";
 
-type Props = {
+type CitiesListProps = {
   currentCity: CityName;
 }
 
-const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
+const CitiesList = (props: CitiesListProps): JSX.Element => {
   const {currentCity} = props;
-  const cities = Object.values(CityName);
   const dispatch = useDispatch();
+
+  const cities = Object.values(CityName);
 
   return (
     <ul className="locations__list tabs__list">

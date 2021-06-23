@@ -11,11 +11,11 @@ import {getCurrentCity} from "../../store/app/actions";
 
 import {Offer} from "../../types/common";
 
-type Props = {
+type FavoritesListProps = {
   favoriteOffersByCity: Record<CityName, Offer[]>;
 }
 
-const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
+const FavoritesList = (props: FavoritesListProps): JSX.Element => {
   const {favoriteOffersByCity} = props;
   const dispatch = useDispatch();
 

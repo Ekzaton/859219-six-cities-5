@@ -4,20 +4,20 @@ import {Link} from "react-router-dom";
 import BookmarkButton from "../bookmark-button/bookmark-button";
 
 import {AppRoute} from "../../consts/common";
-import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../consts/components";
+import {BtnType, CardImgSize, CardType, FavCardImgSize} from "../../consts/components";
 
 import {Offer} from "../../types/common";
 
 import {getOfferType, getRatingStars} from "../../utils/components";
 
-type Props = {
+type OffersItemProps = {
   offer: Offer;
   type: CardType;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
 
-const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
+const OffersItem = (props: OffersItemProps): JSX.Element => {
   const {offer, type, onMouseEnter, onMouseLeave} = props;
 
   return (
