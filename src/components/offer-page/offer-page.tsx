@@ -83,7 +83,9 @@ const OfferPage = (): JSX.Element => {
                     <span style={{width: getRatingStars(offer.rating)}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">4.8</span>
+                  <span className="property__rating-value rating__value">
+                    {offer.rating}
+                  </span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
