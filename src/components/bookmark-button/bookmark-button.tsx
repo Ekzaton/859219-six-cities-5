@@ -4,11 +4,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {AuthStatus} from "../../consts/common";
 import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
 
-import {setIsDataSending} from "../../store/data/actions";
+import {toggleFavoriteStatus} from "../../store/favorite/api-actions";
 
-import {toggleFavoriteStatus} from "../../store/data/api-actions";
-
-import {selectIsDataSending} from "../../store/data/selectors";
+import {selectIsDataSending} from "../../store/favorite/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
 import {Offer} from "../../types/common";
@@ -30,12 +28,10 @@ const BookmarkButton = (props: BookmarkButtonProps): JSX.Element => {
     <React.Fragment>
       {isAuthorized &&
       <button
-        className={`${type}__bookmark-button
-          ${offer.isFavorite && `${type}__bookmark-button--active`} button`}
+        className={`${type}__bookmark-button ${offer.isFavorite && `${type}__bookmark-button--active`} button`}
         type="button"
         onClick={(evt: React.FormEvent) => {
           evt.preventDefault();
-          dispatch(setIsDataSending(true));
           dispatch(toggleFavoriteStatus(offer.id, offer.isFavorite));
         }}
         disabled={isDataSending}

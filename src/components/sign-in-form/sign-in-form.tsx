@@ -1,10 +1,13 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import {logIn} from "../../store/user/api-actions";
 
+import {selectIsDataSending} from "../../store/user/selectors";
+
 const SignInForm = (): JSX.Element => {
   const dispatch = useDispatch();
+  const isDataSending = useSelector(selectIsDataSending);
 
   const emailRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const passwordRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -28,6 +31,7 @@ const SignInForm = (): JSX.Element => {
           autoComplete="false"
           pattern="([\w.%+-]+)@([\w-]+\.)+([\w]{2,})"
           required
+          disabled={isDataSending}
         />
       </div>
       <div className="login__input-wrapper form__input-wrapper">
@@ -41,11 +45,13 @@ const SignInForm = (): JSX.Element => {
           autoComplete="false"
           pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}"
           required
+          disabled={isDataSending}
         />
       </div>
       <button
         className="login__submit form__submit button"
         type="submit"
+        disabled={isDataSending}
       >
         Sign in
       </button>

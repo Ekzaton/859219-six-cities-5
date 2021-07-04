@@ -4,47 +4,68 @@ import {useParams} from "react-router-dom";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 import Map from "../map/map";
-import OfferPageLoading from "../offer-page-loading/offer-page-loading";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
+import PageFooter from "../page-footer/page-footer";
+import PageLoading from "../page-loading/page-loading";
+import PageLoadingError from "../page-loading-error/page-loading-error";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
 import {AuthStatus} from "../../consts/common";
 import {OFFER_IMAGES_COUNT, BtnType, CardType, MapType} from "../../consts/components";
 
-import {fetchNearbyOffers, fetchSingleOffer, fetchSingleOfferReviews} from "../../store/data/api-actions";
+import {setInitialState} from "../../store/single-offer/actions";
 
-import {selectNearbyOffers, selectSingleOffer, selectSortedReviews} from "../../store/data/selectors";
+import {fetchNearbyOffers, fetchSingleOffer, fetchReviews} from "../../store/single-offer/api-actions";
+
+import {selectNearbyOffers, selectOffer, selectSortedReviews, selectIsDataLoading, selectIsLoadingError} from "../../store/single-offer/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
 import {getOfferType, getRatingStars} from "../../utils/components";
 
 const OfferPage = (): JSX.Element => {
   const dispatch = useDispatch();
-  const offer = useSelector(selectSingleOffer);
+  const offer = useSelector(selectOffer);
   const reviews = useSelector(selectSortedReviews);
   const nearbyOffers = useSelector(selectNearbyOffers);
+  const isDataLoading = useSelector(selectIsDataLoading);
+  const isLoadingError = useSelector(selectIsLoadingError);
   const authStatus = useSelector(selectAuthStatus);
   const {id} = useParams<{id: string}>();
 
-  const offers = nearbyOffers.concat(offer);
   const noOffer = Object.keys(offer).length === 0;
+  const offers = nearbyOffers.concat(offer);
   const isAuthorized = authStatus === AuthStatus.AUTH;
 
   React.useEffect(() => {
-    dispatch(fetchSingleOffer(id));
-    dispatch(fetchSingleOfferReviews(id));
     dispatch(fetchNearbyOffers(id));
+    dispatch(fetchReviews(id));
+    dispatch(fetchSingleOffer(id));
+
+    return () => {
+      dispatch(setInitialState());
+    };
   }, [dispatch, id]);
+
+  if (isLoadingError) {
+    return <PageLoadingError/>;
+  }
+
+  if (isDataLoading) {
+    return <PageLoading/>;
+  }
 
   return (
     <div className="page">
       <PageHeader/>
 
       {noOffer
-        ? <OfferPageLoading/>
-        : <main className="page__main page__main--property">
+        ? <div/>
+        : <main
+          className="page__main page__main--property"
+          style={{paddingBottom: `0`}}
+        >
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
@@ -179,6 +200,8 @@ const OfferPage = (): JSX.Element => {
           </div>
         </main>
       }
+
+      <PageFooter/>
     </div>
   );
 };

@@ -10,7 +10,7 @@ import {HeaderType} from "../../consts/components";
 
 import {redirectToRoute} from "../../store/user/actions";
 
-import {selectCurrentCity} from "../../store/app/selectors";
+import {selectCurrentCity} from "../../store/all-offers/selectors";
 import {selectAuthStatus} from "../../store/user/selectors";
 
 const SignInPage = (): JSX.Element => {

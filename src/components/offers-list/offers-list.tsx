@@ -5,7 +5,7 @@ import OffersItem from "../offers-item/offers-item";
 
 import {CardType} from "../../consts/components";
 
-import {getActiveOfferID} from "../../store/app/actions";
+import {changeActiveOfferID} from "../../store/all-offers/actions";
 
 import {Offer} from "../../types/common";
 
@@ -25,8 +25,8 @@ const OffersList = (props: OffersListProps): JSX.Element => {
           key={`offer-${i}`}
           offer={offer}
           type={type}
-          onMouseEnter={() => dispatch(getActiveOfferID(offer.id))}
-          onMouseLeave={() => dispatch(getActiveOfferID(null))}
+          onMouseEnter={() => dispatch(changeActiveOfferID(offer.id))}
+          onMouseLeave={() => dispatch(changeActiveOfferID(null))}
         />
       )}
     </React.Fragment>

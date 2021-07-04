@@ -3,11 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {RATING_STARS_COUNT} from "../../consts/components";
 
-import {setIsDataSending} from "../../store/data/actions";
+import {sendReview} from "../../store/review/api-actions";
 
-import {sendReview} from "../../store/data/api-actions";
-
-import {selectIsDataSending, selectIsSendingError} from "../../store/data/selectors";
+import {selectIsDataSending, selectIsSendingError} from "../../store/review/selectors";
 
 import {getRatingArray, validateComment} from "../../utils/components";
 
@@ -23,16 +21,25 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
   const isDataSending = useSelector(selectIsDataSending);
   const isSendingError = useSelector(selectIsSendingError);
 
-  const [rating, setRating] = React.useState(1);
-  const [comment, setReview] = React.useState(``);
-  const [isValid, setIsValid] = React.useState(false);
+  const [rating, setRating] = React.useState(0);
+  const [comment, setComment] = React.useState(``);
+  const [isValidRating, setIsValidRating] = React.useState(false);
+  const [isValidComment, setIsValidComment] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!isDataSending && !isSendingError) {
+      setRating(0);
+      setIsValidRating(false);
+      setComment(``);
+      setIsValidComment(false);
+    }
+  }, [isDataSending, isSendingError]);
 
   return (
     <form
       className="reviews__form form"
       onSubmit={(evt: React.FormEvent) => {
         evt.preventDefault();
-        dispatch(setIsDataSending(true));
         dispatch(sendReview(offer.id, {rating, comment}));
       }}
     >
@@ -43,28 +50,35 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {getRatingArray(RATING_STARS_COUNT).map((input, i) =>
-          <React.Fragment key={`input-${i}`}>
-            <input
-              className="form__rating-input visually-hidden"
-              name="rating"
-              value={RATING_STARS_COUNT - i}
-              id={`${RATING_STARS_COUNT - i}-stars`}
-              type="radio"
-              checked={rating === RATING_STARS_COUNT - i}
-              onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setRating(Number(evt.target.value))}
-              disabled={isDataSending}
-            />
-            <label
-              htmlFor={`${RATING_STARS_COUNT - i}-stars`}
-              className="reviews__rating-label form__rating-label"
-            >
-              <svg className="form__star-image" width="37" height="33">
-                <use xlinkHref="#icon-star"/>
-              </svg>
-            </label>
-          </React.Fragment>
-        )}
+        {getRatingArray(RATING_STARS_COUNT).map((input, i) => {
+          const ratingStar = RATING_STARS_COUNT - i;
+
+          return (
+            <React.Fragment key={`input-${i}`}>
+              <input
+                className="form__rating-input visually-hidden"
+                name="rating"
+                value={ratingStar}
+                id={`${ratingStar}-stars`}
+                type="radio"
+                checked={rating === ratingStar}
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>{
+                  setRating(Number(evt.target.value));
+                  setIsValidRating(!!Number(evt.target.value));
+                }}
+                disabled={isDataSending}
+              />
+              <label
+                htmlFor={`${ratingStar}-stars`}
+                className="reviews__rating-label form__rating-label"
+              >
+                <svg className="form__star-image" width="37" height="33">
+                  <use xlinkHref="#icon-star"/>
+                </svg>
+              </label>
+            </React.Fragment>
+          );
+        })}
       </div>
       <textarea
         className="reviews__textarea form__textarea"
@@ -74,8 +88,8 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         value={comment}
         required
         onChange={(evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-          setReview(evt.target.value);
-          setIsValid(validateComment(evt.target.value));
+          setComment(evt.target.value);
+          setIsValidComment(validateComment(evt.target.value));
         }}
         disabled={isDataSending}
       />
@@ -83,22 +97,23 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={!isValid || isDataSending}
+          disabled={!(isValidRating && isValidComment) || isDataSending}
         >
           Submit
         </button>
         {
-          !isValid && <p className="reviews__help">
-           To submit review please make sure to set <span className="reviews__star">rating</span>&nbsp;
-            and describe your stay with at least <b className="reviews__text-amount">50 characters</b>
+          !(isValidRating && isValidComment) && <p className="reviews__help">
+            To submit review please make sure to set <span className="reviews__star">rating</span>&nbsp;
+            and describe your stay with at least <b className="reviews__text-amount">50</b>&nbsp;
+            but at most <b className="reviews__text-amount">300</b> characters
           </p>
             ||
           isDataSending && <p className="reviews__help" style={{color: `red`}}>
-            Sending data. Please wait...
+            Sending data... Please wait
           </p>
             ||
           isSendingError && <p className="reviews__help" style={{color: `red`}}>
-            Sending error! Please try again later...
+            Sending error! Please try again later
           </p>
         }
       </div>

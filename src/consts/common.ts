@@ -17,7 +17,8 @@ export enum CityName {
   BRUSSELS = `Brussels`,
   AMSTERDAM = `Amsterdam`,
   HAMBURG = `Hamburg`,
-  DUSSELDORF = `Dusseldorf`
+  DUSSELDORF = `Dusseldorf`,
+  MOSCOW = `Moscow`
 }
 
 export enum SortingType {

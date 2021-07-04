@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {SortingType} from "../../consts/common";
 
-import {getCurrentSorting} from "../../store/app/actions";
+import {changeCurrentSorting} from "../../store/all-offers/actions";
 
 type SortingFormProps = {
   currentSorting: SortingType;
@@ -48,7 +48,7 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
           <li
             key={`sorting-${i}`}
             className={`places__option ${sorting === currentSorting && `places__option--active`}`}
-            onClick={() => dispatch(getCurrentSorting(sorting))}
+            onClick={() => dispatch(changeCurrentSorting(sorting))}
           >
             {sorting}
           </li>

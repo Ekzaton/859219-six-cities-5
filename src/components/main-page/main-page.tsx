@@ -1,25 +1,51 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import CitiesList from "../cities-list/cities-list";
+import Delay from "../delay/delay";
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
+import PageLoading from "../page-loading/page-loading";
+import PageLoadingError from "../page-loading-error/page-loading-error";
 import SortingForm from "../sorting-form/sorting-form";
 
 import {CardType, HeaderType, MapType} from "../../consts/components";
 
-import {selectActiveOfferID, selectCurrentCity, selectCurrentSorting} from "../../store/app/selectors";
-import {selectSortedOffers} from "../../store/data/selectors";
+import {fetchAllOffers} from "../../store/all-offers/api-actions";
+
+import {
+  selectActiveOfferID,
+  selectCurrentCity,
+  selectCurrentSorting,
+  selectSortedOffers,
+  selectIsDataLoading,
+  selectIsLoadingError
+} from "../../store/all-offers/selectors";
 
 const MainPage = (): JSX.Element => {
+  const dispatch = useDispatch();
   const activeOfferID = useSelector(selectActiveOfferID);
   const currentCity = useSelector(selectCurrentCity);
   const currentSorting = useSelector(selectCurrentSorting);
   const offers = useSelector(selectSortedOffers);
+  const isDataLoading = useSelector(selectIsDataLoading);
+  const isLoadingError = useSelector(selectIsLoadingError);
 
   const noOffers = offers.length === 0;
+
+  React.useEffect(() => {
+    dispatch(fetchAllOffers());
+  }, [dispatch]);
+
+  if (isLoadingError) {
+    return <PageLoadingError/>;
+  }
+
+  if (isDataLoading) {
+    return <PageLoading/>;
+  }
 
   return (
     <div className={`page page--gray page--main ${noOffers && `page__main--index-empty`}`}>
@@ -38,9 +64,11 @@ const MainPage = (): JSX.Element => {
         </div>
         <div className="cities">
           {noOffers
-            ? <MainPageEmpty
-              currentCity={currentCity}
-            />
+            ? <Delay waiting={100}>
+              <MainPageEmpty
+                currentCity={currentCity}
+              />
+            </Delay>
             : <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>

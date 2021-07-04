@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {CityName} from "../../consts/common";
 
-import {getCurrentCity} from "../../store/app/actions";
+import {changeCurrentCity} from "../../store/all-offers/actions";
 
 type CitiesListProps = {
   currentCity: CityName;
@@ -24,7 +24,7 @@ const CitiesList = (props: CitiesListProps): JSX.Element => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentCity && `tabs__item--active`}`}
-            onClick={() => dispatch(getCurrentCity(city))}
+            onClick={() => dispatch(changeCurrentCity(city))}
           >
             <span>{city}</span>
           </a>

@@ -7,7 +7,7 @@ import OffersList from "../offers-list/offers-list";
 import {AppRoute, CityName} from "../../consts/common";
 import {CardType} from "../../consts/components";
 
-import {getCurrentCity} from "../../store/app/actions";
+import {changeCurrentCity} from "../../store/all-offers/actions";
 
 import {Offer} from "../../types/common";
 
@@ -31,7 +31,7 @@ const FavoritesList = (props: FavoritesListProps): JSX.Element => {
               <Link
                 to={AppRoute.MAIN}
                 className="locations__item-link"
-                onClick={() => dispatch(getCurrentCity(city as CityName))}
+                onClick={() => dispatch(changeCurrentCity(city as CityName))}
               >
                 <span>{city}</span>
               </Link>

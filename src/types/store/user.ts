@@ -5,16 +5,13 @@ import {ActionType} from "../../consts/store";
 
 export type UserState = {
   authStatus: AuthStatus,
-  userData: User
+  data: User,
+  isDataSending: boolean,
+  isSendingError: boolean
 };
 
-type getAuthStatusAction = {
-  type: ActionType.GET_AUTH_STATUS,
-  payload: AuthStatus
-}
-
 type getUserDataAction = {
-  type: ActionType.GET_USER_DATA,
+  type: ActionType.GET_USER,
   payload: User
 }
 
@@ -23,4 +20,20 @@ type redirectToRouteAction = {
   payload: AppRoute
 }
 
-export type UserAction = getAuthStatusAction | getUserDataAction | redirectToRouteAction;
+type setAuthStatusAction = {
+  type: ActionType.SET_AUTH_STATUS,
+  payload: AuthStatus
+}
+
+type setIsDataSendingAction = {
+  type: ActionType.SET_IS_LOGIN_SENDING,
+  payload: boolean
+}
+
+type setIsSendingErrorAction = {
+  type: ActionType.SET_IS_LOGIN_SENDING_ERROR,
+  payload: boolean
+}
+
+export type UserAction = getUserDataAction | redirectToRouteAction | setAuthStatusAction
+| setIsDataSendingAction | setIsSendingErrorAction;

@@ -7,15 +7,13 @@ import App from "./components/app/app";
 
 import history from "./history/history";
 
-import {fetchAllOffers} from "./store/data/api-actions";
-import {checkAuthStatus} from "./store/user/api-actions";
-
 import store from "./store/store";
 
-Promise.all([
-  store.dispatch(fetchAllOffers()),
-  store.dispatch(checkAuthStatus())
-])
+import {checkAuthStatus} from "./store/user/api-actions";
+
+Promise.resolve(
+    store.dispatch(checkAuthStatus())
+)
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>

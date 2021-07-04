@@ -1,9 +1,9 @@
 
-import {getAuthStatus, getUserData, redirectToRoute} from "./actions";
+import {getUser, setAuthStatus, setIsDataSending, setIsSendingError} from "./actions";
 
 import {APIAction} from "../store";
 
-import {AppRoute, AuthStatus} from "../../consts/common";
+import {AuthStatus} from "../../consts/common";
 import {APIEndpoint} from "../../consts/store";
 
 import {UserPost} from "../../types/common";
@@ -11,30 +11,32 @@ import {UserPost} from "../../types/common";
 export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
   api.get(APIEndpoint.LOGIN)
   .then(({data}) => {
-    dispatch(getUserData(data));
-    dispatch(getAuthStatus(AuthStatus.AUTH));
+    dispatch(getUser(data));
+    dispatch(setAuthStatus(AuthStatus.AUTH));
   })
-  .catch(() => dispatch(getAuthStatus(AuthStatus.NO_AUTH)))
+  .catch(() => dispatch(setAuthStatus(AuthStatus.NO_AUTH)))
 );
 
-export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _getState, api) => (
+export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _getState, api) => {
+  dispatch(setIsDataSending(true));
   api.post(APIEndpoint.LOGIN, {email, password})
   .then(({data}) => {
-    dispatch(getUserData(data));
-    dispatch(getAuthStatus(AuthStatus.AUTH));
+    dispatch(setIsSendingError(false));
+    dispatch(getUser(data));
+    dispatch(setIsDataSending(false));
+    dispatch(setAuthStatus(AuthStatus.AUTH));
   })
-  .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
   .catch(() => {
-    throw Error(`Ошибка авторизации`);
-  })
-);
+    dispatch(setIsSendingError(true));
+    dispatch(setIsDataSending(false));
+  });
+};
 
 export const logOut = (): APIAction => (dispatch, _getState, api) => (
   api.get(APIEndpoint.LOGOUT)
   .then(() => {
-    dispatch(getAuthStatus(AuthStatus.NO_AUTH));
+    dispatch(setAuthStatus(AuthStatus.NO_AUTH));
   })
-  .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
   .catch(() => {
     throw Error(`Ошибка деавторизации`);
   })

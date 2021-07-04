@@ -6,12 +6,12 @@ import {AppRoute, AuthStatus} from "../../consts/common";
 
 import {logOut} from "../../store/user/api-actions";
 
-import {selectAuthStatus, selectUserData} from "../../store/user/selectors";
+import {selectAuthStatus, selectUser} from "../../store/user/selectors";
 
 const UserNav = (): JSX.Element => {
   const dispatch = useDispatch();
   const authStatus = useSelector(selectAuthStatus);
-  const userData = useSelector(selectUserData);
+  const userData = useSelector(selectUser);
 
   const isAuthorized = authStatus === AuthStatus.AUTH;
 
