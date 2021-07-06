@@ -28,4 +28,5 @@ type setIsLoadingErrorAction = {
   payload: boolean
 }
 
-export type FavoriteOffersAction = changeOfferFavoriteStatusAction | getFavoriteOffersAction | setIsDataLoadingAction| setIsLoadingErrorAction;
+export type FavoriteOffersAction = changeOfferFavoriteStatusAction
+| getFavoriteOffersAction | setIsDataLoadingAction | setIsLoadingErrorAction;

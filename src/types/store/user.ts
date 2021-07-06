@@ -35,5 +35,5 @@ type setIsSendingErrorAction = {
   payload: boolean
 }
 
-export type UserAction = getUserDataAction | redirectToRouteAction | setAuthStatusAction
-| setIsDataSendingAction | setIsSendingErrorAction;
+export type UserAction = getUserDataAction | redirectToRouteAction
+| setAuthStatusAction | setIsDataSendingAction | setIsSendingErrorAction;

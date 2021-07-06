@@ -23,8 +23,8 @@ export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _get
   .then(({data}) => {
     dispatch(setIsSendingError(false));
     dispatch(getUser(data));
-    dispatch(setIsDataSending(false));
     dispatch(setAuthStatus(AuthStatus.AUTH));
+    dispatch(setIsDataSending(false));
   })
   .catch(() => {
     dispatch(setIsSendingError(true));
@@ -32,13 +32,8 @@ export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _get
   });
 };
 
-export const logOut = (): APIAction => (dispatch, _getState, api) => (
+export const logOut = (): APIAction => (dispatch, _getState, api) => {
   api.get(APIEndpoint.LOGOUT)
-  .then(() => {
-    dispatch(setAuthStatus(AuthStatus.NO_AUTH));
-  })
-  .catch(() => {
-    throw Error(`Ошибка деавторизации`);
-  })
-);
+  .then(() => dispatch(setAuthStatus(AuthStatus.NO_AUTH)));
+};
 
