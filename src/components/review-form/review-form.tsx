@@ -1,15 +1,15 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {RATING_STARS_COUNT} from "../../consts/components";
+import {RATING_STARS_COUNT, ReviewLehgth} from "../../consts/components";
 
 import {sendReview} from "../../store/review/api-actions";
 
 import {selectIsDataSending, selectIsSendingError} from "../../store/review/selectors";
 
-import {getRatingArray, validateComment} from "../../utils/components";
-
 import {Offer} from "../../types/common";
+
+import {getRatingArray, validateComment} from "../../utils/components";
 
 type ReviewFormProps = {
   offer: Offer;
@@ -21,19 +21,28 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
   const isDataSending = useSelector(selectIsDataSending);
   const isSendingError = useSelector(selectIsSendingError);
 
-  const [rating, setRating] = React.useState(0);
-  const [comment, setComment] = React.useState(``);
-  const [isValidRating, setIsValidRating] = React.useState(false);
-  const [isValidComment, setIsValidComment] = React.useState(false);
+  const initialReview = React.useMemo(() => ({
+    rating: 0,
+    comment: ``,
+    isValidRating: false,
+    isValidComment: false
+  }), []);
+
+  const [review, setReview] = React.useState(initialReview);
+  const rating = review.rating;
+  const comment = review.comment;
+  const isValidRating = review.isValidRating;
+  const isValidComment = review.isValidComment;
+  const isValidForm = isValidRating && isValidComment;
+  const isFirstRunRef = React.useRef(true);
 
   React.useEffect(() => {
-    if (!isDataSending && !isSendingError) {
-      setRating(0);
-      setIsValidRating(false);
-      setComment(``);
-      setIsValidComment(false);
+    if (isFirstRunRef.current) {
+      isFirstRunRef.current = false;
+    } else if (!isDataSending && !isSendingError) {
+      setReview(initialReview);
     }
-  }, [isDataSending, isSendingError]);
+  }, [initialReview, isDataSending, isSendingError]);
 
   return (
     <form
@@ -50,7 +59,7 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {getRatingArray(RATING_STARS_COUNT).map((input, i) => {
+        {getRatingArray(RATING_STARS_COUNT).map((_input, i) => {
           const ratingStar = RATING_STARS_COUNT - i;
 
           return (
@@ -62,9 +71,13 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
                 id={`${ratingStar}-stars`}
                 type="radio"
                 checked={rating === ratingStar}
-                onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>{
-                  setRating(Number(evt.target.value));
-                  setIsValidRating(!!Number(evt.target.value));
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+                  const target = Number(evt.target.value);
+                  setReview((currentReview) => ({
+                    ...currentReview,
+                    rating: target,
+                    isValidRating: !!target
+                  }));
                 }}
                 disabled={isDataSending}
               />
@@ -88,8 +101,12 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         value={comment}
         required
         onChange={(evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-          setComment(evt.target.value);
-          setIsValidComment(validateComment(evt.target.value));
+          const target = evt.target.value;
+          setReview((currentReview) => ({
+            ...currentReview,
+            comment: target,
+            isValidComment: validateComment(target)
+          }));
         }}
         disabled={isDataSending}
       />
@@ -97,25 +114,21 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={!(isValidRating && isValidComment) || isDataSending}
+          disabled={!isValidForm || isDataSending}
         >
           Submit
         </button>
-        {
-          !(isValidRating && isValidComment) && <p className="reviews__help">
-            To submit review please make sure to set <span className="reviews__star">rating</span>&nbsp;
-            and describe your stay with at least <b className="reviews__text-amount">50</b>&nbsp;
-            but at most <b className="reviews__text-amount">300</b> characters
-          </p>
-            ||
-          isDataSending && <p className="reviews__help" style={{color: `red`}}>
-            Sending data... Please wait
-          </p>
-            ||
-          isSendingError && <p className="reviews__help" style={{color: `red`}}>
-            Sending error! Please try again later
-          </p>
-        }
+        <p className="reviews__help">
+          {
+            !isValidForm && <React.Fragment>
+              To submit review please make sure to set <span className="reviews__star">rating </span>
+              and describe your stay with at least <b className="reviews__text-amount">{ReviewLehgth.MIN} </b>
+              but at most <b className="reviews__text-amount">{ReviewLehgth.MAX} </b>characters
+            </React.Fragment>
+            || isDataSending && `Sending review... Please wait`
+            || isSendingError && `Sending error! Please try again later`
+          }
+        </p>
       </div>
     </form>
   );
