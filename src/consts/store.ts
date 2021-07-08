@@ -34,8 +34,3 @@ export enum APIEndpoint {
   LOGIN = `/login/`,
   LOGOUT = `/logout/`
 }
-
-export enum FavStatus {
-  NOT_FAV = 0,
-  FAV = 1
-}

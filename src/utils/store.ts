@@ -1,9 +1,6 @@
 import {CityName, SortingType} from "../consts/common";
-import {FavStatus} from "../consts/store";
 
 import {Offer, Review} from "../types/common";
-
-export const getFavStatus = (isFavorite: boolean): string => `/${isFavorite ? FavStatus.NOT_FAV : FavStatus.FAV}`;
 
 export const getFavoriteOffersByCity = (offers: Offer[]): Record<CityName, Offer[]> =>
   offers.reduce((acc, offer) => {

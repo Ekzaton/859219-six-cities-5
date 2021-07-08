@@ -4,11 +4,9 @@ import {APIAction} from "../store";
 
 import {APIEndpoint} from "../../consts/store";
 
-import {getFavStatus} from "../../utils/store";
-
 export const toggleFavoriteStatus = (id: number, isFavorite: boolean): APIAction => (dispatch, _getState, api) => {
   dispatch(setIsDataSending(true));
-  api.post(APIEndpoint.FAVORITE + id + getFavStatus(isFavorite))
+  api.post(APIEndpoint.FAVORITE + id + `/${Number(!isFavorite)}`)
   .then(({data}) => {
     dispatch(setIsSendingError(false));
     dispatch(changeOfferFavoriteStatus(data));
