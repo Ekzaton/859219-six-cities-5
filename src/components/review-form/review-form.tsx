@@ -72,11 +72,11 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
                 type="radio"
                 checked={rating === ratingStar}
                 onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
-                  const target = Number(evt.target.value);
+                  const value = Number(evt.target.value);
                   setReview((currentReview) => ({
                     ...currentReview,
-                    rating: target,
-                    isValidRating: !!target
+                    rating: value,
+                    isValidRating: !!value
                   }));
                 }}
                 disabled={isDataSending}
@@ -101,11 +101,11 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
         value={comment}
         required
         onChange={(evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-          const target = evt.target.value;
+          const value = evt.target.value;
           setReview((currentReview) => ({
             ...currentReview,
-            comment: target,
-            isValidComment: validateComment(target)
+            comment: value,
+            isValidComment: validateComment(value)
           }));
         }}
         disabled={isDataSending}
