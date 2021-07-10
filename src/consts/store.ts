@@ -1,3 +1,5 @@
+export const SHAKE_DURATION = 750;
+
 export enum ActionType {
   CHANGE_ACTIVE_OFFER_ID = `CHANGE_ACTIVE_OFFER_ID`,
   CHANGE_CURRENT_CITY = `CHANGE_CURRENT_CITY`,
@@ -34,3 +36,15 @@ export enum APIEndpoint {
   LOGIN = `/login/`,
   LOGOUT = `/logout/`
 }
+
+export enum AttributeName {
+  DISABLED = `disabled`,
+  FILL = `fill`,
+  STROKE = `stroke`
+}
+
+export enum AttributeValue{
+  EMPTY = ``,
+  RED = `#ff0000`
+}
+

@@ -3,6 +3,11 @@ import {ActionType} from "../../consts/store";
 import {Offer} from "../../types/common";
 import {FavoriteOffersAction} from "../../types/store/favorite-offers";
 
+export const changeOfferFavoriteStatus = (offer: Offer): FavoriteOffersAction => ({
+  type: ActionType.CHANGE_OFFER_FAVORITE_STATUS,
+  payload: offer
+});
+
 export const getFavoriteOffers = (offers: Offer[]): FavoriteOffersAction => ({
   type: ActionType.GET_FAVORITE_OFFERS,
   payload: offers

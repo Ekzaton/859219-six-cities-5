@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AuthStatus} from "../../consts/common";
 import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
 
-import {toggleFavoriteStatus} from "../../store/favorite/api-actions";
+import {toggleFavoriteStatus} from "../../store/favorite-offers/api-actions";
 
 import {selectAuthStatus} from "../../store/user/selectors";
 
