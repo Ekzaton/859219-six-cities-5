@@ -51,11 +51,11 @@ const SignInForm = (): JSX.Element => {
           autoComplete="false"
           required
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
-            const isValidvalue = REG_EXP_EMAIL.test(evt.target.value);
+            const isValidValue = REG_EXP_EMAIL.test(evt.target.value);
             setLogin((currentLogin) => ({
               ...currentLogin,
-              isValidEmail: isValidvalue,
-              hideInvalidEmailMsg: isValidvalue
+              isValidEmail: isValidValue,
+              hideInvalidEmailMsg: isValidValue
             }));
           }}
           disabled={isDataSending}
@@ -72,11 +72,11 @@ const SignInForm = (): JSX.Element => {
           autoComplete="false"
           required
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
-            const isValidvalue = REG_EXP_PASSWORD.test(evt.target.value);
+            const isValidValue = REG_EXP_PASSWORD.test(evt.target.value);
             setLogin((currentLogin) => ({
               ...currentLogin,
-              isValidPassword: isValidvalue,
-              hideInvalidPasswordMsg: isValidvalue
+              isValidPassword: isValidValue,
+              hideInvalidPasswordMsg: isValidValue
             }));
           }}
           disabled={isDataSending}
