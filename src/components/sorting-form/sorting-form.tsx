@@ -1,9 +1,9 @@
-import React from "react";
+import React, {memo, useState} from "react";
 import {useDispatch} from "react-redux";
 
 import {SortingType} from "../../consts/common";
 
-import {changeCurrentSorting} from "../../store/all-offers/actions";
+import {setCurrentSorting} from "../../store/main/actions";
 
 type SortingFormProps = {
   currentSorting: SortingType;
@@ -11,10 +11,11 @@ type SortingFormProps = {
 
 const SortingForm = (props: SortingFormProps): JSX.Element => {
   const {currentSorting} = props;
+  const sortings = Object.values(SortingType);
+
   const dispatch = useDispatch();
 
-  const [isOpened, setIsOpened] = React.useState(false);
-  const sortings = Object.values(SortingType);
+  const [isOpened, setIsOpened] = useState(false);
 
   const handleMouseOver = () => {
     setIsOpened(true);
@@ -48,7 +49,7 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
           <li
             key={`sorting-${i}`}
             className={`places__option ${sorting === currentSorting && `places__option--active`}`}
-            onClick={() => dispatch(changeCurrentSorting(sorting))}
+            onClick={() => dispatch(setCurrentSorting(sorting))}
           >
             {sorting}
           </li>
@@ -58,4 +59,4 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
   );
 };
 
-export default SortingForm;
+export default memo(SortingForm);

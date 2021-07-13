@@ -1,50 +1,62 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import CitiesList from "../cities-list/cities-list";
 import Delay from "../delay/delay";
+import ErrorPage from "../error-page.tsx/error-page";
+import LoadingPage from "../loading-page/loading-page";
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
-import PageLoading from "../page-loading/page-loading";
-import PageLoadingError from "../page-loading-error/page-loading-error";
 import SortingForm from "../sorting-form/sorting-form";
 
-import {CardType, HeaderType, MapType} from "../../consts/components";
+import {DELAY_DURATION, CardType, HeaderType, MapType} from "../../consts/components";
 
-import {fetchAllOffers} from "../../store/all-offers/api-actions";
+import {fetchAllOffers} from "../../store/main/api-actions";
 
 import {
   selectActiveOfferID,
   selectCurrentCity,
   selectCurrentSorting,
+  selectIsLoading,
+  selectLoadingError,
   selectSortedOffers,
-  selectIsDataLoading,
-  selectIsLoadingError
-} from "../../store/all-offers/selectors";
+  selectNoSortedOffers,
+  selectSortedOffersCount
+} from "../../store/main/selectors";
 
 const MainPage = (): JSX.Element => {
   const dispatch = useDispatch();
   const activeOfferID = useSelector(selectActiveOfferID);
   const currentCity = useSelector(selectCurrentCity);
   const currentSorting = useSelector(selectCurrentSorting);
+  const isLoading = useSelector(selectIsLoading);
+  const loadingError = useSelector(selectLoadingError);
   const offers = useSelector(selectSortedOffers);
-  const isDataLoading = useSelector(selectIsDataLoading);
-  const isLoadingError = useSelector(selectIsLoadingError);
+  const offersCount = useSelector(selectSortedOffersCount);
+  const noOffers = useSelector(selectNoSortedOffers);
 
-  const noOffers = offers.length === 0;
-
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchAllOffers());
   }, [dispatch]);
 
-  if (isLoadingError) {
-    return <PageLoadingError/>;
+  if (isLoading) {
+    return (
+      <Delay
+        duration={DELAY_DURATION}
+      >
+        <LoadingPage/>
+      </Delay>
+    );
   }
 
-  if (isDataLoading) {
-    return <PageLoading/>;
+  if (loadingError) {
+    return (
+      <ErrorPage
+        loadingError={loadingError}
+      />
+    );
   }
 
   return (
@@ -64,7 +76,9 @@ const MainPage = (): JSX.Element => {
         </div>
         <div className="cities">
           {noOffers
-            ? <Delay waiting={100}>
+            ? <Delay
+              duration={DELAY_DURATION}
+            >
               <MainPageEmpty
                 currentCity={currentCity}
               />
@@ -73,7 +87,7 @@ const MainPage = (): JSX.Element => {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">
-                  {offers.length} places to stay in {currentCity}
+                  {offersCount} places to stay in {currentCity}
                 </b>
                 <SortingForm
                   currentSorting={currentSorting}

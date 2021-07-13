@@ -1,9 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import {useDispatch} from "react-redux";
 
 import {CityName} from "../../consts/common";
 
-import {changeCurrentCity} from "../../store/all-offers/actions";
+import {setCurrentCity} from "../../store/main/actions";
 
 type CitiesListProps = {
   currentCity: CityName;
@@ -11,9 +11,9 @@ type CitiesListProps = {
 
 const CitiesList = (props: CitiesListProps): JSX.Element => {
   const {currentCity} = props;
-  const dispatch = useDispatch();
-
   const cities = Object.values(CityName);
+
+  const dispatch = useDispatch();
 
   return (
     <ul className="locations__list tabs__list">
@@ -24,7 +24,7 @@ const CitiesList = (props: CitiesListProps): JSX.Element => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentCity && `tabs__item--active`}`}
-            onClick={() => dispatch(changeCurrentCity(city))}
+            onClick={() => dispatch(setCurrentCity(city))}
           >
             <span>{city}</span>
           </a>
@@ -34,4 +34,4 @@ const CitiesList = (props: CitiesListProps): JSX.Element => {
   );
 };
 
-export default React.memo(CitiesList);
+export default memo(CitiesList);

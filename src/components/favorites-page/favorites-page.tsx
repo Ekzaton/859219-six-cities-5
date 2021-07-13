@@ -1,36 +1,47 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import Delay from "../delay/delay";
+import ErrorPage from "../error-page.tsx/error-page";
 import FavoritesList from "../favorites-list/favorites-list";
 import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
+import LoadingPage from "../loading-page/loading-page";
 import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
-import PageLoading from "../page-loading/page-loading";
-import PageLoadingError from "../page-loading-error/page-loading-error";
 
-import {fetchFavoriteOffers} from "../../store/favorite-offers/api-actions";
+import {DELAY_DURATION} from "../../consts/components";
 
-import {selectFavoriteOffersByCity, selectIsDataLoading, selectIsLoadingError} from "../../store/favorite-offers/selectors";
+import {fetchFavoriteOffers} from "../../store/favorites/api-actions";
+
+import {selectOffersByCity, selectNoOffers, selectIsLoading, selectLoadingError} from "../../store/favorites/selectors";
 
 const FavoritesPage = (): JSX.Element => {
   const dispatch = useDispatch();
-  const favoriteOffersByCity = useSelector(selectFavoriteOffersByCity);
-  const isDataLoading = useSelector(selectIsDataLoading);
-  const isLoadingError = useSelector(selectIsLoadingError);
+  const offersByCity = useSelector(selectOffersByCity);
+  const noOffers = useSelector(selectNoOffers);
+  const isLoading = useSelector(selectIsLoading);
+  const loadingError = useSelector(selectLoadingError);
 
-  const noOffers = Object.keys(favoriteOffersByCity).length === 0;
-
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchFavoriteOffers());
   }, [dispatch]);
 
-  if (isLoadingError) {
-    return <PageLoadingError/>;
+  if (isLoading) {
+    return (
+      <Delay
+        duration={DELAY_DURATION}
+      >
+        <LoadingPage/>
+      </Delay>
+    );
   }
 
-  if (isDataLoading) {
-    return <PageLoading/>;
+  if (loadingError) {
+    return (
+      <ErrorPage
+        loadingError={loadingError}
+      />
+    );
   }
 
   return (
@@ -42,13 +53,15 @@ const FavoritesPage = (): JSX.Element => {
       >
         <div className="page__favorites-container container">
           {noOffers
-            ? <Delay waiting={100}>
+            ? <Delay
+              duration={DELAY_DURATION}
+            >
               <FavoritesPageEmpty/>
             </Delay>
             : <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <FavoritesList
-                favoriteOffersByCity={favoriteOffersByCity}
+                offersByCity={offersByCity}
               />
             </section>
           }

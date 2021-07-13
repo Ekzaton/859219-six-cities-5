@@ -9,7 +9,7 @@ import history from "./history/history";
 
 import store from "./store/store";
 
-import {checkAuthStatus} from "./store/user/api-actions";
+import {checkAuthStatus} from "./store/login/api-actions";
 
 Promise.resolve(
     store.dispatch(checkAuthStatus())

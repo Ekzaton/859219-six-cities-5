@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../consts/common";
@@ -22,4 +22,4 @@ const PageFooter = (): JSX.Element => {
   );
 };
 
-export default PageFooter;
+export default memo(PageFooter);

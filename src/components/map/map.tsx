@@ -1,5 +1,5 @@
 import Leaflet from "leaflet";
-import React from "react";
+import React, {memo, useEffect, useRef, MutableRefObject} from "react";
 
 import "leaflet/dist/leaflet.css";
 
@@ -15,11 +15,11 @@ type MapProps = {
 
 const Map = (props: MapProps): JSX.Element => {
   const {activeOfferID, offers, type} = props;
-
   const city = offers[0].city;
-  const mapRef = React.useRef() as React.MutableRefObject<HTMLElement>;
 
-  React.useEffect(() => {
+  const mapRef = useRef() as MutableRefObject<HTMLElement>;
+
+  useEffect(() => {
     const map = Leaflet.map(mapRef.current, {
       center: [city.location.latitude, city.location.longitude],
       zoom: city.location.zoom,
@@ -38,9 +38,7 @@ const Map = (props: MapProps): JSX.Element => {
     });
 
     return () => {
-      if (map) {
-        map.remove();
-      }
+      map.remove();
     };
   }, [activeOfferID, city, offers]);
 
@@ -52,4 +50,4 @@ const Map = (props: MapProps): JSX.Element => {
   );
 };
 
-export default React.memo(Map);
+export default memo(Map);

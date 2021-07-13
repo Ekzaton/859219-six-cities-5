@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Link} from "react-router-dom";
 
 import UserNav from "../user-nav/user-nav";
@@ -46,4 +46,4 @@ const PageHeader = (props: PageHeaderProps): JSX.Element => {
   );
 };
 
-export default React.memo(PageHeader);
+export default memo(PageHeader);

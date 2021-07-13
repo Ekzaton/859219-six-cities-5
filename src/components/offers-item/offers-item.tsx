@@ -1,10 +1,13 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 
 import {AppRoute} from "../../consts/common";
 import {BtnType, CardImgSize, CardType, FavCardImgSize} from "../../consts/components";
+
+import {selectIsAuthorized} from "../../store/login/selectors";
 
 import {Offer} from "../../types/common";
 
@@ -19,6 +22,8 @@ type OffersItemProps = {
 
 const OffersItem = (props: OffersItemProps): JSX.Element => {
   const {offer, type, onMouseEnter, onMouseLeave} = props;
+
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
     <article
@@ -48,10 +53,12 @@ const OffersItem = (props: OffersItemProps): JSX.Element => {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&nbsp;&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton
-            offer={offer}
-            type={BtnType.PLACE_CARD}
-          />
+          {isAuthorized &&
+            <BookmarkButton
+              offer={offer}
+              type={BtnType.PLACE_CARD}
+            />
+          }
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
