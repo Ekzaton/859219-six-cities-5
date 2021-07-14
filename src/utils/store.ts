@@ -30,17 +30,22 @@ export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): O
 export const getSortedReviews = (reviews: Review[]): Review[] =>
   [...reviews.sort((review1, review2) => new Date(review2.date).getTime() - new Date(review1.date).getTime())];
 
-export const getUpdatedFavoriteOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
-  const index = offers.findIndex((offer) => offer.id === updatedOffer.id);
+export const setFavoriteOffers = (offers: Offer[], changedOffer: Offer): Offer[] => {
+  const index = offers.findIndex((offer) => offer.id === changedOffer.id);
   return index < 0
-    ? [...offers, updatedOffer]
+    ? [...offers, changedOffer]
     : [...offers.slice(0, index), ...offers.slice(index + 1)];
 };
 
-export const getUpdatedOffers = (offers: Offer[], updatedOffer: Offer): Offer[] => {
-  const index = offers.findIndex((offer) => offer.id === updatedOffer.id);
+export const setNearbyOffers = (offers: Offer[], changedOffer: Offer): Offer[] => {
+  const index = offers.findIndex((offer) => offer.id === changedOffer.id);
   return index < 0
     ? offers
-    : [...offers.slice(0, index), updatedOffer, ...offers.slice(index + 1)];
+    : [...offers.slice(0, index), changedOffer, ...offers.slice(index + 1)];
+};
+
+export const setOffers = (offers: Offer[], changedOffer: Offer): Offer[] => {
+  const index = offers.findIndex((offer) => offer.id === changedOffer.id);
+  return [...offers.slice(0, index), changedOffer, ...offers.slice(index + 1)];
 };
 

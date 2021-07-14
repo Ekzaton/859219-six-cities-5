@@ -3,7 +3,7 @@ import {ActionType} from "../../consts/store";
 
 import {MainAction, MainState} from "../../types/store/main";
 
-import {getUpdatedOffers} from "../../utils/store";
+import {setOffers} from "../../utils/store";
 
 const initialState: MainState = {
   activeOfferID: null,
@@ -25,7 +25,7 @@ export const mainReducer = (state = initialState, action: MainAction): MainState
     case ActionType.SET_ALL_OFFERS:
       return {...state, allOffers: action.payload};
     case ActionType.SET_OFFER_FAVORITE_STATUS:
-      return {...state, allOffers: getUpdatedOffers(state.allOffers, action.payload)};
+      return {...state, allOffers: setOffers(state.allOffers, action.payload)};
     case ActionType.SET_MAIN_IS_LOADING:
       return {...state, isLoading: action.payload};
     case ActionType.SET_MAIN_LOADING_ERROR:

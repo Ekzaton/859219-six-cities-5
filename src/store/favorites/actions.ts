@@ -10,9 +10,9 @@ export const setFavoriteOffers = (favoriteOffers: Offer[]): FavoritesAction => (
   payload: favoriteOffers
 });
 
-export const setOfferFavoriteStatus = (offer: Offer): FavoritesAction => ({
+export const setOfferFavoriteStatus = (changedOffer: Offer): FavoritesAction => ({
   type: ActionType.SET_OFFER_FAVORITE_STATUS,
-  payload: offer
+  payload: changedOffer
 });
 
 export const setIsLoading = (isLoading: boolean): FavoritesAction => ({

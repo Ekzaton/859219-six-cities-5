@@ -26,9 +26,9 @@ export const setAllOffers = (allOffers: Offer[]): MainAction => ({
   payload: allOffers
 });
 
-export const setOfferFavoriteStatus = (offer: Offer): MainAction => ({
+export const setOfferFavoriteStatus = (changedOffer: Offer): MainAction => ({
   type: ActionType.SET_OFFER_FAVORITE_STATUS,
-  payload: offer
+  payload: changedOffer
 });
 
 export const setIsLoading = (isLoading: boolean): MainAction => ({

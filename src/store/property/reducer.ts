@@ -3,7 +3,7 @@ import {ActionType} from "../../consts/store";
 import {Offer} from "../../types/common";
 import {PropertyAction, PropertyState} from "../../types/store/property";
 
-import {getUpdatedOffers} from "../../utils/store";
+import {setNearbyOffers} from "../../utils/store";
 
 const initialState: PropertyState = {
   offer: {} as Offer,
@@ -22,7 +22,7 @@ export const propertyReducer = (state = initialState, action: PropertyAction): P
     case ActionType.SET_OFFER_FAVORITE_STATUS:
       return state.offer.id === action.payload.id
         ? {...state, offer: action.payload}
-        : {...state, nearbyOffers: getUpdatedOffers(state.nearbyOffers, action.payload)};
+        : {...state, nearbyOffers: setNearbyOffers(state.nearbyOffers, action.payload)};
     case ActionType.SET_NEARBY_OFFERS:
       return {...state, nearbyOffers: action.payload};
     case ActionType.SET_REVIEWS:
