@@ -17,11 +17,11 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
 
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleMouseOver = () => {
+  const onMouseOver = () => {
     setIsOpened(true);
   };
 
-  const handleMouseOut = () => {
+  const onMouseOut = () => {
     setIsOpened(false);
   };
 
@@ -32,8 +32,8 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span
         className="places__sorting-type"
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
         {currentSorting}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -42,8 +42,8 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
       </span>
       <ul
         className={`places__options places__options--custom ${isOpened && `places__options--opened`}`}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
         {sortings.map((sorting, i) =>
           <li

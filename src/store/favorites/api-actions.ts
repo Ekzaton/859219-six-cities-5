@@ -6,7 +6,7 @@ import {APIAction} from "../store";
 
 import {SHAKE_DURATION, APIEndpoint, AttributeName, AttributeValue} from "../../consts/store";
 
-import {shakeAnimation} from "../../resourses/animations";
+import {shakeAnimations} from "../../resourses/animations";
 
 export const fetchFavoriteOffers = (): APIAction => (dispatch, _getState, api) => {
   dispatch(setIsLoading(true));
@@ -35,7 +35,7 @@ export const toggleFavoriteStatus = (id: number, isFavorite: boolean, evt: FormE
   .catch(() => {
     svg.setAttribute(AttributeName.FILL, AttributeValue.RED);
     svg.setAttribute(AttributeName.STROKE, AttributeValue.RED);
-    button.animate(shakeAnimation, SHAKE_DURATION);
+    button.animate(shakeAnimations, SHAKE_DURATION);
     setTimeout(() => {
       svg.removeAttribute(AttributeName.FILL);
       svg.removeAttribute(AttributeName.STROKE);

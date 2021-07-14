@@ -1,7 +1,7 @@
 const shakeLeft = `translateX(-5px)`;
 const shakeRight = `translateX(5px)`;
 
-export const shakeAnimation: Keyframe[] = [
+export const shakeAnimations: Keyframe[] = [
   {transform: shakeLeft, offset: 0.1},
   {transform: shakeRight, offset: 0.2},
   {transform: shakeLeft, offset: 0.3},

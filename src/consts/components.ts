@@ -1,9 +1,9 @@
+export const DELAY_DURATION = 250;
 export const OFFER_IMAGES_COUNT = 6;
 export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
 export const REG_EXP_EMAIL = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/;
 export const REG_EXP_PASSWORD = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-export const DELAY_DURATION = 250;
 
 export enum BtnBigSize {
   WIDTH = 31,
@@ -46,7 +46,7 @@ export enum MapIconSize {
   HEIGHT = WIDTH
 }
 
-export enum MapIconUrl {
+export enum MapIconURL {
   PIN = `img/pin.svg`,
   PIN_ACTIVE = `img/pin-active.svg`
 }

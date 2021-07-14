@@ -3,7 +3,7 @@ import React, {memo, useEffect, useRef, MutableRefObject} from "react";
 
 import "leaflet/dist/leaflet.css";
 
-import {MapIconSize, MapIconUrl, MapLayer, MapType} from "../../consts/components";
+import {MapIconSize, MapIconURL, MapLayer, MapType} from "../../consts/components";
 
 import {Offer} from "../../types/common";
 
@@ -30,7 +30,7 @@ const Map = (props: MapProps): JSX.Element => {
 
     offers.forEach((offer) => {
       const icon = Leaflet.icon({
-        iconUrl: activeOfferID === offer.id ? MapIconUrl.PIN_ACTIVE : MapIconUrl.PIN,
+        iconUrl: activeOfferID === offer.id ? MapIconURL.PIN_ACTIVE : MapIconURL.PIN,
         iconSize: [MapIconSize.HEIGHT, MapIconSize.WIDTH]
       });
 
