@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../consts/common";
 
 type ErrorPageProps = {
-  loadingError: AxiosResponse
+  loadingError?: AxiosResponse
 }
 
 const ErrorPage = (props: ErrorPageProps): JSX.Element => {
@@ -17,7 +17,7 @@ const ErrorPage = (props: ErrorPageProps): JSX.Element => {
         className="property__name"
         style={{marginTop: `35vh`}}
       >
-        {loadingError.data.error
+        {loadingError?.data.error
           ? <>{loadingError.data.error}</>
           : `Sorry cant find that!`
         }
@@ -27,9 +27,7 @@ const ErrorPage = (props: ErrorPageProps): JSX.Element => {
         style={{margin: `5vh 0 20vh`}}
       >
         {loadingError
-          ? <>
-            Error {loadingError.status}: {loadingError.statusText}
-          </>
+          ? <>Error {loadingError.status}: {loadingError.statusText}</>
           : `Error 404: Not Found`
         }
       </p>

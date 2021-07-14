@@ -15,7 +15,6 @@ export const createAPI = (): AxiosInstance => {
   };
 
   const onFail = (error: AxiosError) => {
-
     throw error;
   };
 
