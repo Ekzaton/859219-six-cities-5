@@ -1,12 +1,13 @@
 import {Middleware} from "redux";
 
-import history from "../history";
-import {ActionType} from "../store/const";
+import {ActionType} from "../consts/store";
 
-export const redirect: Middleware = () => (next) => (action) => {
-  if (action.type === ActionType.REDIRECT_TO_ROUTE) {
+import history from "../history/history";
+
+export const redirect: Middleware = () => (dispatch) => (action) => {
+  if (action.type === ActionType.SET_REDIRECT_TO_ROUTE) {
     history.push(action.payload);
   }
 
-  return next(action);
+  return dispatch(action);
 };

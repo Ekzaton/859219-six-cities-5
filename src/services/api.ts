@@ -1,7 +1,7 @@
 import axios, {AxiosError, AxiosInstance, AxiosResponse} from "axios";
 import camelcaseKeys from "camelcase-keys";
 
-import {BASE_URL, REQUEST_TIMEOUT, HTTPCode} from "./const";
+import {BASE_URL, REQUEST_TIMEOUT} from "../consts/api";
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
@@ -15,18 +15,7 @@ export const createAPI = (): AxiosInstance => {
   };
 
   const onFail = (error: AxiosError) => {
-    const {response} = error;
-
-    switch (response?.status) {
-      case HTTPCode.BAD_REQUEST:
-        throw error;
-      case HTTPCode.UNAUTHORIZED:
-        throw error;
-      case HTTPCode.NOT_FOUND:
-        throw error;
-      default:
-        throw error;
-    }
+    throw error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

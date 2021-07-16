@@ -1,6 +1,6 @@
 import React from "react";
 
-const FavoritesPageEmpty: React.FunctionComponent = () => {
+const FavoritesPageEmpty = (): JSX.Element => {
   return (
     <section className="favorites favorites--empty">
       <h1 className="visually-hidden">Favorites (empty)</h1>

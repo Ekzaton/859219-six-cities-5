@@ -1,13 +1,14 @@
-import React from "react";
+import React, {memo} from "react";
 import {Link} from "react-router-dom";
 
-const PageFooter: React.FunctionComponent = () => {
+import {AppRoute} from "../../consts/common";
 
+const PageFooter = (): JSX.Element => {
   return (
     <footer className="footer container">
       <Link
         className="footer__logo-link"
-        to={`/`}
+        to={AppRoute.MAIN}
       >
         <img
           className="footer__logo"
@@ -21,4 +22,4 @@ const PageFooter: React.FunctionComponent = () => {
   );
 };
 
-export default PageFooter;
+export default memo(PageFooter);

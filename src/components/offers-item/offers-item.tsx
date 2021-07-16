@@ -1,21 +1,29 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-
-import {CardImgSize, CardType, BtnType, FavCardImgSize} from "../../const";
-import {Offer} from "../../types";
-import {capitalize, getRatingStars} from "../../utils";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 
-type Props = {
+import {AppRoute} from "../../consts/common";
+import {BtnType, CardImgSize, CardType, FavCardImgSize} from "../../consts/components";
+
+import {selectIsAuthorized} from "../../store/login/selectors";
+
+import {Offer} from "../../types/common";
+
+import {getOfferType, getRatingStars} from "../../utils/components";
+
+type OffersItemProps = {
   offer: Offer;
   type: CardType;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
 
-const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
+const OffersItem = (props: OffersItemProps): JSX.Element => {
   const {offer, type, onMouseEnter, onMouseLeave} = props;
+
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
     <article
@@ -29,7 +37,7 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
         </div>
       }
       <div className={`${type}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`/offer/${offer.id}`}>
+        <Link to={`${AppRoute.OFFER}${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -45,10 +53,12 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&nbsp;&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton
-            offer={offer}
-            type={BtnType.PLACE_CARD}
-          />
+          {isAuthorized &&
+            <BookmarkButton
+              offer={offer}
+              type={BtnType.PLACE_CARD}
+            />
+          }
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -57,9 +67,13 @@ const OffersItem: React.FunctionComponent<Props> = (props: Props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link to={`${AppRoute.OFFER}${offer.id}`}>
+            {offer.title}
+          </Link>
         </h2>
-        <p className="place-card__type">{capitalize(offer.type)}</p>
+        <p className="place-card__type">
+          {getOfferType(offer.type)}
+        </p>
       </div>
     </article>
   );

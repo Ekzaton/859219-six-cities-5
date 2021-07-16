@@ -1,27 +1,69 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-import {selectActiveOfferID, selectCurrentFiltering, selectCurrentSorting, selectSortedOffers} from "../../store/app/selectors";
-
-import {CardType, MapType} from "../../const";
-
+import CitiesList from "../cities-list/cities-list";
+import Delay from "../delay/delay";
+import ErrorPage from "../error-page.tsx/error-page";
+import LoadingPage from "../loading-page/loading-page";
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";
-import CitiesList from "../cities-list/cities-list";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import SortingForm from "../sorting-form/sorting-form";
 
-const MainPage: React.FunctionComponent = () => {
+import {DELAY_DURATION, CardType, HeaderType, MapType} from "../../consts/components";
+
+import {fetchAllOffers} from "../../store/main/api-actions";
+
+import {
+  selectActiveOfferID,
+  selectCurrentCity,
+  selectCurrentSorting,
+  selectIsLoading,
+  selectLoadingError,
+  selectSortedOffers,
+  selectNoSortedOffers,
+  selectSortedOffersCount
+} from "../../store/main/selectors";
+
+const MainPage = (): JSX.Element => {
+  const dispatch = useDispatch();
   const activeOfferID = useSelector(selectActiveOfferID);
-  const currentCity = useSelector(selectCurrentFiltering);
+  const currentCity = useSelector(selectCurrentCity);
   const currentSorting = useSelector(selectCurrentSorting);
+  const isLoading = useSelector(selectIsLoading);
+  const loadingError = useSelector(selectLoadingError);
   const offers = useSelector(selectSortedOffers);
-  const noOffers = offers.length === 0;
+  const offersCount = useSelector(selectSortedOffersCount);
+  const noOffers = useSelector(selectNoSortedOffers);
+
+  useEffect(() => {
+    dispatch(fetchAllOffers());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return (
+      <Delay
+        duration={DELAY_DURATION}
+      >
+        <LoadingPage/>
+      </Delay>
+    );
+  }
+
+  if (loadingError) {
+    return (
+      <ErrorPage
+        loadingError={loadingError}
+      />
+    );
+  }
 
   return (
     <div className={`page page--gray page--main ${noOffers && `page__main--index-empty`}`}>
-      <PageHeader/>
+      <PageHeader
+        type={HeaderType.MAIN}
+      />
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -34,13 +76,19 @@ const MainPage: React.FunctionComponent = () => {
         </div>
         <div className="cities">
           {noOffers
-            ? <MainPageEmpty
-              currentCity={currentCity}
-            />
+            ? <Delay
+              duration={DELAY_DURATION}
+            >
+              <MainPageEmpty
+                currentCity={currentCity}
+              />
+            </Delay>
             : <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in {currentCity}</b>
+                <b className="places__found">
+                  {offersCount} places to stay in {currentCity}
+                </b>
                 <SortingForm
                   currentSorting={currentSorting}
                 />

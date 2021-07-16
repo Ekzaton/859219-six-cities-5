@@ -2,19 +2,22 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {getCurrentFiltering} from "../../store/app/actions";
-
-import {CardType, FilteringType} from "../../const";
-import {Offer} from "../../types";
-
 import OffersList from "../offers-list/offers-list";
 
-type Props = {
-  offersByCity: Record<string, Offer[]>;
+import {AppRoute, CityName} from "../../consts/common";
+import {CardType} from "../../consts/components";
+
+import {setCurrentCity} from "../../store/main/actions";
+
+import {Offer} from "../../types/common";
+
+type FavoritesListProps = {
+  offersByCity: Record<CityName, Offer[]>;
 }
 
-const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
+const FavoritesList = (props: FavoritesListProps): JSX.Element => {
   const {offersByCity} = props;
+
   const dispatch = useDispatch();
 
   return (
@@ -27,9 +30,9 @@ const FavoritesList: React.FunctionComponent<Props> = (props: Props) => {
           <div className="favorites__locations locations locations--current">
             <div className="locations__item">
               <Link
-                to={`/`}
+                to={AppRoute.MAIN}
                 className="locations__item-link"
-                onClick={() => dispatch(getCurrentFiltering(city as FilteringType))}
+                onClick={() => dispatch(setCurrentCity(city as CityName))}
               >
                 <span>{city}</span>
               </Link>

@@ -2,26 +2,26 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {Redirect, Route} from "react-router-dom";
 
-import {selectAuthStatus} from "../../store/user/selectors";
+import {AppRoute} from "../../consts/common";
 
-import {AuthStatus} from "../../const";
+import {selectIsAuthorized} from "../../store/login/selectors";
 
-type Props = {
+type PrivateRouteProps = {
   exact: boolean;
   path: string;
   render: () => JSX.Element;
 }
 
-const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
+const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
   const {exact, path, render} = props;
-  const authStatus = useSelector(selectAuthStatus);
-  const isAuthorized = authStatus === AuthStatus.AUTH;
+
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
     <Route
       exact={exact}
       path={path}
-      render={() => isAuthorized ? render() : <Redirect to={`/login`}/>}
+      render={() => isAuthorized ? render() : <Redirect to={AppRoute.LOGIN}/>}
     />
   );
 };

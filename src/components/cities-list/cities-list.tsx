@@ -1,17 +1,18 @@
-import React from "react";
+import React, {memo} from "react";
 import {useDispatch} from "react-redux";
 
-import {getCurrentFiltering} from "../../store/app/actions";
+import {CityName} from "../../consts/common";
 
-import {FilteringType} from "../../const";
+import {setCurrentCity} from "../../store/main/actions";
 
-type Props = {
-  currentCity: FilteringType;
+type CitiesListProps = {
+  currentCity: CityName;
 }
 
-const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
+const CitiesList = (props: CitiesListProps): JSX.Element => {
   const {currentCity} = props;
-  const cities = Object.values(FilteringType);
+  const cities = Object.values(CityName);
+
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +24,7 @@ const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
         >
           <a
             className={`locations__item-link tabs__item ${city === currentCity && `tabs__item--active`}`}
-            onClick={() => dispatch(getCurrentFiltering(city))}
+            onClick={() => dispatch(setCurrentCity(city))}
           >
             <span>{city}</span>
           </a>
@@ -33,4 +34,4 @@ const CitiesList: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default React.memo(CitiesList);
+export default memo(CitiesList);

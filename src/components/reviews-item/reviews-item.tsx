@@ -1,13 +1,14 @@
 import React from "react";
 
-import {Review} from "../../types";
-import {formatReviewDate, getRatingStars} from "../../utils";
+import {Review} from "../../types/common";
 
-type Props = {
+import {getRatingStars, getReviewDate} from "../../utils/components";
+
+type ReviewsItemProps = {
   review: Review;
 }
 
-const ReviewsItem: React.FunctionComponent<Props> = (props: Props) => {
+const ReviewsItem = (props: ReviewsItemProps): JSX.Element => {
   const {review} = props;
 
   return (
@@ -37,7 +38,7 @@ const ReviewsItem: React.FunctionComponent<Props> = (props: Props) => {
           {review.comment}
         </p>
         <time className="reviews__time">
-          {formatReviewDate(review.date)}
+          {getReviewDate(review.date)}
         </time>
       </div>
     </li>

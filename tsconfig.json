@@ -5,7 +5,7 @@
     "jsx": "react",
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "lib": ["dom"]
   }
 }

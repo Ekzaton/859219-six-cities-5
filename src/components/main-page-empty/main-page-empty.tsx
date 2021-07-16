@@ -1,12 +1,12 @@
 import React from "react";
 
-import {FilteringType} from "../../const";
+import {CityName} from "../../consts/common";
 
-type Props = {
-  currentCity: FilteringType;
+type MainPageEmptyProps = {
+  currentCity: CityName;
 }
 
-const MainPageEmpty: React.FunctionComponent<Props> = (props: Props) => {
+const MainPageEmpty = (props: MainPageEmptyProps): JSX.Element => {
   const {currentCity} = props;
 
   return (

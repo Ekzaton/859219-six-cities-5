@@ -1,34 +1,36 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {getActiveOfferID} from "../../store/app/actions";
-
-import {CardType} from "../../const";
-import {Offer} from "../../types";
-
 import OffersItem from "../offers-item/offers-item";
 
-type Props = {
+import {CardType} from "../../consts/components";
+
+import {setActiveOfferID} from "../../store/main/actions";
+
+import {Offer} from "../../types/common";
+
+type OffersListProps = {
   offers: Offer[];
   type: CardType;
 }
 
-const OffersList: React.FunctionComponent<Props> = (props: Props) => {
+const OffersList = (props: OffersListProps): JSX.Element => {
   const {offers, type} = props;
+
   const dispatch = useDispatch();
 
   return (
-    <React.Fragment>
+    <>
       {offers.map((offer, i) =>
         <OffersItem
           key={`offer-${i}`}
           offer={offer}
           type={type}
-          onMouseEnter={() => dispatch(getActiveOfferID(offer.id))}
-          onMouseLeave={() => dispatch(getActiveOfferID(null))}
+          onMouseEnter={() => dispatch(setActiveOfferID(offer.id))}
+          onMouseLeave={() => dispatch(setActiveOfferID(null))}
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 

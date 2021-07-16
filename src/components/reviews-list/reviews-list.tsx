@@ -1,15 +1,16 @@
 import React from "react";
 
-import {OFFER_REVIEWS_COUNT} from "../../const";
-import {Review} from "../../types";
-
 import ReviewsItem from "../reviews-item/reviews-item";
 
-type Props = {
+import {OFFER_REVIEWS_COUNT} from "../../consts/components";
+
+import {Review} from "../../types/common";
+
+type ReviewsListProps = {
   reviews: Review[];
 }
 
-const ReviewsList: React.FunctionComponent<Props> = (props: Props) => {
+const ReviewsList = (props: ReviewsListProps): JSX.Element => {
   const {reviews} = props;
 
   return (

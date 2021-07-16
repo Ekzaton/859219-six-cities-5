@@ -1,23 +1,26 @@
 import Leaflet from "leaflet";
-import React from "react";
-
-import {MapIconUrl, MapIconSize, MapLayer, MapType} from "../../const";
-import {Offer} from "../../types";
+import React, {memo, useEffect, useRef, MutableRefObject} from "react";
 
 import "leaflet/dist/leaflet.css";
 
-type Props = {
+import {MapIconSize, MapIconURL, MapLayer, MapType} from "../../consts/components";
+
+import {Offer} from "../../types/common";
+
+type MapProps = {
   activeOfferID: number | null;
   offers: Offer[];
   type: MapType;
 }
 
-const Map: React.FunctionComponent<Props> = (props: Props) => {
+const Map = (props: MapProps): JSX.Element => {
   const {activeOfferID, offers, type} = props;
   const city = offers[0].city;
 
-  React.useEffect(() => {
-    const map = Leaflet.map(`map`, {
+  const mapRef = useRef() as MutableRefObject<HTMLElement>;
+
+  useEffect(() => {
+    const map = Leaflet.map(mapRef.current, {
       center: [city.location.latitude, city.location.longitude],
       zoom: city.location.zoom,
       scrollWheelZoom: false
@@ -27,7 +30,7 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
 
     offers.forEach((offer) => {
       const icon = Leaflet.icon({
-        iconUrl: activeOfferID === offer.id ? MapIconUrl.PIN_ACTIVE : MapIconUrl.PIN,
+        iconUrl: activeOfferID === offer.id ? MapIconURL.PIN_ACTIVE : MapIconURL.PIN,
         iconSize: [MapIconSize.HEIGHT, MapIconSize.WIDTH]
       });
 
@@ -35,18 +38,16 @@ const Map: React.FunctionComponent<Props> = (props: Props) => {
     });
 
     return () => {
-      if (map) {
-        map.remove();
-      }
+      map.remove();
     };
   }, [activeOfferID, city, offers]);
 
   return (
     <section
-      id="map"
+      ref={mapRef}
       className={`${type}__map map`}
     />
   );
 };
 
-export default React.memo(Map);
+export default memo(Map);

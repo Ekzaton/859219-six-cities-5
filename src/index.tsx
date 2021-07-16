@@ -1,14 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
-
-import store from "./store/index";
+import {Router} from "react-router-dom";
 
 import App from "./components/app/app";
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-    </Provider>,
-    document.getElementById(`root`)
-);
+import history from "./history/history";
+
+import store from "./store/store";
+
+import {checkAuthStatus} from "./store/login/api-actions";
+
+Promise.resolve(
+    store.dispatch(checkAuthStatus())
+)
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <Router history={history}>
+          <App/>
+        </Router>
+      </Provider>,
+      document.getElementById(`root`)
+  );
+});

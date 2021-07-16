@@ -1,39 +1,39 @@
-import React from "react";
+import React, {memo, useState} from "react";
 import {useDispatch} from "react-redux";
 
-import {getCurrentSorting} from "../../store/app/actions";
+import {SortingType} from "../../consts/common";
 
-import {SortingType} from "../../const";
+import {setCurrentSorting} from "../../store/main/actions";
 
-type Props = {
+type SortingFormProps = {
   currentSorting: SortingType;
 }
 
-const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
+const SortingForm = (props: SortingFormProps): JSX.Element => {
   const {currentSorting} = props;
-  const [isOpened, setIsOpened] = React.useState(false);
   const sortings = Object.values(SortingType);
+
   const dispatch = useDispatch();
 
-  const handleMouseOver = () => {
+  const [isOpened, setIsOpened] = useState(false);
+
+  const onMouseOver = () => {
     setIsOpened(true);
   };
 
-  const handleMouseOut = () => {
+  const onMouseOut = () => {
     setIsOpened(false);
   };
 
   return (
     <form
       className="places__sorting"
-      action="#"
-      method="get"
     >
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span
         className="places__sorting-type"
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
         {currentSorting}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -42,14 +42,14 @@ const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
       </span>
       <ul
         className={`places__options places__options--custom ${isOpened && `places__options--opened`}`}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
         {sortings.map((sorting, i) =>
           <li
             key={`sorting-${i}`}
             className={`places__option ${sorting === currentSorting && `places__option--active`}`}
-            onClick={() => dispatch(getCurrentSorting(sorting))}
+            onClick={() => dispatch(setCurrentSorting(sorting))}
           >
             {sorting}
           </li>
@@ -59,4 +59,4 @@ const SortingForm: React.FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default SortingForm;
+export default memo(SortingForm);
