@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 
-import ErrorPage from "../error-page.tsx/error-page";
+import ErrorPage from "../error-page/error-page";
 import FavoritesPage from "../favorites-page/favorites-page";
 import LoginPage from "../login-page/login-page";
 import MainPage from "../main-page/main-page";

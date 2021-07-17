@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import CitiesList from "../cities-list/cities-list";
 import Delay from "../delay/delay";
-import ErrorPage from "../error-page.tsx/error-page";
+import ErrorPage from "../error-page/error-page";
 import LoadingPage from "../loading-page/loading-page";
 import MainPageEmpty from "../main-page-empty/main-page-empty";
 import Map from "../map/map";

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import Delay from "../delay/delay";
-import ErrorPage from "../error-page.tsx/error-page";
+import ErrorPage from "../error-page/error-page";
 import FavoritesList from "../favorites-list/favorites-list";
 import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
 import LoadingPage from "../loading-page/loading-page";

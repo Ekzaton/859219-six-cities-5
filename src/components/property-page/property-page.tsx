@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 import Delay from "../delay/delay";
-import ErrorPage from "../error-page.tsx/error-page";
+import ErrorPage from "../error-page/error-page";
 import LoadingPage from "../loading-page/loading-page";
 import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
