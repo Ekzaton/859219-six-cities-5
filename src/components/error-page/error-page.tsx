@@ -17,7 +17,7 @@ const ErrorPage = (props: ErrorPageProps): JSX.Element => {
         className="property__name"
         style={{marginTop: `35vh`}}
       >
-        {loadingError?.data.error
+        {loadingError
           ? <>{loadingError.data.error}</>
           : `Sorry cant find that!`
         }
