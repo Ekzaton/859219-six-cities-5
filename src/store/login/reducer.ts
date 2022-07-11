@@ -1,6 +1,5 @@
 import {AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-
 import {User} from "../../types/common";
 import {LoginAction, LoginState} from "../../types/store/login";
 

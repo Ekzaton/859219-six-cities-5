@@ -2,7 +2,6 @@ import React, {memo} from "react";
 import {useDispatch} from "react-redux";
 
 import {CityName} from "../../consts/common";
-
 import {setCurrentCity} from "../../store/main/actions";
 
 type CitiesListProps = {

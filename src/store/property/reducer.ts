@@ -1,8 +1,6 @@
 import {ActionType} from "../../consts/store";
-
 import {Offer} from "../../types/common";
 import {PropertyAction, PropertyState} from "../../types/store/property";
-
 import {setNearbyOffers} from "../../utils/store";
 
 const initialState: PropertyState = {

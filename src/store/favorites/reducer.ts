@@ -1,7 +1,5 @@
 import {ActionType} from "../../consts/store";
-
 import {FavoritesAction, FavoritesState} from "../../types/store/favorites";
-
 import {setFavoriteOffers} from "../../utils/store";
 
 const initialState: FavoritesState = {

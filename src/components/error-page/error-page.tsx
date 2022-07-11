@@ -18,12 +18,7 @@ const ErrorPage = (props: ErrorPageProps): JSX.Element => {
         style={{marginTop: `35vh`}}
       >
         {loadingError
-          ? <>
-            {loadingError.data.error
-              ? loadingError.data.error
-              : `Sorry cant find that!`
-            }
-          </>
+          ? `${loadingError.data.error ? loadingError.data.error : `Sorry cant find that!`}`
           : `Sorry cant find that!`
         }
       </h1>
@@ -32,7 +27,7 @@ const ErrorPage = (props: ErrorPageProps): JSX.Element => {
         style={{margin: `5vh 0 20vh`}}
       >
         {loadingError
-          ? <>Error {loadingError.status}: {loadingError.statusText}</>
+          ? `Error ${loadingError.status}: ${loadingError.statusText}`
           : `Error 404: Not Found`
         }
       </p>

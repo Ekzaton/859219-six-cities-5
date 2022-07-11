@@ -1,7 +1,6 @@
 import {AxiosResponse} from "axios";
 
 import {ActionType} from "../../consts/store";
-
 import {Offer} from "../../types/common";
 import {FavoritesAction} from "../../types/store/favorites";
 

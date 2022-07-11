@@ -1,6 +1,10 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
+import {DELAY_DURATION} from "../../consts/components";
+import {fetchFavoriteOffers} from "../../store/favorites/api-actions";
+import {selectOffersByCity, selectNoOffers, selectIsLoading, selectLoadingError} from "../../store/favorites/selectors";
+
 import Delay from "../delay/delay";
 import ErrorPage from "../error-page/error-page";
 import FavoritesList from "../favorites-list/favorites-list";
@@ -8,12 +12,6 @@ import FavoritesPageEmpty from "../favorites-page-empty/favorites-page-empty";
 import LoadingPage from "../loading-page/loading-page";
 import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
-
-import {DELAY_DURATION} from "../../consts/components";
-
-import {fetchFavoriteOffers} from "../../store/favorites/api-actions";
-
-import {selectOffersByCity, selectNoOffers, selectIsLoading, selectLoadingError} from "../../store/favorites/selectors";
 
 const FavoritesPage = (): JSX.Element => {
   const dispatch = useDispatch();

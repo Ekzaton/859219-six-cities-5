@@ -1,7 +1,7 @@
 import {AxiosResponse} from "axios";
+
 import {AppRoute, AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-
 import {User} from "../../types/common";
 import {LoginAction} from "../../types/store/login";
 

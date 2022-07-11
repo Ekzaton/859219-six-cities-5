@@ -2,7 +2,6 @@ import {AxiosResponse} from "axios";
 
 import {CityName, SortingType} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-
 import {Offer} from "../../types/common";
 import {MainAction} from "../../types/store/main";
 

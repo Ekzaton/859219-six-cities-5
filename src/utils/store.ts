@@ -1,16 +1,15 @@
 import {CityName, SortingType} from "../consts/common";
-
-import {Offer, Review} from "../types/common";
+import {Offer, OffersByCity, Review} from "../types/common";
 
 export const getFilteredOffers = (currentCity: CityName, offers: Offer[]): Offer[] =>
   offers.filter((offer) => offer.city.name === currentCity);
 
-export const getOffersByCity = (offers: Offer[]): Record<CityName, Offer[]> =>
+export const getOffersByCity = (offers: Offer[]): OffersByCity =>
   offers.reduce((acc, offer) => {
     const city = offer.city.name;
     acc[city] = acc[city] ? [...acc[city], offer] : [offer];
     return acc;
-  }, {} as Record<CityName, Offer[]>);
+  }, {} as OffersByCity);
 
 export const getSortedOffers = (currentSorting: SortingType, offers: Offer[]): Offer[] => {
   switch (currentSorting) {
@@ -48,4 +47,3 @@ export const setOffers = (offers: Offer[], changedOffer: Offer): Offer[] => {
   const index = offers.findIndex((offer) => offer.id === changedOffer.id);
   return [...offers.slice(0, index), changedOffer, ...offers.slice(index + 1)];
 };
-

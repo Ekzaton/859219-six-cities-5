@@ -1,10 +1,8 @@
-import React, {memo, FormEvent} from "react";
+import React, {memo, useCallback, FormEvent} from "react";
 import {useDispatch} from "react-redux";
 
 import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
-
 import {toggleFavoriteStatus} from "../../store/favorites/api-actions";
-
 import {Offer} from "../../types/common";
 
 type BookmarkButtonProps = {
@@ -17,14 +15,16 @@ const BookmarkButton = (props: BookmarkButtonProps): JSX.Element => {
 
   const dispatch = useDispatch();
 
+  const handleButtonClick = useCallback((evt: FormEvent) => {
+    evt.preventDefault();
+    dispatch(toggleFavoriteStatus(offer.id, offer.isFavorite, evt));
+  }, [dispatch, offer.id, offer.isFavorite]);
+
   return (
     <button
       className={`${type}__bookmark-button ${offer.isFavorite && `${type}__bookmark-button--active`} button`}
       type="button"
-      onClick={(evt: FormEvent) => {
-        evt.preventDefault();
-        dispatch(toggleFavoriteStatus(offer.id, offer.isFavorite, evt));
-      }}
+      onClick={handleButtonClick}
     >
       <svg
         className={`${type}__bookmark-icon`}

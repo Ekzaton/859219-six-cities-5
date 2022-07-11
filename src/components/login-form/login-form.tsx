@@ -2,9 +2,7 @@ import React, {useRef, useState, ChangeEvent, FormEvent, MutableRefObject} from 
 import {useDispatch, useSelector} from "react-redux";
 
 import {REG_EXP_EMAIL, REG_EXP_PASSWORD} from "../../consts/components";
-
 import {logIn} from "../../store/login/api-actions";
-
 import {selectIsSending, selectSendingError} from "../../store/login/selectors";
 
 const LoginForm = (): JSX.Element => {
@@ -93,9 +91,7 @@ const LoginForm = (): JSX.Element => {
           || hideInvalidMsgs && !isValidEmail && isValidPassword && `Please enter your email`
           || !hideInvalidEmailMsg && `Invalid email! Please enter a valid email`
           || isSending && `Signing in... Please wait`
-          || sendingError && <>
-            Error {sendingError.status}: {sendingError.statusText}. Please try agaian later
-          </>
+          || sendingError && `Error ${sendingError.status}: ${sendingError.statusText}. Please try agaian later`
         }
       </div>
       <div style={{marginTop: `30px`}}>

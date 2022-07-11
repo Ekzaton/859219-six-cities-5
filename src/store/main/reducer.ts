@@ -1,8 +1,6 @@
 import {CityName, SortingType} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-
 import {MainAction, MainState} from "../../types/store/main";
-
 import {setOffers} from "../../utils/store";
 
 const initialState: MainState = {

@@ -1,12 +1,11 @@
-import {setOffer, setNearbyOffers, setReviews, setIsLoading, setLoadingError, setIsSending, setSendingError} from "./actions";
-
-import {APIAction} from "../store";
-
 import {APIEndpoint} from "../../consts/store";
-
 import {ReviewPost} from "../../types/common";
 
-export const fetchOffer = (id: string): APIAction => (dispatch, _getState, api) => {
+import {APIAction, AppDispatch} from "../store";
+
+import {setOffer, setNearbyOffers, setReviews, setIsLoading, setLoadingError, setIsSending, setSendingError} from "./actions";
+
+export const fetchOffer = (id: string): APIAction => (dispatch: AppDispatch, _getState, api) => {
   dispatch(setIsLoading(true));
   api.get(APIEndpoint.HOTELS + id)
   .then(({data}) => {
@@ -20,17 +19,17 @@ export const fetchOffer = (id: string): APIAction => (dispatch, _getState, api) 
   });
 };
 
-export const fetchNearbyOffers = (id: string): APIAction => (dispatch, _getState, api) => {
+export const fetchNearbyOffers = (id: string): APIAction => (dispatch: AppDispatch, _getState, api) => {
   api.get(APIEndpoint.HOTELS + id + APIEndpoint.NEARBY)
   .then(({data}) => dispatch(setNearbyOffers(data)));
 };
 
-export const fetchReviews = (id: string): APIAction => (dispatch, _getState, api) => {
+export const fetchReviews = (id: string): APIAction => (dispatch: AppDispatch, _getState, api) => {
   api.get(APIEndpoint.COMMENTS + id)
   .then(({data}) => dispatch(setReviews(data)));
 };
 
-export const sendReview = (id: number, {rating, comment}: ReviewPost): APIAction => (dispatch, _getState, api) => {
+export const sendReview = (id: number, {rating, comment}: ReviewPost): APIAction => (dispatch: AppDispatch, _getState, api) => {
   dispatch(setIsSending(true));
   api.post(APIEndpoint.COMMENTS + id, {rating, comment})
   .then(({data}) => {

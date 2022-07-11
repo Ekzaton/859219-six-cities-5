@@ -1,4 +1,4 @@
-import {ReviewDate, ReviewLehgth} from "../consts/components";
+import {ReviewDate, ReviewLength} from "../consts/components";
 
 export const getOfferType = (type: string): string => type[0].toUpperCase() + type.slice(1);
 
@@ -10,6 +10,6 @@ export const getReviewDate = (date: string): string =>
   new Date(date).toLocaleString(ReviewDate.LOCALE, {month: ReviewDate.MONTH, year: ReviewDate.YEAR});
 
 export const validateComment = (comment: string): boolean =>
-  comment.length >= ReviewLehgth.MIN && comment.length <= ReviewLehgth.MAX;
+  comment.length >= ReviewLength.MIN && comment.length <= ReviewLength.MAX;
 
 
