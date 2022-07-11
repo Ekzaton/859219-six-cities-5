@@ -3,25 +3,26 @@ import {FormEvent} from "react";
 import {SHAKE_DURATION, APIEndpoint, AttributeName, AttributeValue} from "../../consts/store";
 import {shakeAnimations} from "../../resourses/animations";
 
-import {APIAction, AppDispatch} from "../store";
+import {AppDispatch, AppThunkAction} from "../store";
 
 import {setFavoriteOffers, setOfferFavoriteStatus, setIsLoading, setLoadingError} from "./actions";
 
-export const fetchFavoriteOffers = (): APIAction => (dispatch: AppDispatch, _getState, api) => {
+export const fetchFavoriteOffers = (): AppThunkAction => (dispatch: AppDispatch, _getState, api) => {
   dispatch(setIsLoading(true));
   api.get(APIEndpoint.FAVORITE)
   .then(({data}) => {
     dispatch(setLoadingError(null));
     dispatch(setFavoriteOffers(data));
-    dispatch(setIsLoading(false));
   })
   .catch(({response}) => {
     dispatch(setLoadingError(response));
+  })
+  .finally(() => {
     dispatch(setIsLoading(false));
   });
 };
 
-export const toggleFavoriteStatus = (id: number, isFavorite: boolean, evt: FormEvent): APIAction => (dispatch: AppDispatch, _getState, api) => {
+export const toggleFavoriteStatus = (id: number, isFavorite: boolean, evt: FormEvent): AppThunkAction => (dispatch: AppDispatch, _getState, api) => {
   const button = evt.currentTarget as HTMLButtonElement;
   const span = button.firstElementChild as HTMLSpanElement;
   const svg = span.firstElementChild as SVGElement;

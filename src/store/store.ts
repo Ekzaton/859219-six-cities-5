@@ -27,9 +27,8 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkWithAPI, redirect)));
 
-export type RootState = ReturnType<typeof store.getState>;
+export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export type RootAction = FavoritesAction & LoginAction & MainAction & PropertyAction;
-export type APIAction = ThunkAction<void, RootState, AxiosInstance, RootAction>;
-
+export type AppAction = FavoritesAction | LoginAction | MainAction | PropertyAction;
+export type AppThunkAction = ThunkAction<void, AppState, AxiosInstance, AppAction>;
 export default store;
