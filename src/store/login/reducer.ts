@@ -1,16 +1,18 @@
+import {AnyAction} from "redux";
+
 import {AuthStatus} from "../../consts/common";
 import {ActionType} from "../../consts/store";
 import {User} from "../../types/common";
-import {LoginAction, LoginState} from "../../types/store/login";
+import {AxiosResponse} from "axios";
 
-const initialState: LoginState = {
+const initialState = {
   authStatus: AuthStatus.NO_AUTH,
   user: {} as User,
   isSending: false,
-  sendingError: null
+  sendingError: null as AxiosResponse | null,
 };
 
-export const loginReducer = (state = initialState, action: LoginAction): LoginState => {
+export const loginReducer = (state = initialState, action: AnyAction): LoginState => {
   switch (action.type) {
     case ActionType.SET_AUTH_STATUS:
       return {...state, authStatus: action.payload};
@@ -24,3 +26,5 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
       return state;
   }
 };
+
+type LoginState = typeof initialState;

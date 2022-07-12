@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
 
 import {DELAY_DURATION} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {fetchFavoriteOffers} from "../../store/favorites/api-actions";
 import {selectOffersByCity, selectNoOffers, selectIsLoading, selectLoadingError} from "../../store/favorites/selectors";
 
@@ -14,15 +14,15 @@ import PageFooter from "../page-footer/page-footer";
 import PageHeader from "../page-header/page-header";
 
 const FavoritesPage = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const offersByCity = useSelector(selectOffersByCity);
-  const noOffers = useSelector(selectNoOffers);
-  const isLoading = useSelector(selectIsLoading);
-  const loadingError = useSelector(selectLoadingError);
+  const dispatch = useAppDispatch();
+  const offersByCity = useAppSelector(selectOffersByCity);
+  const noOffers = useAppSelector(selectNoOffers);
+  const isLoading = useAppSelector(selectIsLoading);
+  const loadingError = useAppSelector(selectLoadingError);
 
   useEffect(() => {
     dispatch(fetchFavoriteOffers());
-  }, [dispatch]);
+  }, []);
 
   if (isLoading) {
     return (

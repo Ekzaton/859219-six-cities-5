@@ -2,7 +2,6 @@ import {AxiosResponse} from "axios";
 import {createSelector} from 'reselect';
 
 import {AuthStatus} from "../../consts/common";
-
 import {User} from "../../types/common";
 
 import {AppState} from "../store";

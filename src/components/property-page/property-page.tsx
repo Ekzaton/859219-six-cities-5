@@ -1,6 +1,21 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
+
+import {OFFER_IMAGES_COUNT, DELAY_DURATION, BtnType, CardType, MapType} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
+import {selectIsAuthorized} from "../../store/login/selectors";
+import {fetchOffer, fetchNearbyOffers, fetchReviews} from "../../store/property/api-actions";
+import {
+  selectOffer,
+  selectOffers,
+  selectNearbyOffers,
+  selectNoOffer,
+  selectReviewsCount,
+  selectSortedReviews,
+  selectIsLoading,
+  selectLoadingError
+} from "../../store/property/selectors";
+import {getOfferType, getRatingStars} from "../../utils/components";
 
 import BookmarkButton from "../bookmark-button/bookmark-button";
 import Delay from "../delay/delay";
@@ -12,35 +27,17 @@ import PageHeader from "../page-header/page-header";
 import ReviewForm from "../review-form/review-form";
 import ReviewsList from "../reviews-list/reviews-list";
 
-import {OFFER_IMAGES_COUNT, DELAY_DURATION, BtnType, CardType, MapType} from "../../consts/components";
-
-import {fetchOffer, fetchNearbyOffers, fetchReviews} from "../../store/property/api-actions";
-
-import {selectIsAuthorized} from "../../store/login/selectors";
-import {
-  selectOffer,
-  selectOffers,
-  selectNearbyOffers,
-  selectNoOffer,
-  selectReviewsCount,
-  selectSortedReviews,
-  selectIsLoading,
-  selectLoadingError
-} from "../../store/property/selectors";
-
-import {getOfferType, getRatingStars} from "../../utils/components";
-
 const PropertyPage = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const offer = useSelector(selectOffer);
-  const offers = useSelector(selectOffers);
-  const nearbyOffers = useSelector(selectNearbyOffers);
-  const noOffer = useSelector(selectNoOffer);
-  const reviews = useSelector(selectSortedReviews);
-  const reviewsCount = useSelector(selectReviewsCount);
-  const isLoading = useSelector(selectIsLoading);
-  const loadingError = useSelector(selectLoadingError);
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const dispatch = useAppDispatch();
+  const offer = useAppSelector(selectOffer);
+  const offers = useAppSelector(selectOffers);
+  const nearbyOffers = useAppSelector(selectNearbyOffers);
+  const noOffer = useAppSelector(selectNoOffer);
+  const reviews = useAppSelector(selectSortedReviews);
+  const reviewsCount = useAppSelector(selectReviewsCount);
+  const isLoading = useAppSelector(selectIsLoading);
+  const loadingError = useAppSelector(selectLoadingError);
+  const isAuthorized = useAppSelector(selectIsAuthorized);
   const {id} = useParams<{id: string}>();
 
   useEffect(() => {

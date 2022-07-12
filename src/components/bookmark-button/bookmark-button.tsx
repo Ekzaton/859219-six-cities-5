@@ -1,7 +1,7 @@
 import React, {memo, useCallback, FormEvent} from "react";
-import {useDispatch} from "react-redux";
 
 import {BtnBigSize, BtnSize, BtnType} from "../../consts/components";
+import {useAppDispatch} from "../../hooks/store";
 import {toggleFavoriteStatus} from "../../store/favorites/api-actions";
 import {Offer} from "../../types/common";
 
@@ -13,12 +13,12 @@ type BookmarkButtonProps = {
 const BookmarkButton = (props: BookmarkButtonProps): JSX.Element => {
   const {offer, type} = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleButtonClick = useCallback((evt: FormEvent) => {
     evt.preventDefault();
-    dispatch(toggleFavoriteStatus(offer.id, offer.isFavorite, evt));
-  }, [dispatch, offer.id, offer.isFavorite]);
+    dispatch(toggleFavoriteStatus(offer, evt));
+  }, [offer]);
 
   return (
     <button

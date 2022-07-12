@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState, useRef, ChangeEvent, FormEvent, Fragment} from "react";
-import {useDispatch, useSelector} from "react-redux";
 
 import {RATING_STARS_COUNT, ReviewLength} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {sendReview} from "../../store/property/api-actions";
 import {selectIsSending, selectSendingError} from "../../store/property/selectors";
 import {Offer} from "../../types/common";
@@ -14,9 +14,9 @@ type ReviewFormProps = {
 const ReviewForm = (props: ReviewFormProps): JSX.Element => {
   const {offer} = props;
 
-  const dispatch = useDispatch();
-  const isSending = useSelector(selectIsSending);
-  const sendingError = useSelector(selectSendingError);
+  const dispatch = useAppDispatch();
+  const isSending = useAppSelector(selectIsSending);
+  const sendingError = useAppSelector(selectSendingError);
 
   const initialReview = useMemo(() => ({
     rating: 0,

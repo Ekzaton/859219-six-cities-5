@@ -1,14 +1,14 @@
 import React, {useRef, useState, ChangeEvent, FormEvent, MutableRefObject} from "react";
-import {useDispatch, useSelector} from "react-redux";
 
 import {REG_EXP_EMAIL, REG_EXP_PASSWORD} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {logIn} from "../../store/login/api-actions";
 import {selectIsSending, selectSendingError} from "../../store/login/selectors";
 
 const LoginForm = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const isSending = useSelector(selectIsSending);
-  const sendingError = useSelector(selectSendingError);
+  const dispatch = useAppDispatch();
+  const isSending = useAppSelector(selectIsSending);
+  const sendingError = useAppSelector(selectSendingError);
 
   const initialLogin = {
     isValidEmail: false,
@@ -91,7 +91,7 @@ const LoginForm = (): JSX.Element => {
           || hideInvalidMsgs && !isValidEmail && isValidPassword && `Please enter your email`
           || !hideInvalidEmailMsg && `Invalid email! Please enter a valid email`
           || isSending && `Signing in... Please wait`
-          || sendingError && `Error ${sendingError.status}: ${sendingError.statusText}. Please try agaian later`
+          || sendingError && `Error ${sendingError.status}: ${sendingError.statusText}. Please try again later`
         }
       </div>
       <div style={{marginTop: `30px`}}>

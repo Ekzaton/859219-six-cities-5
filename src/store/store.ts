@@ -1,14 +1,10 @@
 import {AxiosInstance} from "axios";
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk, {ThunkAction} from "redux-thunk";
 
 import {redirect} from "../middlewares/redirect";
 import {createAPI} from "../services/api";
-import {FavoritesAction} from "../types/store/favorites";
-import {LoginAction} from "../types/store/login";
-import {MainAction} from "../types/store/main";
-import {PropertyAction} from "../types/store/property";
 
 import {favoritesReducer} from "./favorites/reducer";
 import {loginReducer} from "./login/reducer";
@@ -29,6 +25,5 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export type AppAction = FavoritesAction | LoginAction | MainAction | PropertyAction;
-export type AppThunkAction = ThunkAction<void, AppState, AxiosInstance, AppAction>;
+export type AppThunkAction = ThunkAction<void, AppState, AxiosInstance, AnyAction>;
 export default store;

@@ -2,7 +2,6 @@ import {AxiosResponse} from 'axios';
 import {createSelector} from 'reselect';
 
 import {Offer} from "../../types/common";
-
 import {getOffersByCity} from "../../utils/store";
 
 import {AppState} from "../store";

@@ -1,17 +1,15 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../consts/common";
-
 import {logOut} from "../../store/login/api-actions";
-
 import {selectIsAuthorized, selectUser} from "../../store/login/selectors";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 
 const UserNav = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const isAuthorized = useSelector(selectIsAuthorized);
-  const user = useSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector(selectIsAuthorized);
+  const user = useAppSelector(selectUser);
 
   return (
     <nav className="header__nav">

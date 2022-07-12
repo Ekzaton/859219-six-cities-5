@@ -1,8 +1,7 @@
 import React, {memo, useState} from "react";
-import {useDispatch} from "react-redux";
 
 import {SortingType} from "../../consts/common";
-
+import {useAppDispatch} from "../../hooks/store";
 import {setCurrentSorting} from "../../store/main/actions";
 
 type SortingFormProps = {
@@ -13,7 +12,7 @@ const SortingForm = (props: SortingFormProps): JSX.Element => {
   const {currentSorting} = props;
   const sortings = Object.values(SortingType);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isOpened, setIsOpened] = useState(false);
 

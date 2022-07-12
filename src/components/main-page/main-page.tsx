@@ -1,5 +1,8 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+
+import {DELAY_DURATION, CardType, HeaderType, MapType} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
+import {fetchAllOffers} from "../../store/main/api-actions";
 
 import CitiesList from "../cities-list/cities-list";
 import Delay from "../delay/delay";
@@ -10,10 +13,6 @@ import Map from "../map/map";
 import OffersList from "../offers-list/offers-list";
 import PageHeader from "../page-header/page-header";
 import SortingForm from "../sorting-form/sorting-form";
-
-import {DELAY_DURATION, CardType, HeaderType, MapType} from "../../consts/components";
-
-import {fetchAllOffers} from "../../store/main/api-actions";
 
 import {
   selectActiveOfferID,
@@ -27,19 +26,19 @@ import {
 } from "../../store/main/selectors";
 
 const MainPage = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const activeOfferID = useSelector(selectActiveOfferID);
-  const currentCity = useSelector(selectCurrentCity);
-  const currentSorting = useSelector(selectCurrentSorting);
-  const isLoading = useSelector(selectIsLoading);
-  const loadingError = useSelector(selectLoadingError);
-  const offers = useSelector(selectSortedOffers);
-  const offersCount = useSelector(selectSortedOffersCount);
-  const noOffers = useSelector(selectNoSortedOffers);
+  const dispatch = useAppDispatch();
+  const activeOfferID = useAppSelector(selectActiveOfferID);
+  const currentCity = useAppSelector(selectCurrentCity);
+  const currentSorting = useAppSelector(selectCurrentSorting);
+  const isLoading = useAppSelector(selectIsLoading);
+  const loadingError = useAppSelector(selectLoadingError);
+  const offers = useAppSelector(selectSortedOffers);
+  const offersCount = useAppSelector(selectSortedOffersCount);
+  const noOffers = useAppSelector(selectNoSortedOffers);
 
   useEffect(() => {
     dispatch(fetchAllOffers());
-  }, [dispatch]);
+  }, []);
 
   if (isLoading) {
     return (

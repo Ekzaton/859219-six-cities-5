@@ -2,12 +2,10 @@ import {AxiosResponse} from 'axios';
 import {createSelector} from 'reselect';
 
 import {CityName, SortingType} from "../../consts/common";
-
 import {Offer} from "../../types/common";
+import {getFilteredOffers, getSortedOffers} from "../../utils/store";
 
 import {AppState} from "../store";
-
-import {getFilteredOffers, getSortedOffers} from "../../utils/store";
 
 export const selectActiveOfferID = (state: AppState): number | null => state.main.activeOfferID;
 export const selectCurrentCity = (state: AppState): CityName => state.main.currentCity;

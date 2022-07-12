@@ -2,7 +2,6 @@ import {AxiosResponse} from 'axios';
 import {createSelector} from 'reselect';
 
 import {Offer, Review} from "../../types/common";
-
 import {getSortedReviews} from "../../utils/store";
 
 import {AppState} from "../store";

@@ -1,18 +1,21 @@
+import {AxiosResponse} from "axios";
+import {AnyAction} from "redux";
+
 import {CityName, SortingType} from "../../consts/common";
 import {ActionType} from "../../consts/store";
-import {MainAction, MainState} from "../../types/store/main";
+import {Offer} from "../../types/common";
 import {setOffers} from "../../utils/store";
 
-const initialState: MainState = {
-  activeOfferID: null,
+const initialState = {
+  activeOfferID: null as number | null,
   currentCity: CityName.PARIS,
   currentSorting: SortingType.POPULAR,
-  allOffers: [],
+  allOffers: [] as Offer[],
   isLoading: false,
-  loadingError: null
+  loadingError: null as AxiosResponse | null,
 };
 
-export const mainReducer = (state = initialState, action: MainAction): MainState => {
+export const mainReducer = (state = initialState, action: AnyAction): MainState => {
   switch (action.type) {
     case ActionType.SET_ACTIVE_OFFER_ID:
       return {...state, activeOfferID: action.payload};
@@ -32,3 +35,5 @@ export const mainReducer = (state = initialState, action: MainAction): MainState
       return state;
   }
 };
+
+type MainState = typeof initialState;

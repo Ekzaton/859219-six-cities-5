@@ -1,9 +1,9 @@
 import React, {useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {AppRoute} from "../../consts/common";
 import {BtnType, CardImgSize, CardType, FavCardImgSize} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {selectIsAuthorized} from "../../store/login/selectors";
 import {setActiveOfferID} from "../../store/main/actions";
 import {Offer} from "../../types/common";
@@ -19,16 +19,16 @@ type OffersItemProps = {
 const OffersItem = (props: OffersItemProps): JSX.Element => {
   const {offer, type} = props;
 
-  const dispatch = useDispatch();
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector(selectIsAuthorized);
 
   const handleMouseEnter = useCallback(() => {
     dispatch(setActiveOfferID(offer.id));
-  }, [dispatch, offer.id]);
+  }, [offer]);
 
   const handleMouseLeave = useCallback(() => {
     dispatch(setActiveOfferID(null));
-  }, [dispatch]);
+  }, []);
 
   return (
     <article
