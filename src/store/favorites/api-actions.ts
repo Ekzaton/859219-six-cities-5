@@ -28,7 +28,7 @@ export const toggleFavoriteStatus = (offer: Offer, evt: FormEvent): AppThunkActi
   const span = button.firstElementChild as HTMLSpanElement;
   const svg = span.firstElementChild as SVGElement;
   button.setAttribute(AttributeName.DISABLED, AttributeValue.EMPTY);
-  api.post(APIEndpoint.FAVORITE + offer.id + `//${+(!offer.isFavorite)}`)
+  api.post(APIEndpoint.FAVORITE + offer.id + `/${+(!offer.isFavorite)}`)
   .then(({data}) => {
     dispatch(setOfferFavoriteStatus(data));
   })

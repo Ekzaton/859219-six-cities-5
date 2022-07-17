@@ -1,9 +1,8 @@
-import {AxiosInstance} from "axios";
 import {useDispatch, useSelector, TypedUseSelectorHook} from "react-redux";
-import {AnyAction, Dispatch} from "redux";
-import {ThunkDispatch} from "redux-thunk";
 
-import {AppState} from "../store/store";
+import {AppDispatch, AppState} from "../store/store";
 
-export const useAppDispatch = (): Dispatch & ThunkDispatch<AppState, AxiosInstance, AnyAction> => useDispatch();
+type TypedUseDispatchHook<T> = () => (...args: unknown[]) => T;
+
+export const useAppDispatch: TypedUseDispatchHook<AppDispatch> = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
