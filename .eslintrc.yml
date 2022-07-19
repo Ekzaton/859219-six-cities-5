@@ -2,11 +2,14 @@ env:
   es6: true
   browser: true
   commonjs: true
+  jest: true
 
 extends: [
   'htmlacademy/es6',
+  'plugin:jest-dom/recommended',
   'plugin:react/recommended',
   'plugin:react-hooks/recommended',
+  'plugin:testing-library/react',
   'plugin:@typescript-eslint/recommended'
 ]
 
@@ -14,13 +17,15 @@ parserOptions:
   ecmaFeatures:
     jsx: true
   ecmaVersion: 6
-  sourceType: module
+  sourceType: 'module'
 
 parser: '@typescript-eslint/parser'
 
 plugins: [
+  'jest-dom',
   'react',
   'react-hooks',
+  'testing-library',
   '@typescript-eslint'
 ]
 
@@ -32,7 +37,7 @@ rules: {
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/no-use-before-define': 'off',
   '@typescript-eslint/no-shadow': 'error',
-  'no-shadow': 'off',
+  'no-shadow': 'off'
 }
 
 

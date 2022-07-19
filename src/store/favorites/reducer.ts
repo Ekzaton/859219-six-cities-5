@@ -1,16 +1,17 @@
+import {AxiosResponse} from "axios";
+import {AnyAction} from "redux";
+
 import {ActionType} from "../../consts/store";
-
-import {FavoritesAction, FavoritesState} from "../../types/store/favorites";
-
+import {Offer} from "../../types/common";
 import {setFavoriteOffers} from "../../utils/store";
 
-const initialState: FavoritesState = {
-  favoriteOffers: [],
+const initialState = {
+  favoriteOffers: [] as Offer[],
   isLoading: false,
-  loadingError: null
+  loadingError: null as AxiosResponse | null,
 };
 
-export const favoritesReducer = (state = initialState, action: FavoritesAction): FavoritesState => {
+export const favoritesReducer = (state = initialState, action: AnyAction): FavoritesState => {
   switch (action.type) {
     case ActionType.SET_FAVORITE_OFFERS:
       return {...state, favoriteOffers: action.payload};
@@ -24,3 +25,5 @@ export const favoritesReducer = (state = initialState, action: FavoritesAction):
       return state;
   }
 };
+
+type FavoritesState = typeof initialState;

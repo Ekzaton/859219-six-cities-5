@@ -1,14 +1,10 @@
-import React, {useEffect, useMemo, useState, useRef, ChangeEvent, FormEvent} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useEffect, useMemo, useState, useRef, ChangeEvent, FormEvent, Fragment} from "react";
 
-import {RATING_STARS_COUNT, ReviewLehgth} from "../../consts/components";
-
+import {RATING_STARS_COUNT, ReviewLength} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {sendReview} from "../../store/property/api-actions";
-
 import {selectIsSending, selectSendingError} from "../../store/property/selectors";
-
 import {Offer} from "../../types/common";
-
 import {getRatingArray, validateComment} from "../../utils/components";
 
 type ReviewFormProps = {
@@ -18,9 +14,9 @@ type ReviewFormProps = {
 const ReviewForm = (props: ReviewFormProps): JSX.Element => {
   const {offer} = props;
 
-  const dispatch = useDispatch();
-  const isSending = useSelector(selectIsSending);
-  const sendingError = useSelector(selectSendingError);
+  const dispatch = useAppDispatch();
+  const isSending = useAppSelector(selectIsSending);
+  const sendingError = useAppSelector(selectSendingError);
 
   const initialReview = useMemo(() => ({
     rating: 0,
@@ -61,7 +57,7 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
           const ratingStar = RATING_STARS_COUNT - i;
 
           return (
-            <React.Fragment key={`input-${i}`}>
+            <Fragment key={`input-${i}`}>
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
@@ -87,7 +83,7 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
                   <use xlinkHref="#icon-star"/>
                 </svg>
               </label>
-            </React.Fragment>
+            </Fragment>
           );
         })}
       </div>
@@ -120,13 +116,11 @@ const ReviewForm = (props: ReviewFormProps): JSX.Element => {
           {
             !isValidForm && <>
               To submit review please make sure to set <span className="reviews__star">rating </span>
-              and describe your stay with at least <b className="reviews__text-amount">{ReviewLehgth.MIN} </b>
-              but at most <b className="reviews__text-amount">{ReviewLehgth.MAX} </b>characters
+              and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.MIN} </b>
+              but at most <b className="reviews__text-amount">{ReviewLength.MAX} </b>characters
             </>
             || isSending && `Sending review... Please wait`
-            || sendingError && <>
-              Error {sendingError.status}: {sendingError.statusText}. Please try agaian later
-            </>
+            || sendingError && `Error ${sendingError.status}: ${sendingError.statusText}. Please try agaian later`
           }
         </p>
       </div>

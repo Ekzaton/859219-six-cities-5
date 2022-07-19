@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cities list renders correctly for initial city 1`] = `
+<div>
+  <ul
+    class="locations__list tabs__list"
+  >
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item tabs__item--active"
+      >
+        <span>
+          Paris
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Cologne
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Brussels
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Amsterdam
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Hamburg
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Dusseldorf
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Cities list renders correctly for selected city 1`] = `
+<div>
+  <ul
+    class="locations__list tabs__list"
+  >
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Paris
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Cologne
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Brussels
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item tabs__item--active"
+      >
+        <span>
+          Amsterdam
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Hamburg
+        </span>
+      </a>
+    </li>
+    <li
+      class="locations__item"
+    >
+      <a
+        class="locations__item-link tabs__item false"
+      >
+        <span>
+          Dusseldorf
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>
+`;

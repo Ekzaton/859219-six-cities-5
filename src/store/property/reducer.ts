@@ -1,21 +1,21 @@
+import {AxiosResponse} from "axios";
+import {AnyAction} from "redux";
+
 import {ActionType} from "../../consts/store";
-
-import {Offer} from "../../types/common";
-import {PropertyAction, PropertyState} from "../../types/store/property";
-
+import {Offer, Review} from "../../types/common";
 import {setNearbyOffers} from "../../utils/store";
 
-const initialState: PropertyState = {
+const initialState = {
   offer: {} as Offer,
-  nearbyOffers: [],
-  reviews: [],
+  nearbyOffers: [] as Offer[],
+  reviews: [] as Review[],
   isLoading: false,
-  loadingError: null,
+  loadingError: null as AxiosResponse | null,
   isSending: false,
-  sendingError: null
+  sendingError: null as AxiosResponse | null,
 };
 
-export const propertyReducer = (state = initialState, action: PropertyAction): PropertyState => {
+export const propertyReducer = (state = initialState, action: AnyAction): PropertyState => {
   switch (action.type) {
     case ActionType.SET_OFFER:
       return {...state, offer: action.payload};
@@ -39,3 +39,5 @@ export const propertyReducer = (state = initialState, action: PropertyAction): P
       return state;
   }
 };
+
+type PropertyState = typeof initialState;

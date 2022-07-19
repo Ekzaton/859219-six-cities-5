@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bookmark button renders correctly for place card (active) 1`] = `
+<div>
+  <button
+    class="place-card__bookmark-button place-card__bookmark-button--active button"
+    type="button"
+  >
+    <svg
+      class="place-card__bookmark-icon"
+      height="19"
+      width="18"
+    >
+      <use
+        xlink:href="#icon-bookmark"
+      />
+    </svg>
+    <span
+      class="visually-hidden"
+    >
+      In bookmarks
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Bookmark button renders correctly for place card (inactive) 1`] = `
+<div>
+  <button
+    class="place-card__bookmark-button place-card__bookmark-button--active button"
+    type="button"
+  >
+    <svg
+      class="place-card__bookmark-icon"
+      height="19"
+      width="18"
+    >
+      <use
+        xlink:href="#icon-bookmark"
+      />
+    </svg>
+    <span
+      class="visually-hidden"
+    >
+      In bookmarks
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Bookmark button renders correctly for property page (active) 1`] = `
+<div>
+  <button
+    class="property__bookmark-button false button"
+    type="button"
+  >
+    <svg
+      class="property__bookmark-icon"
+      height="33"
+      width="31"
+    >
+      <use
+        xlink:href="#icon-bookmark"
+      />
+    </svg>
+    <span
+      class="visually-hidden"
+    >
+      To bookmarks
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Bookmark button renders correctly for property page (inactive) 1`] = `
+<div>
+  <button
+    class="property__bookmark-button false button"
+    type="button"
+  >
+    <svg
+      class="property__bookmark-icon"
+      height="33"
+      width="31"
+    >
+      <use
+        xlink:href="#icon-bookmark"
+      />
+    </svg>
+    <span
+      class="visually-hidden"
+    >
+      To bookmarks
+    </span>
+  </button>
+</div>
+`;

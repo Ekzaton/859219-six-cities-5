@@ -1,35 +1,40 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
-
-import BookmarkButton from "../bookmark-button/bookmark-button";
 
 import {AppRoute} from "../../consts/common";
 import {BtnType, CardImgSize, CardType, FavCardImgSize} from "../../consts/components";
-
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
 import {selectIsAuthorized} from "../../store/login/selectors";
-
+import {setActiveOfferID} from "../../store/main/actions";
 import {Offer} from "../../types/common";
-
 import {getOfferType, getRatingStars} from "../../utils/components";
+
+import BookmarkButton from "../bookmark-button/bookmark-button";
 
 type OffersItemProps = {
   offer: Offer;
   type: CardType;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
 }
 
 const OffersItem = (props: OffersItemProps): JSX.Element => {
-  const {offer, type, onMouseEnter, onMouseLeave} = props;
+  const {offer, type} = props;
 
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const dispatch = useAppDispatch();
+  const isAuthorized = useAppSelector(selectIsAuthorized);
+
+  const handleMouseEnter = useCallback(() => {
+    dispatch(setActiveOfferID(offer.id));
+  }, [offer]);
+
+  const handleMouseLeave = useCallback(() => {
+    dispatch(setActiveOfferID(null));
+  }, []);
 
   return (
     <article
       className={`${type}__${type === CardType.CITIES ? `place-card` : `card`} place-card`}
-      onMouseEnter={type === CardType.CITIES ? onMouseEnter : undefined}
-      onMouseLeave={type === CardType.CITIES ? onMouseLeave : undefined}
+      onMouseEnter={type === CardType.CITIES ? handleMouseEnter : undefined}
+      onMouseLeave={type === CardType.CITIES ? handleMouseLeave : undefined}
     >
       {offer.isPremium &&
         <div className="place-card__mark">

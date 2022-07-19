@@ -1,24 +1,22 @@
 import React from "react";
-import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
-
-import OffersList from "../offers-list/offers-list";
 
 import {AppRoute, CityName} from "../../consts/common";
 import {CardType} from "../../consts/components";
-
+import {useAppDispatch} from "../../hooks/store";
 import {setCurrentCity} from "../../store/main/actions";
+import {OffersByCity} from "../../types/common";
 
-import {Offer} from "../../types/common";
+import OffersList from "../offers-list/offers-list";
 
 type FavoritesListProps = {
-  offersByCity: Record<CityName, Offer[]>;
+  offersByCity: OffersByCity;
 }
 
 const FavoritesList = (props: FavoritesListProps): JSX.Element => {
   const {offersByCity} = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <ul className="favorites__list">

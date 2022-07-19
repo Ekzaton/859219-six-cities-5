@@ -1,9 +1,8 @@
 import React from "react";
-import {useSelector} from "react-redux";
 import {Redirect, Route} from "react-router-dom";
 
 import {AppRoute} from "../../consts/common";
-
+import {useAppSelector} from "../../hooks/store";
 import {selectIsAuthorized} from "../../store/login/selectors";
 
 type PrivateRouteProps = {
@@ -15,7 +14,7 @@ type PrivateRouteProps = {
 const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
   const {exact, path, render} = props;
 
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const isAuthorized = useAppSelector(selectIsAuthorized);
 
   return (
     <Route

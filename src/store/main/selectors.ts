@@ -1,20 +1,18 @@
 import {AxiosResponse} from 'axios';
 import {createSelector} from 'reselect';
 
-import {RootState} from "../store";
-
 import {CityName, SortingType} from "../../consts/common";
-
 import {Offer} from "../../types/common";
-
 import {getFilteredOffers, getSortedOffers} from "../../utils/store";
 
-export const selectActiveOfferID = (state: RootState): number | null => state.main.activeOfferID;
-export const selectCurrentCity = (state: RootState): CityName => state.main.currentCity;
-export const selectCurrentSorting = (state: RootState): SortingType => state.main.currentSorting;
-export const selectAllOffers = (state: RootState): Offer[] => state.main.allOffers;
-export const selectIsLoading = (state: RootState): boolean => state.main.isLoading;
-export const selectLoadingError = (state: RootState): AxiosResponse | null => state.main.loadingError;
+import {AppState} from "../store";
+
+export const selectActiveOfferID = (state: AppState): number | null => state.main.activeOfferID;
+export const selectCurrentCity = (state: AppState): CityName => state.main.currentCity;
+export const selectCurrentSorting = (state: AppState): SortingType => state.main.currentSorting;
+export const selectAllOffers = (state: AppState): Offer[] => state.main.allOffers;
+export const selectIsLoading = (state: AppState): boolean => state.main.isLoading;
+export const selectLoadingError = (state: AppState): AxiosResponse | null => state.main.loadingError;
 
 export const selectFilteredOffers = createSelector(
     [selectCurrentCity, selectAllOffers],

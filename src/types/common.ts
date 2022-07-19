@@ -30,6 +30,8 @@ export type Offer = {
   type: string;
 }
 
+export type OffersByCity = Record<CityName, Offer[]>;
+
 export type Review = {
   comment: string;
   date: string;

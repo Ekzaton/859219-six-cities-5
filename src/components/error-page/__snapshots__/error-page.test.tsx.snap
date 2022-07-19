@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error page renders correctly for loading error 1`] = `
+<div>
+  <main
+    class="page__main"
+  >
+    <h1
+      class="property__name"
+      style="margin-top: 35vh;"
+    >
+      Sorry service is not available!
+    </h1>
+    <p
+      class="property__inside-title"
+      style="margin: 5vh 0px 20vh;"
+    >
+      Error 503: Temporarily Unavailable
+    </p>
+    <a
+      href="/"
+    >
+      <p
+        class="property__text"
+        style="text-align: center; text-decoration: underline;"
+      >
+        Back to main page
+      </p>
+    </a>
+  </main>
+</div>
+`;
+
+exports[`Error page renders correctly for unknown route 1`] = `
+<div>
+  <main
+    class="page__main"
+  >
+    <h1
+      class="property__name"
+      style="margin-top: 35vh;"
+    >
+      Sorry cant find that!
+    </h1>
+    <p
+      class="property__inside-title"
+      style="margin: 5vh 0px 20vh;"
+    >
+      Error 404: Not Found
+    </p>
+    <a
+      href="/"
+    >
+      <p
+        class="property__text"
+        style="text-align: center; text-decoration: underline;"
+      >
+        Back to main page
+      </p>
+    </a>
+  </main>
+</div>
+`;

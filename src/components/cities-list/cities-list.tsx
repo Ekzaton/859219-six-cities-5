@@ -1,8 +1,7 @@
 import React, {memo} from "react";
-import {useDispatch} from "react-redux";
 
 import {CityName} from "../../consts/common";
-
+import {useAppDispatch} from "../../hooks/store";
 import {setCurrentCity} from "../../store/main/actions";
 
 type CitiesListProps = {
@@ -13,7 +12,7 @@ const CitiesList = (props: CitiesListProps): JSX.Element => {
   const {currentCity} = props;
   const cities = Object.values(CityName);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <ul className="locations__list tabs__list">

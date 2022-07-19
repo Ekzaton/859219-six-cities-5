@@ -1,14 +1,12 @@
+import {AppRoute, AuthStatus} from "../../consts/common";
+import {APIEndpoint} from "../../consts/store";
+import {UserPost} from "../../types/common";
+
+import {AppDispatch, AppThunkAction} from "../store";
 
 import {setAuthStatus, setUser, setRedirectToRoute, setIsSending, setSendingError} from "./actions";
 
-import {APIAction} from "../store";
-
-import {AppRoute, AuthStatus} from "../../consts/common";
-import {APIEndpoint} from "../../consts/store";
-
-import {UserPost} from "../../types/common";
-
-export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
+export const checkAuthStatus = (): AppThunkAction => (dispatch: AppDispatch, _getState, api) => (
   api.get(APIEndpoint.LOGIN)
   .then(({data}) => {
     dispatch(setUser(data));
@@ -17,22 +15,23 @@ export const checkAuthStatus = (): APIAction => (dispatch, _getState, api) => (
   .catch(() => dispatch(setAuthStatus(AuthStatus.NO_AUTH)))
 );
 
-export const logIn = ({email, password}: UserPost): APIAction => (dispatch, _getState, api) => {
+export const logIn = ({email, password}: UserPost): AppThunkAction => (dispatch: AppDispatch, _getState, api) => {
   dispatch(setIsSending(true));
   api.post(APIEndpoint.LOGIN, {email, password})
   .then(({data}) => {
     dispatch(setSendingError(null));
     dispatch(setUser(data));
     dispatch(setAuthStatus(AuthStatus.AUTH));
-    dispatch(setIsSending(false));
   })
   .catch(({response}) => {
     dispatch(setSendingError(response));
+  })
+  .finally(() => {
     dispatch(setIsSending(false));
   });
 };
 
-export const logOut = (): APIAction => (dispatch, _getState, api) => {
+export const logOut = (): AppThunkAction => (dispatch: AppDispatch, _getState, api) => {
   api.get(APIEndpoint.LOGOUT)
   .then(() => {
     dispatch(setAuthStatus(AuthStatus.NO_AUTH));

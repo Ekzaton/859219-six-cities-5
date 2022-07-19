@@ -1,28 +1,26 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+
+import {AppRoute} from "../../consts/common";
+import {HeaderType} from "../../consts/components";
+import {useAppDispatch, useAppSelector} from "../../hooks/store";
+import {setRedirectToRoute} from "../../store/login/actions";
+import {selectIsAuthorized} from "../../store/login/selectors";
+import {selectCurrentCity} from "../../store/main/selectors";
 
 import PageHeader from "../page-header/page-header";
 import LoginForm from "../login-form/login-form";
 
-import {AppRoute} from "../../consts/common";
-import {HeaderType} from "../../consts/components";
-
-import {setRedirectToRoute} from "../../store/login/actions";
-
-import {selectIsAuthorized} from "../../store/login/selectors";
-import {selectCurrentCity} from "../../store/main/selectors";
-
 const LoginPage = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const currentCity = useSelector(selectCurrentCity);
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const dispatch = useAppDispatch();
+  const currentCity = useAppSelector(selectCurrentCity);
+  const isAuthorized = useAppSelector(selectIsAuthorized);
 
   useEffect(() => {
     if (isAuthorized) {
       dispatch(setRedirectToRoute(AppRoute.MAIN));
     }
-  }, [dispatch, isAuthorized]);
+  }, [isAuthorized]);
 
   return (
     <div className="page page--gray page--login">

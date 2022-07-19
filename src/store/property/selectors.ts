@@ -1,19 +1,18 @@
 import {AxiosResponse} from 'axios';
 import {createSelector} from 'reselect';
 
-import {RootState} from "../store";
-
 import {Offer, Review} from "../../types/common";
-
 import {getSortedReviews} from "../../utils/store";
 
-export const selectOffer = (state: RootState): Offer => state.property.offer;
-export const selectNearbyOffers = (state: RootState): Offer[] => state.property.nearbyOffers;
-export const selectReviews = (state: RootState): Review[] => state.property.reviews;
-export const selectIsLoading = (state: RootState): boolean => state.property.isLoading;
-export const selectLoadingError = (state: RootState): AxiosResponse | null => state.property.loadingError;
-export const selectIsSending = (state: RootState): boolean => state.property.isSending;
-export const selectSendingError = (state: RootState): AxiosResponse | null => state.property.sendingError;
+import {AppState} from "../store";
+
+export const selectOffer = (state: AppState): Offer => state.property.offer;
+export const selectNearbyOffers = (state: AppState): Offer[] => state.property.nearbyOffers;
+export const selectReviews = (state: AppState): Review[] => state.property.reviews;
+export const selectIsLoading = (state: AppState): boolean => state.property.isLoading;
+export const selectLoadingError = (state: AppState): AxiosResponse | null => state.property.loadingError;
+export const selectIsSending = (state: AppState): boolean => state.property.isSending;
+export const selectSendingError = (state: AppState): AxiosResponse | null => state.property.sendingError;
 
 export const selectNoOffer = createSelector(
     [selectOffer],

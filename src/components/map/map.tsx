@@ -1,11 +1,10 @@
 import Leaflet from "leaflet";
 import React, {memo, useEffect, useRef, MutableRefObject} from "react";
 
-import "leaflet/dist/leaflet.css";
-
 import {MapIconSize, MapIconURL, MapLayer, MapType} from "../../consts/components";
-
 import {Offer} from "../../types/common";
+
+import "leaflet/dist/leaflet.css";
 
 type MapProps = {
   activeOfferID: number | null;
@@ -40,7 +39,7 @@ const Map = (props: MapProps): JSX.Element => {
     return () => {
       map.remove();
     };
-  }, [activeOfferID, city, offers]);
+  }, [activeOfferID, offers]);
 
   return (
     <section

@@ -2,7 +2,7 @@ export const DELAY_DURATION = 250;
 export const OFFER_IMAGES_COUNT = 6;
 export const OFFER_REVIEWS_COUNT = 10;
 export const RATING_STARS_COUNT = 5;
-export const REG_EXP_EMAIL = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/;
+export const REG_EXP_EMAIL = /^([\w.%+-]+)@([\w-]+\.)+(\w{2,})$/;
 export const REG_EXP_PASSWORD = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 export enum BtnBigSize {
@@ -43,7 +43,7 @@ export enum HeaderType {
 
 export enum MapIconSize {
   WIDTH = 30,
-  HEIGHT = WIDTH
+  HEIGHT = 30,
 }
 
 export enum MapIconURL {
@@ -67,7 +67,7 @@ export enum ReviewDate {
   YEAR = `numeric`
 }
 
-export enum ReviewLehgth {
+export enum ReviewLength {
   MIN = 50,
   MAX = 300
 }
